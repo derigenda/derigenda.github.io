@@ -1,0 +1,89 @@
+
+body
+{
+  font-family: Arial, Helvetica, sans-serif 
+}
+textarea
+{
+  width:100%;
+  height:100%;  
+}
+inddef {
+    background-color: lightgoldenrodyellow;
+    border-color: yellow;
+    cursor:pointer;
+    } 
+
+#sortable { 
+  list-style-type: none; 
+  margin: 0; 
+  padding: 0; 
+}
+
+#sortable li { 
+  margin: 3px 3px 3px 0; 
+  padding: 1px; 
+  float: left; 
+  width: 250px; 
+  height: 135px; 
+  font-size: 2em; 
+  text-align: center; 
+}
+
+.div3 {
+  margin-left: 0px;
+  height:200px;
+  padding:50px;
+  border:1px solid #aaaaaa;
+  background-color: LightBlue;
+}
+
+li { 
+  margin: 20px; 
+  padding: 20px; 
+  border: 0px solid;
+  border-radius: 25px;
+  box-shadow: 5px 5px 5px grey;
+  line-height: 75%
+}
+
+.stopButton {
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #eae0c2), color-stop(1, #ccc2a6));
+	background:-moz-linear-gradient(top, #eae0c2 5%, #ccc2a6 100%);
+	background:-webkit-linear-gradient(top, #eae0c2 5%, #ccc2a6 100%);
+	background:-o-linear-gradient(top, #eae0c2 5%, #ccc2a6 100%);
+	background:-ms-linear-gradient(top, #eae0c2 5%, #ccc2a6 100%);
+	background:linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#eae0c2', endColorstr='#ccc2a6',GradientType=0);
+	background-color:#eae0c2;
+	-moz-border-radius:15px;
+	-webkit-border-radius:15px;
+	border-radius:15px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#505739;
+	font-family:Arial;
+	font-size:14px;
+	font-weight:bold;
+	padding:12px 16px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+.stopButton:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ccc2a6), color-stop(1, #eae0c2));
+	background:-moz-linear-gradient(top, #ccc2a6 5%, #eae0c2 100%);
+	background:-webkit-linear-gradient(top, #ccc2a6 5%, #eae0c2 100%);
+	background:-o-linear-gradient(top, #ccc2a6 5%, #eae0c2 100%);
+	background:-ms-linear-gradient(top, #ccc2a6 5%, #eae0c2 100%);
+	background:linear-gradient(to bottom, #ccc2a6 5%, #eae0c2 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ccc2a6', endColorstr='#eae0c2',GradientType=0);
+	background-color:#ccc2a6;
+}
+.stopButton:active {
+	position:relative;
+	top:1px;
+}

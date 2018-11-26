@@ -1,0 +1,24 @@
+<html>
+    <title>Scansion</title>
+    <head>
+        <script src="scansion.js"></script>
+    </head>
+    <body onload="scansion()">
+        Automated Latin hexameter scansion using javascript. Large amounts of text might take a long time...
+        <table style="height:100%; width:100%">
+            <tr style="height:100%">
+                <td width="50%">
+                <textarea oninput="scansion()" id="input" style="height:100%; width:100%; font-family:'Times New Roman', Times, serif; font-size:medium;" >hac Troiana tenus fuerit fortuna secuta;
+vos quoque Pergameae iam fas est parcere genti,
+dique deaeque omnes, quibus obstitit Ilium et ingens
+</textarea>
+                </td>
+                <td style:"width:50%">
+                <div id= "output" style="position: relative; left: 0; height:100%; width:100%; font-family:'Times New Roman', Times, serif; font-size:92%;">
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>
+
+

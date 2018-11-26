@@ -1,0 +1,3094 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<html><title>Latin sorter: translate and rearrange words</title><head><meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
+<script src="/jquery.ui.widget.js"></script>
+<script src="/jquery.ui.mouse.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="/jquery.ui.touch-punch.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="/sorter.css">
+<script src="/sorter.js"></script>
+<script src="popper.js"></script>
+<script src="bootstrap.min.js"></script>
+<link rel="stylesheet" href="bootstrap.min.css">
+<link rel="stylesheet" href="modal.css"> 
+<link rel="stylesheet" href="excelstyles.css">
+</head>
+<body onload="updatetext()">
+<table style = "table-layout:fixed; width:100%; height:100%">
+<tbody><tr onmouseover="selboxdel()" style="height:12%;">
+<td id="inputtext" style="width:15%; padding:1em;">
+<textarea id="inputtextbox" onfocus="clearContents(this);" clicked = "no">Enter a passage of Latin here to analyse it or experiment with the passage below.
+</textarea>
+<button onclick="input1()">
+Use
+</button>
+
+</td>
+<td style="width:70%;">
+<div id="toppane" style="font-size:200%;"><a id="sentence">
+	Ennius erat poeta Romanus qui amicum habebat, nomine Scipionem.
+</a></div>
+</td>
+<td style="width:260px;" >
+<div id="ww" style = "height: 80px;"></div>
+</td>
+</tr>
+<tr id = "sortablerow" height="60%">
+<td onmouseover="selboxdel()" id="textcell"style="padding:1em;"><div id="linkedtext" style="height: 300px; overflow: scroll; font-size: 160%;" selectedsentence="sentences0"><a formerhtml="" id="sentences0" onclick="picker(this)" style="cursor: pointer; color: orange;" class="lsentence">Ennius erat poeta Romanus qui amicum habebat, nomine Scipionem.</a> <a formerhtml="" id="sentences1" onclick="picker(this)" style="cursor: pointer; color: black;" class="lsentence"> olim Scipio ad domum Ennii advenit, quod illum salutare volebat.</a> <a formerhtml="" id="sentences2" onclick="picker(this)" style="cursor: pointer; color: black;" class="lsentence"> ille tamen fessus erat, nam longum carmen nuper scripserat de historia Romanorum.</a> <a formerhtml="" id="sentences3" onclick="picker(this)" style="cursor: pointer; color: black;" class="lsentence"> itaque, ubi Scipio ianuam pulsavit, servus ianuam aperuit.</a> <a formerhtml="" id="sentences4" onclick="picker(this)" style="cursor: pointer; color: black;" class="lsentence"> ‘Ennius abest’ inquit servus.</a> <a formerhtml="" id="sentences5" onclick="picker(this)" style="cursor: pointer; color: black;" class="lsentence"> Scipio igitur abiit, quamquam sciebat Ennium re vera domi esse.</a> <a formerhtml="" id="sentences6" onclick="picker(this)" style="cursor: pointer; color: black;" class="lsentence"> postridie Ennius apud Scipionem ivit ut eum salutaret.</a> <a formerhtml="" id="sentences7" onclick="picker(this)" style="cursor: pointer; color: black;" class="lsentence"> ubi servus ianuam aperuit, Scipio ipse ex recessu domus clamavit ‘Scipio abest!</a> <a formerhtml="" id="sentences8" onclick="picker(this)" style="cursor: pointer; color: black;" class="lsentence">’ Ennius tamen ‘num abest?</a> <a formerhtml="" id="sentences9" onclick="picker(this)" style="cursor: pointer; color: black;" class="lsentence">’ inquit, ‘nam vocem eius audire possum.</a> <a formerhtml="" id="sentences10" onclick="picker(this)" style="cursor: pointer; color: black;" class="lsentence">’</a></div></td>
+<td id="words" onmouseout="selboxdel"> 
+	<ul onscroll="selboxdel()" class="ui-sortable" id="sortable" style="height:300px; overflow: scroll;" abp="15"><li onmouseup="updatetranslation()" id="word0" class="ui-state-default ui-sortable-handle"><a id="titleword0" style="cursor:pointer;" onclick="getww(this); showoptions(event.srcElement)" parentid="word0">Ennius</a></li> <li onmouseup="updatetranslation()" id="word1" class="ui-state-default ui-sortable-handle"><a id="titleword1" style="cursor:pointer;" onclick="getww(this); showoptions(event.srcElement)" parentid="word1">erat</a></li> <li onmouseup="updatetranslation()" id="word2" class="ui-state-default ui-sortable-handle"><a id="titleword2" style="cursor:pointer;" onclick="getww(this); showoptions(event.srcElement)" parentid="word2">poeta</a></li> <li onmouseup="updatetranslation()" id="word3" class="ui-state-default ui-sortable-handle"><a id="titleword3" style="cursor:pointer;" onclick="getww(this); showoptions(event.srcElement)" parentid="word3">Romanus</a></li> <li onmouseup="updatetranslation()" id="word4" class="ui-state-default ui-sortable-handle"><a id="titleword4" style="cursor:pointer;" onclick="getww(this); showoptions(event.srcElement)" parentid="word4">qui</a></li> <li onmouseup="updatetranslation()" id="word5" class="ui-state-default ui-sortable-handle"><a id="titleword5" style="cursor:pointer;" onclick="getww(this); showoptions(event.srcElement)" parentid="word5">amicum</a></li> <li onmouseup="updatetranslation()" id="word6" class="ui-state-default ui-sortable-handle"><a id="titleword6" style="cursor:pointer;" onclick="getww(this); showoptions(event.srcElement)" parentid="word6">habebat</a></li> <li onmouseup="updatetranslation()" id="word7" class="ui-state-default ui-sortable-handle"><a id="titleword7" style="cursor:pointer;" onclick="getww(this); showoptions(event.srcElement)" parentid="word7">nomine</a></li> <li onmouseup="updatetranslation()" id="word8" class="ui-state-default ui-sortable-handle"><a id="titleword8" style="cursor:pointer;" onclick="getww(this); showoptions(event.srcElement)" parentid="word8">Scipionem</a></li></ul>
+</td>
+<td onmouseover="selboxdel()">
+<div id="menus" style="overflow:scroll; height:300px;">
+<tester>
+</tester>
+</div>
+</td>
+</tr>
+<tr onmouseover="selboxdel()" style="max-width:10%; color:white; background-color:black;">
+	<td id="spare">
+	</td>
+	<td style="table-layout: fixed; color:white; background-color:black; font-size:250%;"><div id="finalsentence" style="width: 100%; height: 100%; overflow:hidden;">Ennius was a Roman poet who had a friend by the name Scipio</div></td>
+	<td>
+			<div hidden id="tablecontainerinvisible">
+					<div id = "verbcontainer" style="width:100%; transform-origin: left top; offset: hidden;">
+							<table id="verbtable" border=0 cellpadding=0 cellspacing=0 class=xl11316351
+							 style='border-collapse:collapse; top:0%; left:0%'>
+							 <col class=xl6553516351 width=47 style='mso-width-source:userset;mso-width-alt:
+							 1678;width:1pt'>
+							 <col class=xl6553516351 width=68 style='mso-width-source:userset;mso-width-alt:
+							 2417;width:24pt'>
+							 <col class=xl6916351 width=100 style='mso-width-source:userset;mso-width-alt:
+							 3555;width:75pt'>
+							 <col class=xl6553516351 width=158 style='mso-width-source:userset;mso-width-alt:
+							 5632;width:119pt'>
+							 <col class=xl6716351 width=163 style='mso-width-source:userset;mso-width-alt:
+							 5802;width:122pt'>
+							 <col class=xl6816351 width=110 style='mso-width-source:userset;mso-width-alt:
+							 3925;width:105pt'>
+							 <col class=xl6716351 width=166 style='mso-width-source:userset;mso-width-alt:
+							 5916;width:125pt'>
+							 <col class=xl6553516351 width=26 style='mso-width-source:userset;mso-width-alt:
+							 910;width:19pt'>
+							 <col class=xl6553516351 width=27 style='mso-width-source:userset;mso-width-alt:
+							 967;width:20pt'>
+							 <col class=xl6553516351 width=38 style='mso-width-source:userset;mso-width-alt:
+							 1336;width:28pt'>
+							 <col class=xl11316351 width=78 style='mso-width-source:userset;mso-width-alt:
+							 2759;width:24pt'>
+							 <col class=xl11516351 width=100 style='mso-width-source:userset;mso-width-alt:
+							 3555;width:75pt'>
+							 <col class=xl11316351 width=156 style='mso-width-source:userset;mso-width-alt:
+							 5546;width:117pt'>
+							 <col class=xl11216351 width=198 style='mso-width-source:userset;mso-width-alt:
+							 7025;width:148pt'>
+							 <col class=xl9316351 width=166 style='mso-width-source:userset;mso-width-alt:
+							 5888;width:124pt'>
+							 <col class=xl11216351 width=201 style='mso-width-source:userset;mso-width-alt:
+							 7139;width:151pt'>
+							 <col class=xl11316351 width=24 style='mso-width-source:userset;mso-width-alt:
+							 853;width:18pt'>
+							 <col class=xl11316351 width=25 style='mso-width-source:userset;mso-width-alt:
+							 881;width:19pt'>
+							 <col class=xl11316351 width=26 style='mso-width-source:userset;mso-width-alt:
+							 910;width:19pt'>
+							 <tr class=xl7016351 height=28 style='height:21.0pt'>
+							  <td height=28 class=xl7016351 style='height:21.0pt'></td>
+							  <td class=xl7016351>Active</td>
+							  <td class=xl7016351></td>
+							  <td class=xl7016351></td>
+							  <td class=xl7116351></td>
+							  <td class=xl7216351></td>
+							  <td class=xl7116351></td>
+							  <td class=xl7016351></td>
+							  <td class=xl7016351></td>
+							  <td class=xl7016351></td>
+							  <td class=xl7016351>Passive</td>
+							  <td class=xl7016351></td>
+							  <td class=xl7016351></td>
+							  <td class=xl7116351></td>
+							  <td class=xl7216351></td>
+							  <td class=xl7116351></td>
+							  <td class=xl7016351></td>
+							  <td class=xl7016351></td>
+							  <td class=xl7016351></td>
+							 </tr>
+							 <tr class=xl7316351 height=24 style='height:18.0pt'>
+							  <td height=24 class=xl7316351 style='height:18.0pt'></td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7516351>Indicative</td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7616351>&nbsp;</td>
+							  <td class=xl7716351>&nbsp;</td>
+							  <td class=xl7616351>&nbsp;</td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7316351></td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7516351>Indicative</td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7616351>&nbsp;</td>
+							  <td class=xl7716351>&nbsp;</td>
+							  <td class=xl7616351>&nbsp;</td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7316351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl7916351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8216351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl7916351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8216351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>Present</td>
+							  <td class=xl8416351>sing1pres</td>
+							  <td class=xl8516351>I %1%</td>
+							  <td class=xl8616351>plur1pres</td>
+							  <td class=xl8716351>we %2%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>Present</td>
+							  <td class=xl8416351>sing1prespass</td>
+							  <td class=xl8516351>I am %6%</td>
+							  <td class=xl8616351>plur1prespass</td>
+							  <td class=xl8916351>we are %6%</td>
+							  <td class=xl9016351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl9116351>sing2pres</td>
+							  <td class=xl9216351>you %2%</td>
+							  <td class=xl9316351>plur2pres</td>
+							  <td class=xl9416351>you %2%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl9116351>sing2prespass</td>
+							  <td class=xl9216351>you are %6%</td>
+							  <td class=xl9316351>plur2prespass</td>
+							  <td class=xl9516351>you are %6%</td>
+							  <td class=xl9016351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351></td>
+							  <td class=xl9616351>sing3pres</td>
+							  <td class=xl9716351>he %3%</td>
+							  <td class=xl9816351>plur3pres</td>
+							  <td class=xl9916351>they %2%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl9616351>sing3prespass</td>
+							  <td class=xl9716351>he is %6%</td>
+							  <td class=xl9816351>plur3prespass</td>
+							  <td class=xl10016351>they are %6%</td>
+							  <td class=xl9016351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8216351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8216351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>Imperfect</td>
+							  <td class=xl8416351>sing1impf</td>
+							  <td class=xl8516351>I was %7%</td>
+							  <td class=xl8616351>plur1impf</td>
+							  <td class=xl8716351>we were %7%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>Imperfect</td>
+							  <td class=xl8416351>sing1impfpass</td>
+							  <td class=xl8516351>I was being %6%</td>
+							  <td class=xl8616351>plur1impfpass</td>
+							  <td class=xl8716351>we were being %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl9116351>sing2impf</td>
+							  <td class=xl9216351>you were %7%</td>
+							  <td class=xl9316351>plur2impf</td>
+							  <td class=xl9416351>you were %7%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl9116351>sing2impfpass</td>
+							  <td class=xl9216351>you were being %6%</td>
+							  <td class=xl9316351>plur2impfpass</td>
+							  <td class=xl9416351>you were being %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351></td>
+							  <td class=xl9616351>sing3impf</td>
+							  <td class=xl9716351>he was %7%</td>
+							  <td class=xl9816351>plur3impf</td>
+							  <td class=xl9916351>they were %7%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl9616351>sing3impfpass</td>
+							  <td class=xl9716351>he was being %6%</td>
+							  <td class=xl9816351>plur3impfpass</td>
+							  <td class=xl9916351>they were being %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8216351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8216351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>Future</td>
+							  <td class=xl8416351>sing1fut</td>
+							  <td class=xl8516351>I shall %0%</td>
+							  <td class=xl8616351>plur1fut</td>
+							  <td class=xl8716351>we shall %0%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>Future</td>
+							  <td class=xl8416351>sing1futpass</td>
+							  <td class=xl8516351>I shall be %6%</td>
+							  <td class=xl8616351>plur1futpass</td>
+							  <td class=xl8716351>we shall be %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl9116351>sing2fut</td>
+							  <td class=xl9216351>you will %0%</td>
+							  <td class=xl9316351>plur2fut</td>
+							  <td class=xl9416351>you will %0%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl9116351>sing2futpass</td>
+							  <td class=xl9216351>you will be %6%</td>
+							  <td class=xl9316351>plur2futpass</td>
+							  <td class=xl9416351>you will be %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351></td>
+							  <td class=xl9616351>sing3fut</td>
+							  <td class=xl9716351>he will %0%</td>
+							  <td class=xl9816351>plur3fut</td>
+							  <td class=xl9916351>they will %0%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl9616351>sing3futpass</td>
+							  <td class=xl9716351>he will be %6%</td>
+							  <td class=xl9816351>plur3futpass</td>
+							  <td class=xl9916351>they will be %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8216351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8216351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>Perfect</td>
+							  <td class=xl8416351>sing1perf</td>
+							  <td class=xl8516351>I %4%</td>
+							  <td class=xl8616351>plur1perf</td>
+							  <td class=xl8716351>we %5%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>Perfect</td>
+							  <td class=xl8416351>sing1perfpass</td>
+							  <td class=xl8516351>I have been %6%</td>
+							  <td class=xl8616351>plur1perfpass</td>
+							  <td class=xl8716351>we have been %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl9116351>sing2perf</td>
+							  <td class=xl9216351>you %5%</td>
+							  <td class=xl9316351>plur2perf</td>
+							  <td class=xl9416351>you %5%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl9116351>sing2perfpass</td>
+							  <td class=xl9216351>you have been %6%</td>
+							  <td class=xl9316351>plur2perfpass</td>
+							  <td class=xl9416351>you have been %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351></td>
+							  <td class=xl9616351>sing3perf</td>
+							  <td class=xl9716351>he %4%</td>
+							  <td class=xl9816351>plur3perf</td>
+							  <td class=xl9916351>they %5%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl9616351>sing3perfpass</td>
+							  <td class=xl9716351>he has been %6%</td>
+							  <td class=xl9816351>plur3perfpass</td>
+							  <td class=xl9916351>they have been %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8216351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8216351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>Pluperfect</td>
+							  <td class=xl8416351>sing1plup</td>
+							  <td class=xl8516351>I had %6%</td>
+							  <td class=xl8616351>plur1plup</td>
+							  <td class=xl8716351>we had %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>Pluperfect</td>
+							  <td class=xl8416351>sing1pluppass</td>
+							  <td class=xl8516351>I had been %6%</td>
+							  <td class=xl8616351>plur1pluppass</td>
+							  <td class=xl8716351>we had been %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl9116351>sing2plup</td>
+							  <td class=xl9216351>you had %6%</td>
+							  <td class=xl9316351>plur2plup</td>
+							  <td class=xl9416351>you had %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl9116351>sing2pluppass</td>
+							  <td class=xl9216351>you had been %6%</td>
+							  <td class=xl9316351>plur2pluppass</td>
+							  <td class=xl9416351>you had been %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351></td>
+							  <td class=xl9616351>sing3plup</td>
+							  <td class=xl9716351>he had %6%</td>
+							  <td class=xl9816351>plur3plup</td>
+							  <td class=xl9916351>they had %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl9616351>sing3pluppass</td>
+							  <td class=xl9716351>he had been %6%</td>
+							  <td class=xl9816351>plur3pluppass</td>
+							  <td class=xl9916351>they had been %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8216351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8216351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>Fut. Perf.</td>
+							  <td class=xl8416351>sing1futp</td>
+							  <td class=xl8516351>I shall have %6%</td>
+							  <td class=xl8616351>plur1futp</td>
+							  <td class=xl8716351>we shall have %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>Fut. Perf.</td>
+							  <td class=xl8416351>sing1futppass</td>
+							  <td class=xl8516351>I shall have been %6%</td>
+							  <td class=xl8616351>plur1futppass</td>
+							  <td class=xl8716351>we shall have been %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl9116351>sing2futp</td>
+							  <td class=xl9216351>you will have %6%</td>
+							  <td class=xl9316351>plur2futp</td>
+							  <td class=xl9416351>you will have %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl9116351>sing2futppass</td>
+							  <td class=xl9216351>you will have been %6%</td>
+							  <td class=xl9316351>plur2futppass</td>
+							  <td class=xl9416351>you will have been %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351></td>
+							  <td class=xl9616351>sing3futp</td>
+							  <td class=xl9716351>he will have %6%</td>
+							  <td class=xl9816351>plur3futp</td>
+							  <td class=xl9916351>they will have %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl9616351>sing3futppass</td>
+							  <td class=xl9716351>he will have been %6%</td>
+							  <td class=xl9816351>plur3futppass</td>
+							  <td class=xl9916351>they will have been %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8216351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8216351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl7316351 height=24 style='height:18.0pt'>
+							  <td height=24 class=xl7316351 style='height:18.0pt'></td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7516351>Subjunctive</td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7616351>&nbsp;</td>
+							  <td class=xl7716351>&nbsp;</td>
+							  <td class=xl7616351>&nbsp;</td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7316351></td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7516351>Subjunctive</td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7616351>&nbsp;</td>
+							  <td class=xl7716351>&nbsp;</td>
+							  <td class=xl7616351>&nbsp;</td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7316351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl7916351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8216351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl7916351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8216351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>Present</td>
+							  <td class=xl8416351>sing1pressubj</td>
+							  <td class=xl8516351>I may %0%</td>
+							  <td class=xl8616351>plur1pressubj</td>
+							  <td class=xl8716351>we may %0%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>Present</td>
+							  <td class=xl8416351>sing1pressubjpass</td>
+							  <td class=xl8516351>I may be %6%</td>
+							  <td class=xl8616351>plur1pressubjpass</td>
+							  <td class=xl8716351>we may be %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl9116351>sing2pressubj</td>
+							  <td class=xl9216351>you may %0%</td>
+							  <td class=xl9316351>plur2pressubj</td>
+							  <td class=xl9416351>you may %0%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl9116351>sing2pressubjpass</td>
+							  <td class=xl9216351>you may be %6%</td>
+							  <td class=xl9316351>plur2pressubjpass</td>
+							  <td class=xl9416351>you may be %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351></td>
+							  <td class=xl9616351>sing3pressubj</td>
+							  <td class=xl9716351>he may %0%</td>
+							  <td class=xl9816351>plur3pressubj</td>
+							  <td class=xl9916351>they may %0%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl9616351>sing3pressubjpass</td>
+							  <td class=xl9716351>he may be %6%</td>
+							  <td class=xl9816351>plur3pressubjpass</td>
+							  <td class=xl9916351>they may be %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8216351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8216351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>Imperfect</td>
+							  <td class=xl8416351>sing1impfsubj</td>
+							  <td class=xl8516351>I might %0%</td>
+							  <td class=xl8616351>plur1impfsubj</td>
+							  <td class=xl8716351>we might %0%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>Imperfect</td>
+							  <td class=xl8416351>sing1impfsubjpass</td>
+							  <td class=xl8516351>I might be %6%</td>
+							  <td class=xl8616351>plur1impfsubjpass</td>
+							  <td class=xl8716351>we might be %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl9116351>sing2impfsubj</td>
+							  <td class=xl9216351>you might %0%</td>
+							  <td class=xl9316351>plur2impfsubj</td>
+							  <td class=xl9416351>you might %0%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl9116351>sing2impfsubjpass</td>
+							  <td class=xl9216351>you might be %6%</td>
+							  <td class=xl9316351>plur2impfsubjpass</td>
+							  <td class=xl9416351>you might be %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351></td>
+							  <td class=xl9616351>sing3impfsubj</td>
+							  <td class=xl9716351>he might %0%</td>
+							  <td class=xl9816351>plur3impfsubj</td>
+							  <td class=xl9916351>they might %0%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl9616351>sing3impfsubjpass</td>
+							  <td class=xl9716351>he may might be %6%</td>
+							  <td class=xl9816351>plur3impfsubjpass</td>
+							  <td class=xl9916351>they might be %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8216351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8216351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>Perfect</td>
+							  <td class=xl8416351>sing1perfsubj</td>
+							  <td class=xl8516351>I may have %6%</td>
+							  <td class=xl8616351>plur1perfsubj</td>
+							  <td class=xl8716351>we may have %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>Perfect</td>
+							  <td class=xl8416351>sing1perfsubjpass</td>
+							  <td class=xl8516351>I may have been %6%</td>
+							  <td class=xl8616351>plur1perfsubjpass</td>
+							  <td class=xl8716351>we may have been %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl9116351>sing2perfsubj</td>
+							  <td class=xl9216351>you may have %6%</td>
+							  <td class=xl9316351>plur2perfsubj</td>
+							  <td class=xl9416351>you may have %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl9116351>sing2perfsubjpass</td>
+							  <td class=xl9216351>you may have been %6%</td>
+							  <td class=xl9316351>plur2perfsubjpass</td>
+							  <td class=xl9416351>you may have been %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351></td>
+							  <td class=xl9616351>sing3perfsubj</td>
+							  <td class=xl9716351>he may have %6%</td>
+							  <td class=xl9816351>plur3perfsubj</td>
+							  <td class=xl9916351>they may have %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl9616351>sing3perfsubjpass</td>
+							  <td class=xl9716351>he may have been %6%</td>
+							  <td class=xl9816351>plur3perfsubjpass</td>
+							  <td class=xl9916351>they may have been %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8216351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8216351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>Pluperfect</td>
+							  <td class=xl8416351>sing1plupsubj</td>
+							  <td class=xl8516351>I might have %6%</td>
+							  <td class=xl8616351>plur1plupsubj</td>
+							  <td class=xl8716351>we might have %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>Pluperfect</td>
+							  <td class=xl8416351>sing1plupsubjpass</td>
+							  <td class=xl8516351>I might have been %6%</td>
+							  <td class=xl8616351>plur1plupsubjpass</td>
+							  <td class=xl8716351>we might have been %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl9116351>sing2plupsubj</td>
+							  <td class=xl9216351>you might have %6%</td>
+							  <td class=xl9316351>plur2plupsubj</td>
+							  <td class=xl9416351>you might have %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl9116351>sing2plupsubjpass</td>
+							  <td class=xl9216351>you might have been %6%</td>
+							  <td class=xl9316351>plur2plupsubjpass</td>
+							  <td class=xl9416351>you might have been %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351></td>
+							  <td class=xl9616351>sing3plupsubj</td>
+							  <td class=xl9716351>he might have %6%</td>
+							  <td class=xl9816351>plur3plupsubj</td>
+							  <td class=xl9916351>they might have %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl9616351>sing3plupsubjpass</td>
+							  <td class=xl9716351>he might have been %6%</td>
+							  <td class=xl9816351>plur3plupsubjpass</td>
+							  <td class=xl9916351>they might have been %6%</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8216351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8216351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl7316351 height=24 style='height:18.0pt'>
+							  <td height=24 class=xl7316351 style='height:18.0pt'></td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7516351>Imperative</td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7616351>&nbsp;</td>
+							  <td class=xl7716351>&nbsp;</td>
+							  <td class=xl7616351>&nbsp;</td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7316351></td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7516351>Imperative</td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7616351>&nbsp;</td>
+							  <td class=xl7716351>&nbsp;</td>
+							  <td class=xl7616351>&nbsp;</td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7316351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl7916351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8216351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl7916351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8216351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl7916351>&nbsp;</td>
+							  <td class=xl10116351>imperativesing</td>
+							  <td class=xl10216351>%0%!</td>
+							  <td class=xl10316351>imperativeplur</td>
+							  <td class=xl10416351>%0%!</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl7916351>&nbsp;</td>
+							  <td class=xl10116351>imperativesingpass</td>
+							  <td class=xl10216351>be %6%!</td>
+							  <td class=xl10316351>imperativeplurpass</td>
+							  <td class=xl10416351>be %6%!</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl7916351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8216351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl7916351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8216351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl7316351 height=24 style='height:18.0pt'>
+							  <td height=24 class=xl7316351 style='height:18.0pt'></td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7516351>Infinitive</td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7616351>&nbsp;</td>
+							  <td class=xl7716351>&nbsp;</td>
+							  <td class=xl7616351>&nbsp;</td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7316351></td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7516351>Infinitive</td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7616351>&nbsp;</td>
+							  <td class=xl7716351>&nbsp;</td>
+							  <td class=xl7616351>&nbsp;</td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7316351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl7916351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8216351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl7916351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8216351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>Perfect</td>
+							  <td class=xl10116351>perfinf</td>
+							  <td class=xl10516351>to have %6%</td>
+							  <td class=xl10316351>&nbsp;</td>
+							  <td class=xl10416351>&nbsp;</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>Perfect</td>
+							  <td class=xl10116351>perfinfpass</td>
+							  <td class=xl10516351>to have been %6%</td>
+							  <td class=xl10316351>&nbsp;</td>
+							  <td class=xl10416351>&nbsp;</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>Present</td>
+							  <td class=xl10116351>presinf</td>
+							  <td class=xl10516351>to %0%</td>
+							  <td class=xl10316351>&nbsp;</td>
+							  <td class=xl10416351>&nbsp;</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>Present</td>
+							  <td class=xl10116351>presinfpass</td>
+							  <td class=xl10516351>to be %6%</td>
+							  <td class=xl10316351>&nbsp;</td>
+							  <td class=xl10416351>&nbsp;</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>Future</td>
+							  <td class=xl10116351><dif class="futinfcell">futinf</dif></td>
+							  <td class=xl10516351>to be about to %0%</td>
+							  <td class=xl10316351>&nbsp;</td>
+							  <td class=xl10416351>&nbsp;</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>Future</td>
+							  <td class=xl9616351>futinfpass</td>
+							  <td class=xl10516351>to be about to be %6%</td>
+							  <td class=xl9816351>&nbsp;</td>
+							  <td class=xl9916351>&nbsp;</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl6553516351 height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8216351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl8316351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8216351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							 </tr>
+							 <tr class=xl7316351 height=24 style='height:18.0pt'>
+							  <td height=24 class=xl7316351 style='height:18.0pt'></td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7516351 style='font-size:14.0pt;color:#FDE9D9;font-weight:700;
+							  text-decoration:none;text-underline-style:none;text-line-through:none;
+							  font-family:Calibri, sans-serif;border:none;background:#FDE9D9;mso-pattern:
+							  black none'></td>
+							  <td class=xl7416351 style='font-size:14.0pt;color:#FDE9D9;font-weight:700;
+							  text-decoration:none;text-underline-style:none;text-line-through:none;
+							  font-family:Calibri, sans-serif;border:none;background:#FDE9D9;mso-pattern:
+							  black none'>&nbsp;</td>
+							  <td class=xl7616351 style='font-size:14.0pt;color:#FDE9D9;font-style:italic;
+							  font-weight:700;text-decoration:none;text-underline-style:none;text-line-through:
+							  none;font-family:Calibri, sans-serif;border:none;background:#FDE9D9;
+							  mso-pattern:black none'>&nbsp;</td>
+							  <td class=xl7716351 style='font-size:14.0pt;color:#FDE9D9;font-weight:700;
+							  text-decoration:none;text-underline-style:none;text-line-through:none;
+							  font-family:Calibri, sans-serif;border:none;background:#FDE9D9;mso-pattern:
+							  black none'>&nbsp;</td>
+							  <td class=xl7616351 style='font-size:14.0pt;color:#FDE9D9;font-style:italic;
+							  font-weight:700;text-decoration:none;text-underline-style:none;text-line-through:
+							  none;font-family:Calibri, sans-serif;border:none;background:#FDE9D9;
+							  mso-pattern:black none'>&nbsp;</td>
+							  <td class=xl7416351 style='font-size:14.0pt;color:#FDE9D9;font-weight:700;
+							  text-decoration:none;text-underline-style:none;text-line-through:none;
+							  font-family:Calibri, sans-serif;border:none;background:#FDE9D9;mso-pattern:
+							  black none'>&nbsp;</td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7316351></td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7516351></td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7616351>&nbsp;</td>
+							  <td class=xl7716351>&nbsp;</td>
+							  <td class=xl7616351>&nbsp;</td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7416351>&nbsp;</td>
+							  <td class=xl7316351></td>
+							 </tr>
+					
+							 <tr height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl6553516351></td>
+							  <td class=xl6916351></td>
+							  <td class=xl6553516351></td>
+							  <td class=xl6716351></td>
+							  <td class=xl6816351></td>
+							  <td class=xl6716351></td>
+							  <td class=xl6553516351></td>
+							  <td class=xl6553516351></td>
+							  <td class=xl6553516351></td>
+							  <td class=xl11316351>&nbsp;</td>
+							  <td class=xl11516351>&nbsp;</td>
+							  <td class=xl11316351>&nbsp;</td>
+							  <td class=xl11216351>&nbsp;</td>
+							  <td class=xl9316351>&nbsp;</td>
+							  <td class=xl11216351>&nbsp;</td>
+							  <td class=xl11316351>&nbsp;</td>
+							  <td class=xl11316351>&nbsp;</td>
+							  <td class=xl11316351>&nbsp;</td>
+							 </tr>
+							 <tr height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl11416351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl10816351>&nbsp;</td>
+							  <td class=xl10916351>&nbsp;</td>
+							  <td class=xl10816351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl11316351>&nbsp;</td>
+							  <td class=xl11516351>&nbsp;</td>
+							  <td class=xl11316351>&nbsp;</td>
+							  <td class=xl11216351>&nbsp;</td>
+							  <td class=xl9316351>&nbsp;</td>
+							  <td class=xl11216351>&nbsp;</td>
+							  <td class=xl11316351>&nbsp;</td>
+							  <td class=xl11316351>&nbsp;</td>
+							  <td class=xl11316351>&nbsp;</td>
+							 </tr>
+							 <tr height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl7916351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8216351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl11316351>&nbsp;</td>
+							  <td class=xl11516351>&nbsp;</td>
+							  <td class=xl11316351>&nbsp;</td>
+							  <td class=xl11216351>&nbsp;</td>
+							  <td class=xl9316351>&nbsp;</td>
+							  <td class=xl11216351>&nbsp;</td>
+							  <td class=xl11316351>&nbsp;</td>
+							  <td class=xl11316351>&nbsp;</td>
+							  <td class=xl11316351>&nbsp;</td>
+							 </tr>
+							 <tr height=24 style='height:18.0pt'>
+							  <td height=24 class=xl6553516351 style='height:18.0pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl11616351>Gerund</td>
+							  <td class=xl10116351><div class="gerundcell">gerund</div></td>
+							  <td class=xl10516351>%7%</td>
+							  <td class=xl10316351>&nbsp;</td>
+							  <td class=xl10416351>&nbsp;</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl11316351>&nbsp;</td>
+							  <td class=xl11516351>&nbsp;</td>
+							  <td class=xl11316351>&nbsp;</td>
+							  <td class=xl11216351>&nbsp;</td>
+							  <td class=xl9316351>&nbsp;</td>
+							  <td class=xl11216351>&nbsp;</td>
+							  <td class=xl11316351>&nbsp;</td>
+							  <td class=xl11316351>&nbsp;</td>
+							  <td class=xl11316351>&nbsp;</td>
+							 </tr>
+							 <tr height=24 style='height:18.0pt'>
+							  <td height=24 class=xl6553516351 style='height:18.0pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl11616351>Supines</td>
+							  <td class=xl10116351 style='border-top:none'><div class="supinecell">supine</div></td>
+							  <td class=xl10516351 style='border-top:none'>(in order) to %0%</td>
+							  <td class=xl10316351 style='border-top:none'>&nbsp;</td>
+							  <td class=xl10416351 style='border-top:none'>&nbsp;</td>
+							  <td class=xl8816351 style='border-left:none'>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl11316351>&nbsp;</td>
+							  <td class=xl11516351>&nbsp;</td>
+							  <td class=xl11316351>&nbsp;</td>
+							  <td class=xl11216351>&nbsp;</td>
+							  <td class=xl9316351>&nbsp;</td>
+							  <td class=xl11216351>&nbsp;</td>
+							  <td class=xl11316351>&nbsp;</td>
+							  <td class=xl11316351>&nbsp;</td>
+							  <td class=xl11316351>&nbsp;</td>
+							 </tr>
+							 <tr height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl7916351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8216351>&nbsp;</td>
+							  <td class=xl8116351>&nbsp;</td>
+							  <td class=xl8016351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl11316351>&nbsp;</td>
+							  <td class=xl11516351>&nbsp;</td>
+							  <td class=xl11316351>&nbsp;</td>
+							  <td class=xl11216351>&nbsp;</td>
+							  <td class=xl9316351>&nbsp;</td>
+							  <td class=xl11216351>&nbsp;</td>
+							  <td class=xl11316351>&nbsp;</td>
+							  <td class=xl11316351>&nbsp;</td>
+							  <td class=xl11316351>&nbsp;</td>
+							 </tr>
+							 <tr height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl11416351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl10816351>&nbsp;</td>
+							  <td class=xl10916351>&nbsp;</td>
+							  <td class=xl10816351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl7816351>&nbsp;</td>
+							  <td class=xl6553516351></td>
+							  <td class=xl11316351>&nbsp;</td>
+							  <td class=xl11516351>&nbsp;</td>
+							  <td class=xl11316351>&nbsp;</td>
+							  <td class=xl11216351>&nbsp;</td>
+							  <td class=xl9316351>&nbsp;</td>
+							  <td class=xl11216351>&nbsp;</td>
+							  <td class=xl11316351>&nbsp;</td>
+							  <td class=xl11316351>&nbsp;</td>
+							  <td class=xl11316351>&nbsp;</td>
+							 </tr>
+							 <tr height=19 style='height:14.4pt'>
+							  <td height=19 class=xl6553516351 style='height:14.4pt'></td>
+							  <td class=xl6553516351></td>
+							  <td class=xl6916351></td>
+							  <td class=xl6553516351></td>
+							  <td class=xl6716351></td>
+							  <td class=xl6816351></td>
+							  <td class=xl6716351></td>
+							  <td class=xl6553516351></td>
+							  <td class=xl6553516351></td>
+							  <td class=xl6553516351></td>
+							  <td class=xl11316351>&nbsp;</td>
+							  <td class=xl11516351>&nbsp;</td>
+							  <td class=xl11316351>&nbsp;</td>
+							  <td class=xl11216351>&nbsp;</td>
+							  <td class=xl9316351>&nbsp;</td>
+							  <td class=xl11216351>&nbsp;</td>
+							  <td class=xl11316351>&nbsp;</td>
+							  <td class=xl11316351>&nbsp;</td>
+							  <td class=xl11316351>&nbsp;</td>
+							 </tr>
+							 <![if supportMisalignedColumns]>
+							 <tr height=0 style='display:none'>
+							  <td width=47 style='width:35pt'></td>
+							  <td width=68 style='width:51pt'></td>
+							  <td width=100 style='width:75pt'></td>
+							  <td width=158 style='width:119pt'></td>
+							  <td width=163 style='width:122pt'></td>
+							  <td width=110 style='width:83pt'></td>
+							  <td width=166 style='width:125pt'></td>
+							  <td width=26 style='width:19pt'></td>
+							  <td width=27 style='width:20pt'></td>
+							  <td width=38 style='width:28pt'></td>
+							  <td width=78 style='width:58pt'></td>
+							  <td width=100 style='width:75pt'></td>
+							  <td width=156 style='width:117pt'></td>
+							  <td width=198 style='width:148pt'></td>
+							  <td width=166 style='width:124pt'></td>
+							  <td width=201 style='width:151pt'></td>
+							  <td width=24 style='width:18pt'></td>
+							  <td width=25 style='width:19pt'></td>
+							  <td width=26 style='width:19pt'></td>
+							 </tr>
+							 <![endif]>
+							</table>
+							
+					
+					
+					<table id = "ppltable">
+					<tr>
+					<td>
+					
+						<table id = "presppltable" class = "presppltable" border=0 cellpadding=0 cellspacing=0 width=473 style='border-collapse:
+					 collapse;width:320pt'>
+					 <col width=29 style='mso-width-source:userset;mso-width-alt:1024;width:22pt'>
+					 <col width=42 style='mso-width-source:userset;mso-width-alt:1479;width:31pt'>
+					 <col width=103 span=3 style='mso-width-source:userset;mso-width-alt:3669;
+					 width:77pt'>
+					 <col width=29 style='width:20pt'>
+					 <col width=29 style='mso-width-source:userset;mso-width-alt:1024;width:22pt'>
+					 <tr height=24 style='height:18.0pt'>
+					  <td height=24 class=xl6613418 width=29 style='height:18.0pt;width:22pt'>&nbsp;</td>
+					  <td class=xl6913418 colspan=2 width=145 style='width:108pt'>Present
+					  participle</td>
+					  <td class=xl7013418 width=103 style='width:77pt'>&nbsp;</td>
+					  <td class=xl7013418 width=103 style='width:77pt'>&nbsp;</td>
+					  <td class=xl6613418 width=29 style='width:48pt'>&nbsp;</td>
+					  <td class=xl6613418 width=29 style='width:22pt'>&nbsp;</td>
+					 </tr>
+					 <tr height=24 style='height:18.0pt'>
+					  <td height=24 class=xl6613418 style='height:18.0pt'>&nbsp;</td>
+					  <td class=xl7413418 colspan=2>%7%</td>
+					  <td class=xl7013418>&nbsp;</td>
+					  <td class=xl7013418>&nbsp;</td>
+					  <td class=xl6613418>&nbsp;</td>
+					  <td class=xl6613418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6713418>&nbsp;</td>
+					  <td class=xl6413418>Masc</td>
+					  <td class=xl7313418>Fem</td>
+					  <td class=xl7313418>Neuter</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Nom</td>
+					  <td class=xl8113418>prespplmsn</td>
+					  <td class=xl7513418>prespplfsn</td>
+					  <td class=xl7613418>prespplnsn</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Voc</td>
+					  <td class=xl8213418>prespplmsv</td>
+					  <td class=xl7713418>prespplfsv</td>
+					  <td class=xl7813418>prespplnsv</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Acc</td>
+					  <td class=xl8213418>prespplmsa</td>
+					  <td class=xl7713418>prespplfsa</td>
+					  <td class=xl7813418>prespplnsa</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Gen</td>
+					  <td class=xl8213418>prespplmsg</td>
+					  <td class=xl7713418>prespplfsg</td>
+					  <td class=xl7813418>prespplnsg</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Dat</td>
+					  <td class=xl8213418>prespplmsd</td>
+					  <td class=xl7713418>prespplfsd</td>
+					  <td class=xl7813418>prespplnsd</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Abl</td>
+					  <td class=xl8313418>prespplmsab</td>
+					  <td class=xl7913418>prespplfsab</td>
+					  <td class=xl8013418>prespplnsab</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Nom</td>
+					  <td class=xl8113418 style='border-top:none'>prespplmpn</td>
+					  <td class=xl7513418 style='border-top:none'>prespplfpn</td>
+					  <td class=xl7613418 style='border-top:none'>prespplnpn</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Voc</td>
+					  <td class=xl8213418>prespplmpv</td>
+					  <td class=xl7713418>prespplfpv</td>
+					  <td class=xl7813418>prespplnpv</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Acc</td>
+					  <td class=xl8213418>prespplmpa</td>
+					  <td class=xl7713418>prespplfpa</td>
+					  <td class=xl7813418>prespplnpa</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Gen</td>
+					  <td class=xl8213418>prespplmpg</td>
+					  <td class=xl7713418>prespplfpg</td>
+					  <td class=xl7813418>prespplnpg</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Dat</td>
+					  <td class=xl8213418>prespplmpd</td>
+					  <td class=xl7713418>prespplfpd</td>
+					  <td class=xl7813418>prespplnpd</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Abl</td>
+					  <td class=xl8313418>prespplmpab</td>
+					  <td class=xl7913418>prespplfpab</td>
+					  <td class=xl8013418>prespplnpab</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>&nbsp;</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl7113418>&nbsp;</td>
+					  <td class=xl7113418>&nbsp;</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <![if supportMisalignedColumns]>
+					 <tr height=0 style='display:none'>
+					  <td width=29 style='width:22pt'></td>
+					  <td width=42 style='width:31pt'></td>
+					  <td width=103 style='width:77pt'></td>
+					  <td width=103 style='width:77pt'></td>
+					  <td width=103 style='width:77pt'></td>
+					  <td width=29 style='width:48pt'></td>
+					  <td width=29 style='width:22pt'></td>
+					 </tr>
+					 <![endif]>
+					</table>
+					</td>
+					
+					<td><table id = "ppptable" class = "ppptable" border=0 cellpadding=0 cellspacing=0 width=473 style='border-collapse:
+					 collapse;width:320pt'>
+					 <col width=29 class=style="ppptable" 'mso-width-source:userset;mso-width-alt:1024;width:22pt'>
+					 <col width=42 style='mso-width-source:userset;mso-width-alt:1479;width:31pt'>
+					 <col width=103 span=3 style='mso-width-source:userset;mso-width-alt:3669;
+					 width:77pt'>
+					 <col width=29 style='width:20pt'>
+					 <col width=29 style='mso-width-source:userset;mso-width-alt:1024;width:22pt'>
+					 <tr height=24 style='height:18.0pt'>
+					  <td height=24 class=xl6613418 width=29 style='height:18.0pt;width:22pt'>&nbsp;</td>
+					  <td class=xl6913418 colspan=2 width=145 style='width:108pt'>Perfect passive participle</td>
+					  <td class=xl7013418 width=103 style='width:77pt'>&nbsp;</td>
+					  <td class=xl7013418 width=103 style='width:77pt'>&nbsp;</td>
+					  <td class=xl6613418 width=29 style='width:48pt'>&nbsp;</td>
+					  <td class=xl6613418 width=29 style='width:22pt'>&nbsp;</td>
+					 </tr>
+					 <tr height=24 style='height:18.0pt'>
+					  <td height=24 class=xl6613418 style='height:18.0pt'>&nbsp;</td>
+					  <td class=xl7413418 colspan=2>having been %6%</td>
+					  <td class=xl7013418>&nbsp;</td>
+					  <td class=xl7013418>&nbsp;</td>
+					  <td class=xl6613418>&nbsp;</td>
+					  <td class=xl6613418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6713418>&nbsp;</td>
+					  <td class=xl6413418>Masc</td>
+					  <td class=xl7313418>Fem</td>
+					  <td class=xl7313418>Neuter</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Nom</td>
+					  <td class=xl8113418>ppmsn</td>
+					  <td class=xl7513418>ppfsn</td>
+					  <td class=xl7613418>ppnsn</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Voc</td>
+					  <td class=xl8213418>ppmsv</td>
+					  <td class=xl7713418>ppfsv</td>
+					  <td class=xl7813418>ppnsv</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Acc</td>
+					  <td class=xl8213418>ppmsa</td>
+					  <td class=xl7713418>ppfsa</td>
+					  <td class=xl7813418>ppnsa</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Gen</td>
+					  <td class=xl8213418>ppmsg</td>
+					  <td class=xl7713418>ppfsg</td>
+					  <td class=xl7813418>ppnsg</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Dat</td>
+					  <td class=xl8213418>ppmsd</td>
+					  <td class=xl7713418>ppfsd</td>
+					  <td class=xl7813418>ppnsd</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Abl</td>
+					  <td class=xl8313418>ppmsab</td>
+					  <td class=xl7913418>ppfsab</td>
+					  <td class=xl8013418>ppnsab</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Nom</td>
+					  <td class=xl8113418 style='border-top:none'>ppmpn</td>
+					  <td class=xl7513418 style='border-top:none'>ppfpn</td>
+					  <td class=xl7613418 style='border-top:none'>ppnpn</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Voc</td>
+					  <td class=xl8213418>ppmpv</td>
+					  <td class=xl7713418>ppfpv</td>
+					  <td class=xl7813418>ppnpv</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Acc</td>
+					  <td class=xl8213418>ppmpa</td>
+					  <td class=xl7713418>ppfpa</td>
+					  <td class=xl7813418>ppnpa</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Gen</td>
+					  <td class=xl8213418>ppmpg</td>
+					  <td class=xl7713418>ppfpg</td>
+					  <td class=xl7813418>ppnpg</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Dat</td>
+					  <td class=xl8213418>ppmpd</td>
+					  <td class=xl7713418>ppfpd</td>
+					  <td class=xl7813418>ppnpd</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Abl</td>
+					  <td class=xl8313418>ppmpab</td>
+					  <td class=xl7913418>ppfpab</td>
+					  <td class=xl8013418>ppnpab</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>&nbsp;</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl7113418>&nbsp;</td>
+					  <td class=xl7113418>&nbsp;</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <![if supportMisalignedColumns]>
+					 <tr height=0 style='display:none'>
+					  <td width=29 style='width:22pt'></td>
+					  <td width=42 style='width:31pt'></td>
+					  <td width=103 style='width:77pt'></td>
+					  <td width=103 style='width:77pt'></td>
+					  <td width=103 style='width:77pt'></td>
+					  <td width=29 style='width:48pt'></td>
+					  <td width=29 style='width:22pt'></td>
+					 </tr>
+					 <![endif]>
+					</table></td>
+					</tr>
+					<tr>
+					<td>
+					
+					<table id = "futptable" class="futptable" border=0 cellpadding=0 cellspacing=0 width=473 style='border-collapse:
+					 collapse;width:320pt'>
+					 <col width=29 style='mso-width-source:userset;mso-width-alt:1024;width:22pt'>
+					 <col width=42 style='mso-width-source:userset;mso-width-alt:1479;width:31pt'>
+					 <col width=103 span=3 style='mso-width-source:userset;mso-width-alt:3669;
+					 width:77pt'>
+					 <col width=29 style='width:20pt'>
+					 <col width=29 style='mso-width-source:userset;mso-width-alt:1024;width:22pt'>
+					 <tr height=24 style='height:18.0pt'>
+					  <td height=24 class=xl6613418 width=29 style='height:18.0pt;width:22pt'>&nbsp;</td>
+					  <td class=xl6913418 colspan=2 width=145 style='width:108pt'>Future
+					  participle</td>
+					  <td class=xl7013418 width=103 style='width:77pt'>&nbsp;</td>
+					  <td class=xl7013418 width=103 style='width:77pt'>&nbsp;</td>
+					  <td class=xl6613418 width=29 style='width:48pt'>&nbsp;</td>
+					  <td class=xl6613418 width=29 style='width:22pt'>&nbsp;</td>
+					 </tr>
+					 <tr height=24 style='height:18.0pt'>
+					  <td height=24 class=xl6613418 style='height:18.0pt'>&nbsp;</td>
+					  <td class=xl7413418 colspan=2>about to %0%</td>
+					  <td class=xl7013418>&nbsp;</td>
+					  <td class=xl7013418>&nbsp;</td>
+					  <td class=xl6613418>&nbsp;</td>
+					  <td class=xl6613418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6713418>&nbsp;</td>
+					  <td class=xl6413418>Masc</td>
+					  <td class=xl7313418>Fem</td>
+					  <td class=xl7313418>Neuter</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Nom</td>
+					  <td class=xl8113418>futpmsn</td>
+					  <td class=xl7513418>futpfsn</td>
+					  <td class=xl7613418>futpnsn</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Voc</td>
+					  <td class=xl8213418>futpmsv</td>
+					  <td class=xl7713418>futpfsv</td>
+					  <td class=xl7813418>futpnsv</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Acc</td>
+					  <td class=xl8213418>futpmsa</td>
+					  <td class=xl7713418>futpfsa</td>
+					  <td class=xl7813418>futpnsa</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Gen</td>
+					  <td class=xl8213418>futpmsg</td>
+					  <td class=xl7713418>futpfsg</td>
+					  <td class=xl7813418>futpnsg</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Dat</td>
+					  <td class=xl8213418>futpmsd</td>
+					  <td class=xl7713418>futpfsd</td>
+					  <td class=xl7813418>futpnsd</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Abl</td>
+					  <td class=xl8313418>futpmsab</td>
+					  <td class=xl7913418>futpfsab</td>
+					  <td class=xl8013418>futpnsab</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Nom</td>
+					  <td class=xl8113418 style='border-top:none'>futpmpn</td>
+					  <td class=xl7513418 style='border-top:none'>futpfpn</td>
+					  <td class=xl7613418 style='border-top:none'>futpnpn</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Voc</td>
+					  <td class=xl8213418>futpmpv</td>
+					  <td class=xl7713418>futpfpv</td>
+					  <td class=xl7813418>futpnpv</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Acc</td>
+					  <td class=xl8213418>futpmpa</td>
+					  <td class=xl7713418>futpfpa</td>
+					  <td class=xl7813418>futpnpa</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Gen</td>
+					  <td class=xl8213418>futpmpg</td>
+					  <td class=xl7713418>futpfpg</td>
+					  <td class=xl7813418>futpnpg</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Dat</td>
+					  <td class=xl8213418>futpmpd</td>
+					  <td class=xl7713418>futpfpd</td>
+					  <td class=xl7813418>futpnpd</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Abl</td>
+					  <td class=xl8313418>futpmpab</td>
+					  <td class=xl7913418>futpfpab</td>
+					  <td class=xl8013418>futpnpab</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>&nbsp;</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl7113418>&nbsp;</td>
+					  <td class=xl7113418>&nbsp;</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <![if supportMisalignedColumns]>
+					 <tr height=0 style='display:none'>
+					  <td width=29 style='width:22pt'></td>
+					  <td width=42 style='width:31pt'></td>
+					  <td width=103 style='width:77pt'></td>
+					  <td width=103 style='width:77pt'></td>
+					  <td width=103 style='width:77pt'></td>
+					  <td width=29 style='width:48pt'></td>
+					  <td width=29 style='width:22pt'></td>
+					 </tr>
+					 <![endif]>
+					</table>
+					</td>
+					<td>
+					
+						<table id = "gertable" class="gertable" border=0 cellpadding=0 cellspacing=0 width=473 style='border-collapse:
+					 collapse;width:320pt'>
+					 <col width=29 style='mso-width-source:userset;mso-width-alt:1024;width:22pt'>
+					 <col width=42 style='mso-width-source:userset;mso-width-alt:1479;width:31pt'>
+					 <col width=103 span=3 style='mso-width-source:userset;mso-width-alt:3669;
+					 width:77pt'>
+					 <col width=64 style='width:20pt'>
+					 <col width=29 style='mso-width-source:userset;mso-width-alt:1024;width:22pt'>
+					 <tr height=24 style='height:18.0pt'>
+					  <td height=24 class=xl6613418 width=29 style='height:18.0pt;width:22pt'>&nbsp;</td>
+					  <td class=xl6913418 colspan=2 width=145 style='width:108pt'>Gerundive</td>
+					  <td class=xl7013418 width=103 style='width:77pt'>&nbsp;</td>
+					  <td class=xl7013418 width=103 style='width:77pt'>&nbsp;</td>
+					  <td class=xl6613418 width=29 style='width:48pt'>&nbsp;</td>
+					  <td class=xl6613418 width=29 style='width:22pt'>&nbsp;</td>
+					 </tr>
+					 <tr height=24 style='height:18.0pt'>
+					  <td height=24 class=xl6613418 style='height:18.0pt'>&nbsp;</td>
+					  <td class=xl7413418 colspan=2>(needing) to be %6%</td>
+					  <td class=xl7013418>&nbsp;</td>
+					  <td class=xl7013418>&nbsp;</td>
+					  <td class=xl6613418>&nbsp;</td>
+					  <td class=xl6613418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6713418>&nbsp;</td>
+					  <td class=xl6413418>Masc</td>
+					  <td class=xl7313418>Fem</td>
+					  <td class=xl7313418>Neuter</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Nom</td>
+					  <td class=xl8113418>germsn</td>
+					  <td class=xl7513418>gerfsn</td>
+					  <td class=xl7613418>gernsn</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Voc</td>
+					  <td class=xl8213418>germsv</td>
+					  <td class=xl7713418>gerfsv</td>
+					  <td class=xl7813418>gernsv</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Acc</td>
+					  <td class=xl8213418>germsa</td>
+					  <td class=xl7713418>gerfsa</td>
+					  <td class=xl7813418>gernsa</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Gen</td>
+					  <td class=xl8213418>germsg</td>
+					  <td class=xl7713418>gerfsg</td>
+					  <td class=xl7813418>gernsg</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Dat</td>
+					  <td class=xl8213418>germsd</td>
+					  <td class=xl7713418>gerfsd</td>
+					  <td class=xl7813418>gernsd</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Abl</td>
+					  <td class=xl8313418>germsab</td>
+					  <td class=xl7913418>gerfsab</td>
+					  <td class=xl8013418>gernsab</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Nom</td>
+					  <td class=xl8113418 style='border-top:none'>germpn</td>
+					  <td class=xl7513418 style='border-top:none'>gerfpn</td>
+					  <td class=xl7613418 style='border-top:none'>gernpn</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Voc</td>
+					  <td class=xl8213418>germpv</td>
+					  <td class=xl7713418>gerfpv</td>
+					  <td class=xl7813418>gernpv</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Acc</td>
+					  <td class=xl8213418>germpa</td>
+					  <td class=xl7713418>gerfpa</td>
+					  <td class=xl7813418>gernpa</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Gen</td>
+					  <td class=xl8213418>germpg</td>
+					  <td class=xl7713418>gerfpg</td>
+					  <td class=xl7813418>gernpg</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Dat</td>
+					  <td class=xl8213418>germpd</td>
+					  <td class=xl7713418>gerfpd</td>
+					  <td class=xl7813418>gernpd</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Abl</td>
+					  <td class=xl8313418>germpab</td>
+					  <td class=xl7913418>gerfpab</td>
+					  <td class=xl8013418>gernpab</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>&nbsp;</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl7113418>&nbsp;</td>
+					  <td class=xl7113418>&nbsp;</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <![if supportMisalignedColumns]>
+					 <tr height=0 style='display:none'>
+					  <td width=29 style='width:22pt'></td>
+					  <td width=42 style='width:31pt'></td>
+					  <td width=103 style='width:77pt'></td>
+					  <td width=103 style='width:77pt'></td>
+					  <td width=103 style='width:77pt'></td>
+					  <td width=29 style='width:48pt'></td>
+					  <td width=29 style='width:22pt'></td>
+					 </tr>
+					 <![endif]>
+					</table>
+					
+					</td>
+					</tr>
+					</table>
+					</div>
+					
+					<table id="nountable" border=0 cellpadding=0 cellspacing=0 width=420 class=xl1514264
+					 style='border-collapse:collapse;width:314pt'>
+					 <col width=24 style='mso-width-source:userset;mso-width-alt:853;width:18pt'>
+					 <col width=64 span=2 style='width:48pt'>
+					 <col width=158 style='mso-width-source:userset;mso-width-alt:5603;width:118pt'>
+					 <col width=86 style='mso-width-source:userset;mso-width-alt:3043;width:64pt'>
+					 <col width=24 style='mso-width-source:userset;mso-width-alt:853;width:18pt'>
+					 <tr class=xl1514264 height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6514264 width=24 style='height:14.4pt;width:18pt'>&nbsp;</td>
+					  <td class=xl6614264 width=64 style='width:48pt'>M</td>
+					  <td class=xl6514264 width=64 style='width:48pt'>&nbsp;</td>
+					  <td class=xl6514264 width=158 style='width:118pt'>&nbsp;</td>
+					  <td class=xl6714264 width=86 style='width:64pt'>&nbsp;</td>
+					  <td class=xl6514264 width=24 style='width:18pt'>&nbsp;</td>
+					 </tr>
+					 <tr class=xl1514264 height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6514264 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6914264>Nom<span style='display:none'>e</span></td>
+					  <td class=xl6914264 style='border-left:none; font-weight:bold;'>ns</td>
+					  <td class=xl6914264 style='border-left:none'>%word%</td>
+					  <td class=xl7014264 style='border-left:none'>subject</td>
+					  <td class=xl6514264>&nbsp;</td>
+					 </tr>
+					 <tr class=xl1514264 height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6514264 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6914264 style='border-top:none'>Voc</td>
+					  <td class=xl6914264 style='border-top:none;border-left:none; font-weight:bold;'>vs</td>
+					  <td class=xl6914264 style='border-top:none;border-left:none'>%word%</td>
+					  <td class=xl7014264 style='border-top:none;border-left:none'>addressee</td>
+					  <td class=xl6514264>&nbsp;</td>
+					 </tr>
+					 <tr class=xl1514264 height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6514264 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6914264 style='border-top:none'>Acc</td>
+					  <td class=xl6914264 style='border-top:none;border-left:none; font-weight:bold;'>as</td>
+					  <td class=xl6914264 style='border-top:none;border-left:none'>%word%</td>
+					  <td class=xl7014264 style='border-top:none;border-left:none'>object</td>
+					  <td class=xl6514264>&nbsp;</td>
+					 </tr>
+					 <tr class=xl1514264 height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6514264 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6914264 style='border-top:none'>Gen</td>
+					  <td class=xl6914264 style='border-top:none;border-left:none; font-weight:bold;'>gs</td>
+					  <td class=xl6914264 style='border-top:none;border-left:none'>of the %word%</td>
+					  <td class=xl7014264 style='border-top:none;border-left:none'>possessive</td>
+					  <td class=xl6514264>&nbsp;</td>
+					 </tr>
+					 <tr class=xl1514264 height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6514264 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6914264 style='border-top:none'>Dat</td>
+					  <td class=xl6914264 style='border-top:none;border-left:none; font-weight:bold;'>ds</td>
+					  <td class=xl6914264 style='border-top:none;border-left:none'>to/for the %word%</td>
+					  <td class=xl7014264 style='border-top:none;border-left:none'>to/for</td>
+					  <td class=xl6514264>&nbsp;</td>
+					 </tr>
+					 <tr class=xl1514264 height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6514264 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6914264 style='border-top:none'>Abl</td>
+					  <td class=xl6914264 style='border-top:none;border-left:none; font-weight:bold;'>abs</td>
+					  <td class=xl6914264 style='border-top:none;border-left:none'>by/with the %word%</td>
+					  <td class=xl7014264 style='border-top:none;border-left:none'>by/with/from</td>
+					  <td class=xl6514264>&nbsp;</td>
+					 </tr>
+					 <tr class=xl1514264 height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6514264 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl7114264>F</td>
+					  <td class=xl6514264>&nbsp;</td>
+					  <td class=xl6514264>&nbsp;</td>
+					  <td class=xl6714264>&nbsp;</td>
+					  <td class=xl6514264>&nbsp;</td>
+					 </tr>
+					 <tr class=xl1514264 height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6514264 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6914264>Nom<span style='display:none'>e</span></td>
+					  <td class=xl6914264 style='border-left:none; font-weight:bold;'>np</td>
+					  <td class=xl6914264 style='border-left:none'>%pl%</td>
+					  <td class=xl7014264 style='border-left:none'>subject</td>
+					  <td class=xl6514264>&nbsp;</td>
+					 </tr>
+					 <tr class=xl1514264 height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6514264 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6914264 style='border-top:none'>Voc</td>
+					  <td class=xl6914264 style='border-top:none;border-left:none; font-weight:bold;'>vp</td>
+					  <td class=xl6914264 style='border-top:none;border-left:none'>%pl%</td>
+					  <td class=xl7014264 style='border-top:none;border-left:none'>addressee</td>
+					  <td class=xl6514264>&nbsp;</td>
+					 </tr>
+					 <tr class=xl1514264 height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6514264 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6914264 style='border-top:none'>Acc</td>
+					  <td class=xl6914264 style='border-top:none;border-left:none; font-weight:bold;'>ap</td>
+					  <td class=xl6914264 style='border-top:none;border-left:none'>%pl%</td>
+					  <td class=xl7014264 style='border-top:none;border-left:none'>object</td>
+					  <td class=xl6514264>&nbsp;</td>
+					 </tr>
+					 <tr class=xl1514264 height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6514264 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6914264 style='border-top:none'>Gen</td>
+					  <td class=xl6914264 style='border-top:none;border-left:none; font-weight:bold;'>gp</td>
+					  <td class=xl6914264 style='border-top:none;border-left:none'>of the %pl%</td>
+					  <td class=xl7014264 style='border-top:none;border-left:none'>possessive</td>
+					  <td class=xl6514264>&nbsp;</td>
+					 </tr>
+					 <tr class=xl1514264 height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6514264 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6914264 style='border-top:none'>Dat</td>
+					  <td class=xl6914264 style='border-top:none;border-left:none; font-weight:bold;'>dp</td>
+					  <td class=xl6914264 style='border-top:none;border-left:none'>to/for the %pl%</td>
+					  <td class=xl7014264 style='border-top:none;border-left:none'>to/for</td>
+					  <td class=xl6514264>&nbsp;</td>
+					 </tr>
+					 <tr class=xl1514264 height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6514264 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6914264 style='border-top:none'>Abl</td>
+					  <td class=xl6914264 style='border-top:none;border-left:none; font-weight:bold;'>abp</td>
+					  <td class=xl6914264 style='border-top:none;border-left:none'>by/with the %pl%</td>
+					  <td class=xl7014264 style='border-top:none;border-left:none'>by/with/from</td>
+					  <td class=xl6514264>&nbsp;</td>
+					 </tr>
+					 <tr class=xl1514264 height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6814264 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6614264>N</td>
+					  <td class=xl6814264>&nbsp;</td>
+					  <td class=xl6814264>&nbsp;</td>
+					  <td class=xl7214264>&nbsp;</td>
+					  <td class=xl6814264>&nbsp;</td>
+					 </tr>
+					 <![if supportMisalignedColumns]>
+					 <tr height=0 style='display:none'>
+					  <td width=24 style='width:18pt'></td>
+					  <td width=64 style='width:48pt'></td>
+					  <td width=64 style='width:48pt'></td>
+					  <td width=158 style='width:118pt'></td>
+					  <td width=86 style='width:64pt'></td>
+					  <td width=24 style='width:18pt'></td>
+					 </tr>
+					 <![endif]>
+					</table>
+					<div id="adjtables" class="adjtables">
+						<table id = "atable" class="atable" border=0 cellpadding=0 cellspacing=0 width=473 style='border-collapse:
+					 collapse;width:320pt'>
+					 <col width=29 style='mso-width-source:userset;mso-width-alt:1024;width:22pt'>
+					 <col width=42 style='mso-width-source:userset;mso-width-alt:1479;width:31pt'>
+					 <col width=103 span=3 style='mso-width-source:userset;mso-width-alt:3669;
+					 width:77pt'>
+					 <col width=64 style='width:20pt'>
+					 <col width=29 style='mso-width-source:userset;mso-width-alt:1024;width:22pt'>
+					 <tr height=24 style='height:18.0pt'>
+					  <td height=24 class=xl6613418 width=29 style='height:18.0pt;width:22pt'>&nbsp;</td>
+					  <td class=xl6913418 colspan=2 width=145 style='width:108pt'>Positive</td>
+					  <td class=xl7013418 width=103 style='width:77pt'>&nbsp;</td>
+					  <td class=xl7013418 width=103 style='width:77pt'>&nbsp;</td>
+					  <td class=xl6613418 width=29 style='width:48pt'>&nbsp;</td>
+					  <td class=xl6613418 width=29 style='width:22pt'>&nbsp;</td>
+					 </tr>
+					 <tr height=24 style='height:18.0pt'>
+					  <td height=24 class=xl6613418 style='height:18.0pt'>&nbsp;</td>
+					  <td class=xl7413418 colspan=2 style="font-weight:bold;">%word%</td>
+					  <td class=xl7013418>&nbsp;</td>
+					  <td class=xl7013418>&nbsp;</td>
+					  <td class=xl6613418>&nbsp;</td>
+					  <td class=xl6613418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6713418>&nbsp;</td>
+					  <td class=xl6413418>Masc</td>
+					  <td class=xl7313418>Fem</td>
+					  <td class=xl7313418>Neuter</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Nom</td>
+					  <td class=xl8113418> amsn</td>
+					  <td class=xl7513418> afsn</td>
+					  <td class=xl7613418> ansn</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Voc</td>
+					  <td class=xl8213418> amsv</td>
+					  <td class=xl7713418> afsv</td>
+					  <td class=xl7813418> ansv</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Acc</td>
+					  <td class=xl8213418> amsa</td>
+					  <td class=xl7713418> afsa</td>
+					  <td class=xl7813418> ansa</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Gen</td>
+					  <td class=xl8213418> amsg</td>
+					  <td class=xl7713418> afsg</td>
+					  <td class=xl7813418> ansg</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Dat</td>
+					  <td class=xl8213418> amsd</td>
+					  <td class=xl7713418> afsd</td>
+					  <td class=xl7813418> ansd</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Abl</td>
+					  <td class=xl8313418> amsab</td>
+					  <td class=xl7913418> afsab</td>
+					  <td class=xl8013418> ansab</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Nom</td>
+					  <td class=xl8113418 style='border-top:none'> ampn</td>
+					  <td class=xl7513418 style='border-top:none'> afpn</td>
+					  <td class=xl7613418 style='border-top:none'> anpn</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Voc</td>
+					  <td class=xl8213418> ampv</td>
+					  <td class=xl7713418> afpv</td>
+					  <td class=xl7813418> anpv</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Acc</td>
+					  <td class=xl8213418> ampa</td>
+					  <td class=xl7713418> afpa</td>
+					  <td class=xl7813418> anpa</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Gen</td>
+					  <td class=xl8213418> ampg</td>
+					  <td class=xl7713418> afpg</td>
+					  <td class=xl7813418> anpg</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Dat</td>
+					  <td class=xl8213418> ampd</td>
+					  <td class=xl7713418> afpd</td>
+					  <td class=xl7813418> anpd</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Abl</td>
+					  <td class=xl8313418> ampab</td>
+					  <td class=xl7913418> afpab</td>
+					  <td class=xl8013418> anpab</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>&nbsp;</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl7113418>&nbsp;</td>
+					  <td class=xl7113418>&nbsp;</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <![if supportMisalignedColumns]>
+					 <tr height=0 style='display:none'>
+					  <td width=29 style='width:22pt'></td>
+					  <td width=42 style='width:31pt'></td>
+					  <td width=103 style='width:77pt'></td>
+					  <td width=103 style='width:77pt'></td>
+					  <td width=103 style='width:77pt'></td>
+					  <td width=29 style='width:48pt'></td>
+					  <td width=29 style='width:22pt'></td>
+					 </tr>
+					 <![endif]>
+					</table>
+					
+					<table id = "comptable" border=0 cellpadding=0 cellspacing=0 width=473 style='border-collapse:
+					 collapse;width:320pt'>
+					 <col class = "comptable" width=29 style='mso-width-source:userset;mso-width-alt:1024;width:22pt'>
+					 <col width=42 style='mso-width-source:userset;mso-width-alt:1479;width:31pt'>
+					 <col width=103 span=3 style='mso-width-source:userset;mso-width-alt:3669;
+					 width:77pt'>
+					 <col width=64 style='width:20pt'>
+					 <col width=29 style='mso-width-source:userset;mso-width-alt:1024;width:22pt'>
+					 <tr height=24 style='height:18.0pt'>
+					  <td height=24 class=xl6613418 width=29 style='height:18.0pt;width:22pt'>&nbsp;</td>
+					  <td class=xl6913418 colspan=2 width=145 style='width:108pt'>Comparative</td>
+					  <td class=xl7013418 width=103 style='width:77pt'>&nbsp;</td>
+					  <td class=xl7013418 width=103 style='width:77pt'>&nbsp;</td>
+					  <td class=xl6613418 width=29 style='width:48pt'>&nbsp;</td>
+					  <td class=xl6613418 width=29 style='width:22pt'>&nbsp;</td>
+					 </tr>
+					 <tr height=24 style='height:18.0pt'>
+					  <td height=24 class=xl6613418 style='height:18.0pt'>&nbsp;</td>
+					  <td class=xl7413418 colspan=2 style="font-weight:bold;">%comp%</td>
+					  <td class=xl7013418>&nbsp;</td>
+					  <td class=xl7013418>&nbsp;</td>
+					  <td class=xl6613418>&nbsp;</td>
+					  <td class=xl6613418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6713418>&nbsp;</td>
+					  <td class=xl6413418>Masc</td>
+					  <td class=xl7313418>Fem</td>
+					  <td class=xl7313418>Neuter</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Nom</td>
+					  <td class=xl8113418> compmsn</td>
+					  <td class=xl7513418> compfsn</td>
+					  <td class=xl7613418> compnsn</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Voc</td>
+					  <td class=xl8213418> compmsv</td>
+					  <td class=xl7713418> compfsv</td>
+					  <td class=xl7813418> compnsv</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Acc</td>
+					  <td class=xl8213418> compmsa</td>
+					  <td class=xl7713418> compfsa</td>
+					  <td class=xl7813418> compnsa</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Gen</td>
+					  <td class=xl8213418> compmsg</td>
+					  <td class=xl7713418> compfsg</td>
+					  <td class=xl7813418> compnsg</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Dat</td>
+					  <td class=xl8213418> compmsd</td>
+					  <td class=xl7713418> compfsd</td>
+					  <td class=xl7813418> compnsd</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Abl</td>
+					  <td class=xl8313418> compmsab</td>
+					  <td class=xl7913418> compfsab</td>
+					  <td class=xl8013418> compnsab</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Nom</td>
+					  <td class=xl8113418 style='border-top:none'> compmpn</td>
+					  <td class=xl7513418 style='border-top:none'> compfpn</td>
+					  <td class=xl7613418 style='border-top:none'> compnpn</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Voc</td>
+					  <td class=xl8213418> compmpv</td>
+					  <td class=xl7713418> compfpv</td>
+					  <td class=xl7813418> compnpv</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Acc</td>
+					  <td class=xl8213418> compmpa</td>
+					  <td class=xl7713418> compfpa</td>
+					  <td class=xl7813418> compnpa</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Gen</td>
+					  <td class=xl8213418> compmpg</td>
+					  <td class=xl7713418> compfpg</td>
+					  <td class=xl7813418> compnpg</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Dat</td>
+					  <td class=xl8213418> compmpd</td>
+					  <td class=xl7713418> compfpd</td>
+					  <td class=xl7813418> compnpd</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Abl</td>
+					  <td class=xl8313418> compmpab</td>
+					  <td class=xl7913418> compfpab</td>
+					  <td class=xl8013418> compnpab</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>&nbsp;</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl7113418>&nbsp;</td>
+					  <td class=xl7113418>&nbsp;</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <![if supportMisalignedColumns]>
+					 <tr height=0 style='display:none'>
+					  <td width=29 style='width:22pt'></td>
+					  <td width=42 style='width:31pt'></td>
+					  <td width=103 style='width:77pt'></td>
+					  <td width=103 style='width:77pt'></td>
+					  <td width=103 style='width:77pt'></td>
+					  <td width=29 style='width:48pt'></td>
+					  <td width=29 style='width:22pt'></td>
+					 </tr>
+					 <![endif]>
+					</table>
+					
+					<table id = "suptable" border=0 cellpadding=0 cellspacing=0 width=473 style='border-collapse:
+					 collapse;width:320pt'>
+					 <col class = "suptable" width=29 style='mso-width-source:userset;mso-width-alt:1024;width:22pt'>
+					 <col width=42 style='mso-width-source:userset;mso-width-alt:1479;width:31pt'>
+					 <col width=103 span=3 style='mso-width-source:userset;mso-width-alt:3669;
+					 width:77pt'>
+					 <col width=64 style='width:20pt'>
+					 <col width=29 style='mso-width-source:userset;mso-width-alt:1024;width:22pt'>
+					 <tr height=24 style='height:18.0pt'>
+					  <td height=24 class=xl6613418 width=29 style='height:18.0pt;width:22pt'>&nbsp;</td>
+					  <td class=xl6913418 colspan=2 width=145 style='width:108pt'>Superlative</td>
+					  <td class=xl7013418 width=103 style='width:77pt'>&nbsp;</td>
+					  <td class=xl7013418 width=103 style='width:77pt'>&nbsp;</td>
+					  <td class=xl6613418 width=29 style='width:48pt'>&nbsp;</td>
+					  <td class=xl6613418 width=29 style='width:22pt'>&nbsp;</td>
+					 </tr>
+					 <tr height=24 style='height:18.0pt'>
+					  <td height=24 class=xl6613418 style='height:18.0pt'>&nbsp;</td>
+					  <td class=xl7413418 colspan=2 style="font-weight:bold;">%superlative%</td>
+					  <td class=xl7013418>&nbsp;</td>
+					  <td class=xl7013418>&nbsp;</td>
+					  <td class=xl6613418>&nbsp;</td>
+					  <td class=xl6613418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6713418>&nbsp;</td>
+					  <td class=xl6413418>Masc</td>
+					  <td class=xl7313418>Fem</td>
+					  <td class=xl7313418>Neuter</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Nom</td>
+					  <td class=xl8113418> supmsn</td>
+					  <td class=xl7513418> supfsn</td>
+					  <td class=xl7613418> supnsn</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Voc</td>
+					  <td class=xl8213418> supmsv</td>
+					  <td class=xl7713418> supfsv</td>
+					  <td class=xl7813418> supnsv</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Acc</td>
+					  <td class=xl8213418> supmsa</td>
+					  <td class=xl7713418> supfsa</td>
+					  <td class=xl7813418> supnsa</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Gen</td>
+					  <td class=xl8213418> supmsg</td>
+					  <td class=xl7713418> supfsg</td>
+					  <td class=xl7813418> supnsg</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Dat</td>
+					  <td class=xl8213418> supmsd</td>
+					  <td class=xl7713418> supfsd</td>
+					  <td class=xl7813418> supnsd</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Abl</td>
+					  <td class=xl8313418> supmsab</td>
+					  <td class=xl7913418> supfsab</td>
+					  <td class=xl8013418> supnsab</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Nom</td>
+					  <td class=xl8113418 style='border-top:none'> supmpn</td>
+					  <td class=xl7513418 style='border-top:none'> supfpn</td>
+					  <td class=xl7613418 style='border-top:none'> supnpn</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Voc</td>
+					  <td class=xl8213418> supmpv</td>
+					  <td class=xl7713418> supfpv</td>
+					  <td class=xl7813418> supnpv</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Acc</td>
+					  <td class=xl8213418> supmpa</td>
+					  <td class=xl7713418> supfpa</td>
+					  <td class=xl7813418> supnpa</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Gen</td>
+					  <td class=xl8213418> supmpg</td>
+					  <td class=xl7713418> supfpg</td>
+					  <td class=xl7813418> supnpg</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Dat</td>
+					  <td class=xl8213418> supmpd</td>
+					  <td class=xl7713418> supfpd</td>
+					  <td class=xl7813418> supnpd</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Abl</td>
+					  <td class=xl8313418> supmpab</td>
+					  <td class=xl7913418> supfpab</td>
+					  <td class=xl8013418> supnpab</td>
+					  <td class=xl7213418 style='border-left:none'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>&nbsp;</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl7113418>&nbsp;</td>
+					  <td class=xl7113418>&nbsp;</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <![if supportMisalignedColumns]>
+					 <tr height=0 style='display:none'>
+					  <td width=29 style='width:22pt'></td>
+					  <td width=42 style='width:31pt'></td>
+					  <td width=103 style='width:77pt'></td>
+					  <td width=103 style='width:77pt'></td>
+					  <td width=103 style='width:77pt'></td>
+					  <td width=29 style='width:48pt'></td>
+					  <td width=29 style='width:22pt'></td>
+					 </tr>
+					 <![endif]>
+					</table>
+					
+					</div>
+					
+					<table id="pprontable" border=0 cellpadding=0 cellspacing=0 class=xl1514264
+					 style='border-collapse:collapse;table-layout:fixed'>
+					 <col style='mso-width-source:userset;mso-width-alt:853;'>
+					 <col span=2>
+					 <colstyle='mso-width-source:userset;mso-width-alt:5603;'>
+					 <col style='mso-width-source:userset;mso-width-alt:3043;'>
+					 <col style='mso-width-source:userset;mso-width-alt:853;'>
+					 <tr class=xl1514264 height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6514264 style='height:14.4pt;'>&nbsp;</td>
+					  <td class=xl6614264>M</td>
+					  <td class=xl6514264 >&nbsp;</td>
+					  <td class=xl6514264 >&nbsp;</td>
+					  <td class=xl6714264>&nbsp;</td>
+					  <td class=xl6514264>&nbsp;</td>
+					 </tr>
+					 <tr class=xl1514264 height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6514264 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6914264>Nom<span style='display:none'>e</span></td>
+					  <td class=xl6914264 style='border-left:none; font-weight:bold;'>prn</td>
+					  <td class=xl6914264 style='border-left:none'>prntr</td>
+					  <td class=xl7014264 style='border-left:none'>subject</td>
+					  <td class=xl6514264>&nbsp;</td>
+					 </tr>
+					 <tr class=xl1514264 height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6514264 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6914264 style='border-top:none'>Acc</td>
+					  <td class=xl6914264 style='border-top:none;border-left:none; font-weight:bold;'>pra</td>
+					  <td class=xl6914264 style='border-top:none;border-left:none'>pratr</td>
+					  <td class=xl7014264 style='border-top:none;border-left:none'>object</td>
+					  <td class=xl6514264>&nbsp;</td>
+					 </tr>
+					 <tr class=xl1514264 height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6514264 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6914264 style='border-top:none'>Gen</td>
+					  <td class=xl6914264 style='border-top:none;border-left:none; font-weight:bold;'>prg</td>
+					  <td class=xl6914264 style='border-top:none;border-left:none'>prgtr</td>
+					  <td class=xl7014264 style='border-top:none;border-left:none'>possessive</td>
+					  <td class=xl6514264>&nbsp;</td>
+					 </tr>
+					 <tr class=xl1514264 height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6514264 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6914264 style='border-top:none'>Dat</td>
+					  <td class=xl6914264 style='border-top:none;border-left:none; font-weight:bold;'>prd</td>
+					  <td class=xl6914264 style='border-top:none;border-left:none'>prdtr</td>
+					  <td class=xl7014264 style='border-top:none;border-left:none'>to/for</td>
+					  <td class=xl6514264>&nbsp;</td>
+					 </tr>
+					 <tr class=xl1514264 height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6514264 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6914264 style='border-top:none'>Abl</td>
+					  <td class=xl6914264 style='border-top:none;border-left:none; font-weight:bold;'>prab</td>
+					  <td class=xl6914264 style='border-top:none;border-left:none'>prabtr</td>
+					  <td class=xl7014264 style='border-top:none;border-left:none'>by/with/from</td>
+					  <td class=xl6514264>&nbsp;</td>
+					 </tr>
+					 <tr class=xl1514264 height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6514264 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl7114264></td>
+					  <td class=xl6514264>&nbsp;</td>
+					  <td class=xl6514264>&nbsp;</td>
+					  <td class=xl6714264>&nbsp;</td>
+					  <td class=xl6514264>&nbsp;</td>
+					 </tr>
+					 <![endif]>
+					</table>
+					
+					
+					<table id = "prontable"border=0 cellpadding=0 cellspacing=0 style='border-collapse:
+					 collapse;'>
+					 <col width=29 style='mso-width-source:userset;mso-width-alt:1024;width:22pt'>
+					 <col width=42 style='mso-width-source:userset;mso-width-alt:1479;width:31pt'>
+					 <col width=103 span=3 style='mso-width-source:userset;mso-width-alt:3669;
+					 width:77pt'>
+					 <col width=29 style='width:20pt'>
+					 <col width=29 style='mso-width-source:userset;mso-width-alt:1024;width:22pt'>
+					 <tr height=24 style='height:18.0pt'>
+					  <td height=24 class=xl6613418 style='height:18.0pt'>&nbsp;</td>
+					  <td class=xl7413418 colspan=2></td>
+					  <td class=xl7013418>&nbsp;</td>
+					  <td class=xl7013418>&nbsp;</td>
+					  <td class=xl6613418>&nbsp;</td>
+					  <td class=xl6613418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6713418>&nbsp;</td>
+					  <td class=xl6413418>Masc</td>
+					  <td class=xl7313418>Fem</td>
+					  <td class=xl7313418>Neuter</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Nom</td>
+					  <td class=xl8113418>pronmsn</td>
+					  <td class=xl7513418>pronfsn</td>
+					  <td class=xl7613418>pronnsn</td>
+					  <td class=xl6413418>pronnstr</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Acc</td>
+					  <td class=xl8213418>pronmsa</td>
+					  <td class=xl7713418>pronfsa</td>
+					  <td class=xl7813418>pronnsa</td>
+					  <td class=xl6413418>pronastr</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Gen</td>
+					  <td class=xl8213418>pronmsg</td>
+					  <td class=xl7713418>pronfsg</td>
+					  <td class=xl7813418>pronnsg</td>
+					  <td class=xl6413418>prongstr</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Dat</td>
+					  <td class=xl8213418>pronmsd</td>
+					  <td class=xl7713418>pronfsd</td>
+					  <td class=xl7813418>pronnsd</td>
+					  <td class=xl6413418>prondstr</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Abl</td>
+					  <td class=xl8313418>pronmsab</td>
+					  <td class=xl7913418>pronfsab</td>
+					  <td class=xl8013418>pronnsab</td>
+					  <td class=xl6413418>pronabstr</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Nom</td>
+					  <td class=xl8113418 style='border-top:none'>pronmpn</td>
+					  <td class=xl7513418 style='border-top:none'>pronfpn</td>
+					  <td class=xl7613418 style='border-top:none'>pronnpn</td>
+					  <td class=xl7213418 style='border-left:none'>pronnptr</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Acc</td>
+					  <td class=xl8213418>pronmpa</td>
+					  <td class=xl7713418>pronfpa</td>
+					  <td class=xl7813418>pronnpa</td>
+					  <td class=xl7213418 style='border-left:none'>pronaptr</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Gen</td>
+					  <td class=xl8213418>pronmpg</td>
+					  <td class=xl7713418>pronfpg</td>
+					  <td class=xl7813418>pronnpg</td>
+					  <td class=xl7213418 style='border-left:none'>prongptr</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Dat</td>
+					  <td class=xl8213418>pronmpd</td>
+					  <td class=xl7713418>pronfpd</td>
+					  <td class=xl7813418>pronnpd</td>
+					  <td class=xl7213418 style='border-left:none'>prondptr</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>Abl</td>
+					  <td class=xl8313418>pronmpab</td>
+					  <td class=xl7913418>pronfpab</td>
+					  <td class=xl8013418>pronnpab</td>
+					  <td class=xl7213418 style='border-left:none'>pronabptr</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6813418>&nbsp;</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl7113418>&nbsp;</td>
+					  <td class=xl7113418>&nbsp;</td>
+					  <td class=xl6413418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <tr height=19 style='height:14.4pt'>
+					  <td height=19 class=xl6513418 style='height:14.4pt'>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					  <td class=xl6513418>&nbsp;</td>
+					 </tr>
+					 <![if supportMisalignedColumns]>
+					 <tr height=0 style='display:none'>
+					  <td width=29 style='width:22pt'></td>
+					  <td width=42 style='width:31pt'></td>
+					  <td width=103 style='width:77pt'></td>
+					  <td width=103 style='width:77pt'></td>
+					  <td width=103 style='width:77pt'></td>
+					  <td width=29 style='width:48pt'></td>
+					  <td width=29 style='width:22pt'></td>
+					 </tr>
+					 <![endif]>
+					</table>
+							
+					</div>        
+							</body>
+
+	</td>
+</tbody></table>
+
+<div id="myModal" class="modal">
+	
+						<!-- Modal content -->
+						<div class="modal-content" id="modal-content" style="text-align: left;">
+						<span>
+							<table>
+							<tr>
+								<td>
+								<div class="close" id="close" style="display: inline;" onclick="closer()">&times;</div>
+								</td>
+								<td>
+								<div onclick="tablechanger()" class="tabletitle" id="tabletitle" style="display: inline; cursor:pointer; color:blue">here</div>
+								</td>
+								<td>
+								<div onclick="tablechanger()" class="pronountitle" id="pronountitle" style="display: inline; cursor:pointer;">here</div>
+								</td>
+								<td width = "*" style="text-align:right;">
+								</td>
+							</tr>
+						</table>
+					</span>
+						<span id="website" style="overflow-y:scroll; overflow-x:hidden; position:static; top:80px;"></span>
+						<div style="position: absolute; top:1em; right: 1em; display: inline; cursor:pointer;"><button onclick="tableprinter()">&#128438;</button></div>
+						
+					</div>
+</div>
+
+</body></html>
