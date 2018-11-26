@@ -66,19 +66,22 @@ function getParameterByName(name, url) {
 }
 
 function createCORSRequest(method, url) {
-var xhr = new XMLHttpRequest();
-if ("withCredentials" in xhr) {
-  // XHR for Chrome/Firefox/Opera/Safari.
-  xhr.open(method, url, false);
-} else if (typeof XDomainRequest != "undefined") {
-  // XDomainRequest for IE.
-  xhr = new XDomainRequest();
-  xhr.open(method, url, false);
-} else {
-  // CORS not supported.
-  xhr = null;
-}
-return xhr;
+  var xhr = new XMLHttpRequest();
+  if ("withCredentials" in xhr) {
+    // XHR for Chrome/Firefox/Opera/Safari.
+    xhr.open(method, url, false);
+  } else if (typeof XDomainRequest != "undefined") {
+    // XDomainRequest for IE.
+    xhr = new XDomainRequest();
+    xhr.open(method, url, false);
+  } else {
+    // CORS not supported.
+    return null;
+  }
+  xhr.setRequestHeader(
+    'x-api-key',
+    'POIvgqk2ee2GFYC8WAPDU23u8qGLKOeXad6vQo2q')
+  return xhr;
 }
 
 // Helper method to parse the title tag from the response.
@@ -210,7 +213,7 @@ function getww(element) {
   if (word2=='a'){word2 = 'ab'}
   if (word2=='e'){word2 = 'ex'}
 if (word2=='o'){word2 = 'oh'}
-var xhr = createCORSRequest('GET', '/words/' + word2);
+var xhr = createCORSRequest('GET', 'https://y83fv41ys4.execute-api.eu-west-2.amazonaws.com/default/words/' + word2);
 if (!xhr) {
   alert('CORS not supported');
   return;
