@@ -1,54 +1,54 @@
-<!DOCTYPE html>
-<html>
-<title>Latin sorter: translate and rearrange words</title>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
-	<script src="jquery.ui.widget.js"></script>
-	<script src="jquery.ui.mouse.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-	<script src="jquery.ui.touch-punch.js"></script>
-	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-	<link rel="stylesheet" href="/sorter.css">
-	<script src="sorter.js"></script>
-	<script src="popper.js"></script>
-	<script src="bootstrap.min.js"></script>
-	<link rel="stylesheet" href="bootstrap.min.css">
-	<link rel="stylesheet" href="modal.css"> 
-	<link rel="stylesheet" href="excelstyles.css">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<html><title>Latin sorter: translate and rearrange words</title><head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta name="description" content="Drag and sort Latin words and view definititions and grammatical information.">
+<meta name="keywords" content="languages, Latin, education, translation, Classical Civilisation">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
+<script src="jquery.ui.widget.js"></script>
+<script src="jquery.ui.mouse.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="jquery.ui.touch-punch.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="sorter.css">
+<script src="sorter.js"></script>
+<script src="popper.js"></script>
+<script src="bootstrap.min.js"></script>
+<link rel="stylesheet" href="bootstrap.min.css">
+<link rel="stylesheet" href="modal.css"> 
+<link rel="stylesheet" href="excelstyles.css">
 </head>
-<body onload="updatetext()">
-<table style = "table-layout:fixed; width:100%; height:100%">
-<tbody><tr onmouseover="selboxdel()" style="height:12%;">
-<td id="inputtext" style="width:15%; padding:1em;">
-<textarea id="inputtextbox" onfocus="clearContents(this);" clicked = "no">Enter a passage of Latin here to analyse it or experiment with the passage below.
-</textarea>
-<button onclick="input1()">
-Use
-</button>
-
-</td>
-<td style="width:70%;">
-<div id="toppane" style="font-size:200%;"><a id="sentence">
-	Ennius erat poeta Romanus qui amicum habebat, nomine Scipionem.
-</a></div>
-</td>
-<td style="width:260px;" >
-<div id="ww" style = "height: 80px;"></div>
-</td>
-</tr>
-<tr id = "sortablerow" height="60%">
-<td onmouseover="selboxdel()" id="textcell"style="padding:1em;"><div id="linkedtext" style="height: 300px; overflow: scroll; font-size: 160%;" selectedsentence="sentences0"><a formerhtml="" id="sentences0" onclick="picker(this)" style="cursor: pointer; color: orange;" class="lsentence">Ennius erat poeta Romanus qui amicum habebat, nomine Scipionem.</a> <a formerhtml="" id="sentences1" onclick="picker(this)" style="cursor: pointer; color: black;" class="lsentence"> olim Scipio ad domum Ennii advenit, quod illum salutare volebat.</a> <a formerhtml="" id="sentences2" onclick="picker(this)" style="cursor: pointer; color: black;" class="lsentence"> ille tamen fessus erat, nam longum carmen nuper scripserat de historia Romanorum.</a> <a formerhtml="" id="sentences3" onclick="picker(this)" style="cursor: pointer; color: black;" class="lsentence"> itaque, ubi Scipio ianuam pulsavit, servus ianuam aperuit.</a> <a formerhtml="" id="sentences4" onclick="picker(this)" style="cursor: pointer; color: black;" class="lsentence"> ‘Ennius abest’ inquit servus.</a> <a formerhtml="" id="sentences5" onclick="picker(this)" style="cursor: pointer; color: black;" class="lsentence"> Scipio igitur abiit, quamquam sciebat Ennium re vera domi esse.</a> <a formerhtml="" id="sentences6" onclick="picker(this)" style="cursor: pointer; color: black;" class="lsentence"> postridie Ennius apud Scipionem ivit ut eum salutaret.</a> <a formerhtml="" id="sentences7" onclick="picker(this)" style="cursor: pointer; color: black;" class="lsentence"> ubi servus ianuam aperuit, Scipio ipse ex recessu domus clamavit ‘Scipio abest!</a> <a formerhtml="" id="sentences8" onclick="picker(this)" style="cursor: pointer; color: black;" class="lsentence">’ Ennius tamen ‘num abest?</a> <a formerhtml="" id="sentences9" onclick="picker(this)" style="cursor: pointer; color: black;" class="lsentence">’ inquit, ‘nam vocem eius audire possum.</a> <a formerhtml="" id="sentences10" onclick="picker(this)" style="cursor: pointer; color: black;" class="lsentence">’</a></div></td>
-<td id="words" onmouseout="selboxdel"> 
-	<ul onscroll="selboxdel()" class="ui-sortable" id="sortable" style="height:300px; overflow: scroll;" abp="15"><li onmouseup="updatetranslation()" id="word0" class="ui-state-default ui-sortable-handle"><a id="titleword0" style="cursor:pointer;" onclick="getww(this); showoptions(event.srcElement)" parentid="word0">Ennius</a></li> <li onmouseup="updatetranslation()" id="word1" class="ui-state-default ui-sortable-handle"><a id="titleword1" style="cursor:pointer;" onclick="getww(this); showoptions(event.srcElement)" parentid="word1">erat</a></li> <li onmouseup="updatetranslation()" id="word2" class="ui-state-default ui-sortable-handle"><a id="titleword2" style="cursor:pointer;" onclick="getww(this); showoptions(event.srcElement)" parentid="word2">poeta</a></li> <li onmouseup="updatetranslation()" id="word3" class="ui-state-default ui-sortable-handle"><a id="titleword3" style="cursor:pointer;" onclick="getww(this); showoptions(event.srcElement)" parentid="word3">Romanus</a></li> <li onmouseup="updatetranslation()" id="word4" class="ui-state-default ui-sortable-handle"><a id="titleword4" style="cursor:pointer;" onclick="getww(this); showoptions(event.srcElement)" parentid="word4">qui</a></li> <li onmouseup="updatetranslation()" id="word5" class="ui-state-default ui-sortable-handle"><a id="titleword5" style="cursor:pointer;" onclick="getww(this); showoptions(event.srcElement)" parentid="word5">amicum</a></li> <li onmouseup="updatetranslation()" id="word6" class="ui-state-default ui-sortable-handle"><a id="titleword6" style="cursor:pointer;" onclick="getww(this); showoptions(event.srcElement)" parentid="word6">habebat</a></li> <li onmouseup="updatetranslation()" id="word7" class="ui-state-default ui-sortable-handle"><a id="titleword7" style="cursor:pointer;" onclick="getww(this); showoptions(event.srcElement)" parentid="word7">nomine</a></li> <li onmouseup="updatetranslation()" id="word8" class="ui-state-default ui-sortable-handle"><a id="titleword8" style="cursor:pointer;" onclick="getww(this); showoptions(event.srcElement)" parentid="word8">Scipionem</a></li></ul>
-</td>
-<td onmouseover="selboxdel()">
-<div id="menus" style="overflow:scroll; height:300px;">
-<tester>
-</tester>
-</div>
-</td>
-</tr>
+<body onload="initialfunction()">
+	<table style = "table-layout:fixed; width:100%; height:100%">
+	<tbody><tr onmouseover="selboxdel()" style="height:12%;">
+	<td id="inputtext" style="width:15%; padding:1em;">
+	<textarea id="inputtextbox" onfocus="clearContents(this);" clicked = "no">Enter a passage of Latin here to analyse it or experiment with the passage below.
+	</textarea>
+	<button onclick="input1()">
+	Use
+	</button>
+	
+	</td>
+	<td style="width:70%;">
+	<div id="toppane" style="font-size:200%;"><a id="sentence">
+		Ennius erat poeta Romanus qui amicum habebat, nomine Scipionem.
+	</a></div>
+	</td>
+	<td style="width:260px;" >
+	<div id="ww" style = "height: 80px;"></div>
+	</td>
+	</tr>
+	<tr id = "sortablerow" height="60%">
+	<td onmouseover="selboxdel()" id="textcell"style="padding:1em;"><div id="linkedtext" style="height: 300px; overflow: scroll; font-size: 160%;" selectedsentence="sentences0"><a formerhtml="" id="sentences0" onclick="picker(this)" style="cursor: pointer; color: orange;" class="lsentence">Ennius erat poeta Romanus qui amicum habebat, nomine Scipionem.</a> <a formerhtml="" id="sentences1" onclick="picker(this)" style="cursor: pointer; color: black;" class="lsentence"> olim Scipio ad domum Ennii advenit, quod illum salutare volebat.</a> <a formerhtml="" id="sentences2" onclick="picker(this)" style="cursor: pointer; color: black;" class="lsentence"> ille tamen fessus erat, nam longum carmen nuper scripserat de historia Romanorum.</a> <a formerhtml="" id="sentences3" onclick="picker(this)" style="cursor: pointer; color: black;" class="lsentence"> itaque, ubi Scipio ianuam pulsavit, servus ianuam aperuit.</a> <a formerhtml="" id="sentences4" onclick="picker(this)" style="cursor: pointer; color: black;" class="lsentence"> ‘Ennius abest’ inquit servus.</a> <a formerhtml="" id="sentences5" onclick="picker(this)" style="cursor: pointer; color: black;" class="lsentence"> Scipio igitur abiit, quamquam sciebat Ennium re vera domi esse.</a> <a formerhtml="" id="sentences6" onclick="picker(this)" style="cursor: pointer; color: black;" class="lsentence"> postridie Ennius apud Scipionem ivit ut eum salutaret.</a> <a formerhtml="" id="sentences7" onclick="picker(this)" style="cursor: pointer; color: black;" class="lsentence"> ubi servus ianuam aperuit, Scipio ipse ex recessu domus clamavit ‘Scipio abest!</a> <a formerhtml="" id="sentences8" onclick="picker(this)" style="cursor: pointer; color: black;" class="lsentence">’ Ennius tamen ‘num abest?</a> <a formerhtml="" id="sentences9" onclick="picker(this)" style="cursor: pointer; color: black;" class="lsentence">’ inquit, ‘nam vocem eius audire possum.</a> <a formerhtml="" id="sentences10" onclick="picker(this)" style="cursor: pointer; color: black;" class="lsentence">’</a></div></td>
+	<td id="words" onmouseout="selboxdel"> 
+		<ul onscroll="selboxdel()" class="ui-sortable" id="sortable" style="height:300px; overflow: scroll;" abp="15"><li onmouseup="updatetranslation()" id="word0" class="ui-state-default ui-sortable-handle"><a id="titleword0" style="cursor:pointer;" onclick="getww(this); showoptions(event.srcElement)" parentid="word0">Ennius</a></li> <li onmouseup="updatetranslation()" id="word1" class="ui-state-default ui-sortable-handle"><a id="titleword1" style="cursor:pointer;" onclick="getww(this); showoptions(event.srcElement)" parentid="word1">erat</a></li> <li onmouseup="updatetranslation()" id="word2" class="ui-state-default ui-sortable-handle"><a id="titleword2" style="cursor:pointer;" onclick="getww(this); showoptions(event.srcElement)" parentid="word2">poeta</a></li> <li onmouseup="updatetranslation()" id="word3" class="ui-state-default ui-sortable-handle"><a id="titleword3" style="cursor:pointer;" onclick="getww(this); showoptions(event.srcElement)" parentid="word3">Romanus</a></li> <li onmouseup="updatetranslation()" id="word4" class="ui-state-default ui-sortable-handle"><a id="titleword4" style="cursor:pointer;" onclick="getww(this); showoptions(event.srcElement)" parentid="word4">qui</a></li> <li onmouseup="updatetranslation()" id="word5" class="ui-state-default ui-sortable-handle"><a id="titleword5" style="cursor:pointer;" onclick="getww(this); showoptions(event.srcElement)" parentid="word5">amicum</a></li> <li onmouseup="updatetranslation()" id="word6" class="ui-state-default ui-sortable-handle"><a id="titleword6" style="cursor:pointer;" onclick="getww(this); showoptions(event.srcElement)" parentid="word6">habebat</a></li> <li onmouseup="updatetranslation()" id="word7" class="ui-state-default ui-sortable-handle"><a id="titleword7" style="cursor:pointer;" onclick="getww(this); showoptions(event.srcElement)" parentid="word7">nomine</a></li> <li onmouseup="updatetranslation()" id="word8" class="ui-state-default ui-sortable-handle"><a id="titleword8" style="cursor:pointer;" onclick="getww(this); showoptions(event.srcElement)" parentid="word8">Scipionem</a></li></ul>
+	</td>
+	<td onmouseover="selboxdel()">
+	<div id="menus" style="overflow:scroll; height:300px;">
+	<tester>
+	</tester>
+	</div>
+	</td>
+	</tr>
 <tr onmouseover="selboxdel()" style="max-width:10%; color:white; background-color:black;">
 	<td id="spare">
 	</td>
