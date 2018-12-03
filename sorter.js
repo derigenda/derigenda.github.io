@@ -186,7 +186,7 @@ input2()
               if (original_textArr[m] == "") {
                   
             } else {
-             textofinal = textofinal + '<li onmouseup="updatetranslation()" id="word' + m + '" class="ui-state-default ui-sortable-handle"><a id="titleword' + m + '" style="cursor:pointer;" onclick="getww(this); showoptions(event.srcElement)" parentid="word' + m + '">' + sanitized_textArr[m] + '</a></li> ';
+             textofinal = textofinal + '<li onmouseup="updatetranslation()" id="word' + m + '" class="ui-state-default ui-sortable-handle"><a id="titleword' + m + '" style="cursor:pointer;" onclick="showoptions(event.srcElement)" parentid="word' + m + '">' + sanitized_textArr[m] + '</a></li> ';
                   
           }
                }
@@ -952,7 +952,7 @@ for (iii=0;iii<entrycount;iii++){
   eng = eng.substr(0,eng.length-1)
   
   if(pps.split('abb.').length==1 &&pps.split(' ').length>2 && pps.split(', -, - ').length==1 && (entrytype=='V'||entrytype=='C'||entrytype=='X'||entrytype=='M'||entrytype=='F'||entrytype=='N'||entrytype=='V'||entrytype=='ADJ'||entrytype=='PRON'||entrytype=='INTRANS'||entrytype=='TRANS'||entrytype=='DEP'||entrytype=='SEMIDEP'||entrytype=='PERFDEF'||entrytype=='IMPERS')){
-  document.getElementsByClassName('entry')[iii].innerHTML = document.getElementsByClassName('entry')[iii].innerHTML + '<button onclick="javascript:popout(&quot;' + pps + '&quot;,&quot;' + eng + '&quot;)"><img alt="Vector toolbar insert table button.png" src="/Vector_toolbar_insert_table_button.png" width="28" height="28" data-file-width="28" data-file-height="28"></button>'
+  document.getElementsByClassName('entry')[iii].innerHTML = document.getElementsByClassName('entry')[iii].innerHTML + '<button onclick="javascript:popout(&quot;' + pps + '&quot;,&quot;' + eng + '&quot;)"><img alt="Vector toolbar insert table button.png" src="Vector_toolbar_insert_table_button.png" width="28" height="28" data-file-width="28" data-file-height="28"></button>'
   }
   if(pps=='eodem X'||pps=='qu.a PRON'||pps=='t.e PRON'||pps=='tu PRON'||pps=='t.ui PRON'||pps=='t.ibi PRON'||pps=='s.e PRON'||pps=='s.ui PRON'||pps=='s.ibi PRON'||pps=='ego PRON'||pps=='m.e PRON'||pps=='m.ei PRON'||pps=='m.ihi PRON'||pps=='v.os PRON'||pps=='vestr.um PRON'||pps=='vestr.i PRON'||pps=='v.obis PRON'||pps=='n.os PRON'||pps=='n.os PRON'||pps=='nostr.um PRON'||pps=='nostr.i'||pps=='n.obis PRON'){
     document.getElementsByClassName('entry')[iii].innerHTML = document.getElementsByClassName('entry')[iii].innerHTML + '<button onclick="javascript:popout(&quot;' + pps + '&quot;,&quot;' + eng + '&quot;)"><img alt="Vector toolbar insert table button.png" src="/Vector_toolbar_insert_table_button.png" width="28" height="28" data-file-width="28" data-file-height="28"></button>'
