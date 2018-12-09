@@ -52,9 +52,32 @@
 //dactyl ((([bcdfghjklmnpqrstvwxz]|qu|[BCDFGHJKLMNPQRSTVWXZ]|Qu|QU|[^\na-zA-Z\u0101\u0100\u0113\u0112\u012B\u012A\u014D\u014C\u016B\u016A\u0233\u0232\u0103\u0102\u0115\u0114\u012D\u012C\u014F\u014E\u016D\u016C\u0177\u0176])*([\u0101\u0100\u0113\u0112\u012B\u012A\u014D\u014C\u016B\u016A\u0233\u0232])([bcdfghjklmnpqrstvwxz]|qu|[BCDFGHJKLMNPQRSTVWXZ]|Qu|QU|[^\na-zA-Z\u0101\u0100\u0113\u0112\u012B\u012A\u014D\u014C\u016B\u016A\u0233\u0232\u0103\u0102\u0115\u0114\u012D\u012C\u014F\u014E\u016D\u016C\u0177\u0176])*)(([bcdfghjklmnpqrstvwxz]|qu|[BCDFGHJKLMNPQRSTVWXZ]|Qu|QU|[^\na-zA-Z\u0101\u0100\u0113\u0112\u012B\u012A\u014D\u014C\u016B\u016A\u0233\u0232\u0103\u0102\u0115\u0114\u012D\u012C\u014F\u014E\u016D\u016C\u0177\u0176])*([\u0103\u0102\u0115\u0114\u012D\u012C\u014F\u014E\u016D\u016C\u0177\u0176])([bcdfghjklmnpqrstvwxz]|qu|[BCDFGHJKLMNPQRSTVWXZ]|Qu|QU|[^\na-zA-Z\u0101\u0100\u0113\u0112\u012B\u012A\u014D\u014C\u016B\u016A\u0233\u0232\u0103\u0102\u0115\u0114\u012D\u012C\u014F\u014E\u016D\u016C\u0177\u0176])*)(([bcdfghjklmnpqrstvwxz]|qu|[BCDFGHJKLMNPQRSTVWXZ]|Qu|QU|[^\na-zA-Z\u0101\u0100\u0113\u0112\u012B\u012A\u014D\u014C\u016B\u016A\u0233\u0232\u0103\u0102\u0115\u0114\u012D\u012C\u014F\u014E\u016D\u016C\u0177\u0176])*([\u0103\u0102\u0115\u0114\u012D\u012C\u014F\u014E\u016D\u016C\u0177\u0176])([bcdfghjklmnpqrstvwxz]|qu|[BCDFGHJKLMNPQRSTVWXZ]|Qu|QU|[^\na-zA-Z\u0101\u0100\u0113\u0112\u012B\u012A\u014D\u014C\u016B\u016A\u0233\u0232\u0103\u0102\u0115\u0114\u012D\u012C\u014F\u014E\u016D\u016C\u0177\u0176])*))
 
 //foot (((([bcdfghjklmnpqrstvwxz]|qu|[BCDFGHJKLMNPQRSTVWXZ]|Qu|QU|[^\na-zA-Z\u0101\u0100\u0113\u0112\u012B\u012A\u014D\u014C\u016B\u016A\u0233\u0232\u0103\u0102\u0115\u0114\u012D\u012C\u014F\u014E\u016D\u016C\u0177\u0176])*([\u0101\u0100\u0113\u0112\u012B\u012A\u014D\u014C\u016B\u016A\u0233\u0232])([bcdfghjklmnpqrstvwxz]|qu|[BCDFGHJKLMNPQRSTVWXZ]|Qu|QU|[^\na-zA-Z\u0101\u0100\u0113\u0112\u012B\u012A\u014D\u014C\u016B\u016A\u0233\u0232\u0103\u0102\u0115\u0114\u012D\u012C\u014F\u014E\u016D\u016C\u0177\u0176])*){2})|((([bcdfghjklmnpqrstvwxz]|qu|[BCDFGHJKLMNPQRSTVWXZ]|Qu|QU|[^\na-zA-Z\u0101\u0100\u0113\u0112\u012B\u012A\u014D\u014C\u016B\u016A\u0233\u0232\u0103\u0102\u0115\u0114\u012D\u012C\u014F\u014E\u016D\u016C\u0177\u0176])*([\u0101\u0100\u0113\u0112\u012B\u012A\u014D\u014C\u016B\u016A\u0233\u0232])([bcdfghjklmnpqrstvwxz]|qu|[BCDFGHJKLMNPQRSTVWXZ]|Qu|QU|[^\na-zA-Z\u0101\u0100\u0113\u0112\u012B\u012A\u014D\u014C\u016B\u016A\u0233\u0232\u0103\u0102\u0115\u0114\u012D\u012C\u014F\u014E\u016D\u016C\u0177\u0176])*)(([bcdfghjklmnpqrstvwxz]|qu|[BCDFGHJKLMNPQRSTVWXZ]|Qu|QU|[^\na-zA-Z\u0101\u0100\u0113\u0112\u012B\u012A\u014D\u014C\u016B\u016A\u0233\u0232\u0103\u0102\u0115\u0114\u012D\u012C\u014F\u014E\u016D\u016C\u0177\u0176])*([\u0103\u0102\u0115\u0114\u012D\u012C\u014F\u014E\u016D\u016C\u0177\u0176])([bcdfghjklmnpqrstvwxz]|qu|[BCDFGHJKLMNPQRSTVWXZ]|Qu|QU|[^\na-zA-Z\u0101\u0100\u0113\u0112\u012B\u012A\u014D\u014C\u016B\u016A\u0233\u0232\u0103\u0102\u0115\u0114\u012D\u012C\u014F\u014E\u016D\u016C\u0177\u0176])*)(([bcdfghjklmnpqrstvwxz]|qu|[BCDFGHJKLMNPQRSTVWXZ]|Qu|QU|[^\na-zA-Z\u0101\u0100\u0113\u0112\u012B\u012A\u014D\u014C\u016B\u016A\u0233\u0232\u0103\u0102\u0115\u0114\u012D\u012C\u014F\u014E\u016D\u016C\u0177\u0176])*([\u0103\u0102\u0115\u0114\u012D\u012C\u014F\u014E\u016D\u016C\u0177\u0176])([bcdfghjklmnpqrstvwxz]|qu|[BCDFGHJKLMNPQRSTVWXZ]|Qu|QU|[^\na-zA-Z\u0101\u0100\u0113\u0112\u012B\u012A\u014D\u014C\u016B\u016A\u0233\u0232\u0103\u0102\u0115\u0114\u012D\u012C\u014F\u014E\u016D\u016C\u0177\u0176])*)))
+function scan(){
+    try{
+        var newtext = getParameterByName('text');
+        if (newtext.length>0){
+        document.getElementById("input").value = newtext    
+        } 
+        
+        }
+        catch(err3){}
+    var text = document.getElementById('input').value
+    scansion (text)
+}
 
+function getParameterByName(name, url) {
+    if (!url) {
+      url = window.location.href;
+    }
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
 
-function scansion(){
+function scansion(text){
 document.getElementById('input').value = document.getElementById('input').value.replace(/\r/g,'\n')
 document.getElementById('input').value = document.getElementById('input').value.replace(/\u0101/g,'a')
 document.getElementById('input').value = document.getElementById('input').value.replace(/\u0100/g,'A')
@@ -70,7 +93,7 @@ document.getElementById('input').value = document.getElementById('input').value.
 document.getElementById('input').value = document.getElementById('input').value.replace(/\u0232/g,'Y')
 document.getElementById('input').value = document.getElementById('input').value.replace(/(^) */gm,'$1')
 
-var text = document.getElementById('input').value
+//var text = document.getElementById('input').value
 text = text.replace(/q[uU]/gm,'q')
 text = text.replace(/Q[uU]/gm,'Q')
 //replace consonant i with j
@@ -2234,5 +2257,7 @@ text=text.replace(/([bcdfghjklmnpqrstvwx])([\u0304\u0306])([aeiouyAEIOUY])/g,'$1
 document.getElementById('output').innerText = text
 
 document.getElementById('output').innerHTML = document.getElementById('output').innerHTML.replace(/\u1110(.*?)\u1111/g,'<sub>$1</sub>')
+
+return text
 
 }
