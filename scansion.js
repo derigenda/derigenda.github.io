@@ -2254,9 +2254,26 @@ text = text.replace(/([aeAE][\u0306\u0304][euEU])([\u0306\u0306])([aeiouyAEIOUY]
 
 text=text.replace(/([bcdfghjklmnpqrstvwx])([\u0304\u0306])([aeiouyAEIOUY])/g,'$1$3$2')
 
+//begin separate feet
+text = text.replace(/(^[^\u0304]*\u0304[^\u0304\u0306]*(\u0304|\u0306[^\u0306]*\u0306)[bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ]*)/gm,'$1\|')
+text = text.replace(/(\|[^\u0304]*\u0304[^\u0304\u0306]*(\u0304|\u0306[^\u0306]*\u0306)[bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ]*)/gm,'$1\|')
+text = text.replace(/(\|[^\u0304]*\u0304[^\u0304\u0306]*(\u0304|\u0306[^\u0306]*\u0306)[bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ]*)/gm,'$1\|')
+text = text.replace(/(\|[^\u0304]*\u0304[^\u0304\u0306]*(\u0304|\u0306[^\u0306]*\u0306)[bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ]*)/gm,'$1\|')
+text = text.replace(/(\|[^\u0304]*\u0304[^\u0304\u0306]*(\u0304|\u0306[^\u0306]*\u0306)[bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ]*)/gm,'$1\|')
+
+text = text.replace(/\|+/gm,'\|')
+text = text.replace(/q\|u/gm,'qu\|')
+text = text.replace(/([\u0304\u0306])\|([aeiouy])([^\u0304\u0306])/gm,'$1$2\|$3')
+text = text.replace(/\|([bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ]+)/gm,'$1\|')
+//end separate feet
+
+
 document.getElementById('output').innerText = text
 
 document.getElementById('output').innerHTML = document.getElementById('output').innerHTML.replace(/\u1110(.*?)\u1111/g,'<sub>$1</sub>')
+
+
+
 
 return text
 
