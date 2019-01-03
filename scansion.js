@@ -2264,6 +2264,12 @@ text = text.replace(/(\|[^\u0304]*\u0304[^\u0304\u0306]*(\u0304|\u0306[^\u0306]*
 text = text.replace(/\|+/gm,'\|')
 text = text.replace(/q\|u/gm,'qu\|')
 
+
+
+text = text.replace(/([\u0304\u0306])\|([aeiouy])([^\u0304\u0306])/gm,'$1$2\|$3')
+text = text.replace(/\|([bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ]+)/gm,'$1\|')
+
+//prefixes to be follows by separators
 text = text.replace(/([^a-zA-Z\u0304\u0306]su[\u0304\u0306]b)([bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ]+)\|/gm,'$1\|$2')
 text = text.replace(/([^a-zA-Z\u0304\u0306]co[\u0304\u0306]m)([bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ]+)\|/gm,'$1\|$2')
 text = text.replace(/([^a-zA-Z\u0304\u0306]di[\u0304\u0306]s)([bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ]+)\|/gm,'$1\|$2')
@@ -2275,8 +2281,6 @@ text = text.replace(/([^a-zA-Z\u0304\u0306]a[\u0304\u0306]b)([bcdfghjklmnpqrstvw
 text = text.replace(/([^a-zA-Z\u0304\u0306]tra[\u0304\u0306]ns)([bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ]+)\|/gm,'$1\|$2')
 text = text.replace(/([^a-zA-Z\u0304\u0306]e[\u0304\u0306]x)([bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ]+)\|/gm,'$1\|$2')
 
-text = text.replace(/([\u0304\u0306])\|([aeiouy])([^\u0304\u0306])/gm,'$1$2\|$3')
-text = text.replace(/\|([bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ]+)/gm,'$1\|')
 //end separate feet
 
 
