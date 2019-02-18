@@ -23,6 +23,9 @@ function hexDecode(value){
 
 function verify (){
 var hexstring = getParameterByName('str')
+hexstring = hexstring.replace(/n/gm,'33')
+hexstring = hexstring.replace(/o/gm,'38')
+hexstring = hexstring.replace(/p/gm,'39')
 hexstring = hexstring.replace(/q/gm,'ts')
 hexstring = hexstring.replace(/r/gm,'fyxy')
 hexstring = hexstring.replace(/s/gm,'yuy')
