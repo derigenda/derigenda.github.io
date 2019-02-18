@@ -1241,6 +1241,8 @@ function ChangeUrl(page, url) {
     $('body').append('<div id="EoverLay" style="' + email_overlay + '"><span style="font-size:30px"; id="time">Email results</span><p><h4><ol id="embody" style="text-align:left"></ol></h4></div>');
 document.getElementById('embody').innerHTML = document.getElementById('embody').innerHTML + '<br><textarea onInput="updateEmail()" placeholder="Enter your initials or a name." id="ininput"></textarea><br><span id="emailbody"><span id="initials">...</span> was tested on <span id="testname">...</span><span id="wasrange">, words </span><span id="testrange"></span>.<br>The score was <span id="thescore"></span>/<span id="totalqs"></span>.<br></span><button id="finalise" onclick="sendemail()">Finalise email</button><button id="cancellation" onclick="cancelemail()">Cancel</button><span id="message" style="color:red"></span><a id="verifylink"></a><div id="emailbuttons"></div>'
 
+document.getElementById('ininput').style.width = '75%'
+
 document.getElementById('thescore').innerHTML = document.getElementById('numcorrect').innerHTML
 
 document.getElementById('totalqs').innerHTML = document.getElementById('numtotal').innerHTML
@@ -1348,7 +1350,9 @@ var url = window.location.href
 url = url.split('vocabtester.htm')[0]
 
 document.getElementById('verifylink').setAttribute('href',url +'verifier.htm?str=' + verifystring)
-document.getElementById('verifylink').innerHTML = "Verify"
+document.getElementById('verifylink').innerHTML = document.getElementById('verifylink').getAttribute('href')
+
+
 document.getElementById('emailbuttons').innerHTML = '<button id="gmail" onclick="gmail()">GMail</button><button id="otheremail" onclick="otheremail()">Other Email</button><button onclick="cancelemail()">Cancel</button>'
 if(detectmob() == true){document.getElementById('gmail').outerHTML=''
 document.getElementById("otheremail").innerHTML = "Email"
