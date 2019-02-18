@@ -1355,7 +1355,7 @@ document.getElementById("otheremail").innerHTML = "Email"
 }
 
 } else {
-document.getElementById('message').innerHTML = 'Please enter your initials'
+document.getElementById('message').innerHTML = 'Please enter your initials or a name.'
 
 }
       }
