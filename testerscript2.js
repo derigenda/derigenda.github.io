@@ -1212,7 +1212,7 @@ function ChangeUrl(page, url) {
         'margin-top:-200px';
 
     $('body').append('<div id="overLay" style="' + email_overlay + '"><span style="font-size:30px"; id="time">Email results</span><p><h4><ol id="embody" style="text-align:left"></ol></h4></div>');
-document.getElementById('embody').innerHTML = document.getElementById('embody').innerHTML + '<br><textarea onInput="updateEmail()" placeholder="Enter your initials" id="ininput"></textarea><br><span id="emailbody"><span id="initials">...</span> was tested on <span id="testname">...</span><span id="wasrange">, words </span><span id="testrange"></span>.<br>The score was <span id="thescore"></span>/<span id="totalqs"></span>.</span><br><button id="finalise" onclick="sendemail()">Finalise email</button><br><span id="message" style="color:red"></span><a id="verifylink"></a><div id="emailbuttons"></div>'
+document.getElementById('embody').innerHTML = document.getElementById('embody').innerHTML + '<br><textarea onInput="updateEmail()" placeholder="Enter your initials" id="ininput"></textarea><br><span id="emailbody"><span id="initials">...</span> was tested on <span id="testname">...</span><span id="wasrange">, words </span><span id="testrange"></span>.<br>The score was <span id="thescore"></span>/<span id="totalqs"></span>.<br></span><button id="finalise" onclick="sendemail()">Finalise email</button><br><span id="message" style="color:red"></span><a id="verifylink"></a><div id="emailbuttons"></div>'
 
 document.getElementById('thescore').innerHTML = document.getElementById('numcorrect').innerHTML
 
@@ -1264,6 +1264,16 @@ document.getElementById('message').innerHTML = 'Please enter your initials'
 email = encodeURIComponent(email )
 
 email = 'https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&su=Vocab+test&body=' + email
+
+var win = window.open(email, '_blank');
+win.focus();
+      }
+
+      function otheremail(){
+        var email = document.getElementById('emailbody').innerText + ' ' + document.getElementById('verifylink').getAttribute('href')
+email = encodeURIComponent(email )
+
+email = 'mailto:?&subject=Vocab+test&body=' + email
 
 var win = window.open(email, '_blank');
 win.focus();
