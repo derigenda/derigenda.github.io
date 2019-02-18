@@ -272,6 +272,20 @@ if(detectmob() == false){
 } 
 
 document.getElementById('urlline').innerText = window.location.href.split('?')[0] + '?test='
+var titlename
+titlename = document.getElementById('menuname').innerText
+if(titlename.substring(0,5)== 'Chapt'){
+  titlename = 'Vocab tester for Latin to GCSE ' + titlename
+} else {
+  if(titlename.substring(0,5)== 'Stage'){
+    titlename = 'CLC ' + titlename
+  }
+
+
+  titlename = "Latin vocab tester: " + titlename
+}
+document.getElementsByTagName('title')[0].innerHTML= titlename
+
 var testname 
 if (document.getElementById('menuname').innerText == 'OCR GCSE'){
   document.getElementById('tips').innerHTML = 'Try these filters:<br><i>1-10<br>a-c,f,h<br>part:adverb</i>'
