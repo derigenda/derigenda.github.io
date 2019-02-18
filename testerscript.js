@@ -1,5 +1,31 @@
 // to add vocab: create menu in htm; give it a fresh id; update menuhide routines; update function chooser(); create sheet in Mr Data Converter taking care to give cells correct class names Meaning-cell etc, using the opening of other tables and preservingonclick="changecolour(this)"> for each tr; update 2 url related bits (search for ogcse)
 
+function luhnCheckDigit(number) {
+  var validChars = "0123456789ABCDEFGHIJKLMNOPQRSTUVYWXZ_";
+  number = number.toUpperCase().trim();
+  var sum = 0;
+  for (var i = 0; i < number.length; i++) {
+    var ch = number.charAt(number.length - i - 1);
+    if (validChars.indexOf(ch) < 0) {
+      alert("Invalid character(s) found!");
+      return false;
+    }
+    var digit = ch.charCodeAt(0) - 48;
+    var weight;
+    if (i % 2 == 0) {
+      weight = (2 * digit) - parseInt(digit / 5) * 9;
+    }
+    else {
+      weight = digit;
+    }
+    sum += weight;
+  }
+  sum = Math.abs(sum) + 10;
+  var digit = (10 - (sum % 10)) % 10;
+  return digit;
+}
+
+
 function chooser(){
 button()
 
@@ -1248,6 +1274,13 @@ var datetime = currentdate.getDate() + "/"
 var verifystring = document.getElementById('initials').innerHTML + '|' +  document.getElementById('testname').innerHTML + '|' + document.getElementById('testrange').innerHTML + '|' + document.getElementById('thescore').innerHTML + '|' + document.getElementById('totalqs').innerHTML + '|' + datetime
 
 verifystring = hexEncode(verifystring)
+var verifydec = luhnCheckDigit(verifystring)
+verifystring = verifystring + verifydec
+verifystring = verifystring.replace(/000/gm,'z')
+verifystring = verifystring.replace(/00/gm,'y')
+verifystring = verifystring.replace(/32/gm,'x')
+verifystring = verifystring.replace(/36/gm,'w')
+
 var url = window.location.href
 url = url.split('vocabtester.htm')[0]
 
