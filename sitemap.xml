@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+    <url>
+        <loc>https://derigenda.co.uk/</loc>
+    </url>
+    <url>
+        <loc>https://derigenda.co.uk/vocabtester.htm</loc>
+    </url>
+    <url>
+        <loc>https://derigenda.co.uk/vocabtester.htm?test=clc1&filter=#</loc>
+    </url>
+    <url>
+        <loc>https://derigenda.co.uk/vocabtester.htm?test=clc2&filter=#</loc>
+    </url>
+    <url>
+        <loc>https://derigenda.co.uk/vocabtester.htm?test=t</loc>
+    </url>
+    <url>
+        <loc>https://derigenda.co.uk/vocabtester.htm?test=ogcse</loc>
+    </url>
+    <url>
+        <loc>https://derigenda.co.uk/vocabtester.htm?test=egcse</loc>
+    </url>
+    <url>
+        <loc>https://derigenda.co.uk/vocabtester.htm?test=as</loc>
+    </url>
+    <url>
+        <loc>https://derigenda.co.uk/vocabtester.htm?test=ovid</loc>
+    </url>
+    <url>
+        <loc>https://derigenda.co.uk/vocabtester.htm?test=livy</loc>
+    </url>
+    <url>
+        <loc>https://derigenda.co.uk/vocabtester.htm?test=e</loc>
+    </url>
+    <url>
+        <loc>https://derigenda.co.uk/scansion.htm</loc>
+    </url>
+</urlset>
