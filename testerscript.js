@@ -1350,6 +1350,8 @@ url = url.split('vocabtester.htm')[0]
 document.getElementById('verifylink').setAttribute('href',url +'verifier.htm?str=' + verifystring)
 document.getElementById('verifylink').innerHTML = "Verify"
 document.getElementById('emailbuttons').innerHTML = '<button id="gmail" onclick="gmail()">GMail</button><button id="otheremail" onclick="otheremail()">Other Email</button><button onclick="cancelemail()">Cancel</button>'
+if(detectmob() == true){document.getElementById('gmail').outerHTML=''}
+
 } else {
 document.getElementById('message').innerHTML = 'Please enter your initials'
 
