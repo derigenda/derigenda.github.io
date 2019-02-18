@@ -1264,10 +1264,9 @@ document.getElementById('cancellation').outerHTML = ''
 document.getElementById('message').outerHTML = ''
 var currentdate = new Date(); 
 var mins
-if ((currentdate.getMinutes() +'').length=1){
+mins = currentdate.getMinutes() +'' 
+if (mins.length==1){
 mins = '0' +currentdate.getMinutes()
-} else {
-  mins = currentdate.getMinutes()
 }
 
 var datetime = currentdate.getDate() + "/"
