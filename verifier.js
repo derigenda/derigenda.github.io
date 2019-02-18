@@ -30,7 +30,7 @@ hexstring = hexstring.replace(/z/gm,'000')
 
 var check = hexstring.replace(/.*(.)$/gm,'$1')
 var hexstring = hexstring.substring(0,hexstring.length-1)
-var truecheck = luhnCheckDigit(main) + ''
+var truecheck = luhnCheckDigit(hexstring) + ''
 
 if (check == truecheck){
 document.getElementById('verified').innerHTML = "YES"
