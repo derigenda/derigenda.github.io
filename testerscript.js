@@ -281,8 +281,8 @@ if(titlename.substring(0,5)== 'Chapt'){
     titlename = 'CLC ' + titlename
   }
 
-  titlena = titlename.replace(/All CLC/gm,'Cambridge Latin Course ')
-  titlena = titlename.replace(/All Book 1/gm,'Latin to GCSE: Book 1')
+  titlename = titlename.replace(/All CLC/gm,'Cambridge Latin Course ')
+  titlename = titlename.replace(/All Book 1/gm,'Latin to GCSE: Book 1')
 
   titlename = "Latin vocab tester: " + titlename
 }
