@@ -1287,6 +1287,8 @@ verifystring = verifystring.replace(/32/gm,'x')
 verifystring = verifystring.replace(/36/gm,'w')
 verifystring = verifystring.replace(/31/gm,'v')
 verifystring = verifystring.replace(/7c/gm,'u')
+verifystring = verifystring.replace(/35/gm,'t')
+verifystring = verifystring.replace(/yuy/gm,'s')
 
 var url = window.location.href
 url = url.split('vocabtester.htm')[0]
