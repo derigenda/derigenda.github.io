@@ -1369,6 +1369,7 @@ var win = window.open(email, '_blank');
 win.focus();
 document.getElementById('EoverLay').outerHTML = ''
 document.getElementById('theemailingbutton').outerHTML = ''
+document.getElementById("otheremail").innerHTML = "Email"
       }
 
       function otheremail(){
