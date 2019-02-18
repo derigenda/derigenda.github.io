@@ -1246,6 +1246,47 @@ document.getElementById('thescore').innerHTML = document.getElementById('numcorr
 document.getElementById('totalqs').innerHTML = document.getElementById('numtotal').innerHTML
 
 document.getElementById('testname').innerHTML =getParameterByName('test').toUpperCase()
+document.getElementById('testname').setAttribute('test',getParameterByName('test'))
+var testname = document.getElementById('testname').innerHTML.toLowerCase()
+
+if(testname=='stage1'){testname='Stage 1'}
+if(testname=='stage2'){testname='Stage 2'}
+if(testname=='stage3'){testname='Stage 3'}
+if(testname=='stage4'){testname='Stage 4'}
+if(testname=='stage5'){testname='Stage 5'}
+if(testname=='stage6'){testname='Stage 6'}
+if(testname=='stage7'){testname='Stage 7'}
+if(testname=='stage8'){testname='Stage 8'}
+if(testname=='stage9'){testname='Stage 9'}
+if(testname=='stage10'){testname='Stage 10'}
+if(testname=='stage11'){testname='Stage 11'}
+if(testname=='stage12'){testname='Stage 12'}
+if(testname=='stage13'){testname='Stage 13'}
+if(testname=='stage14'){testname='Stage 14'}
+if(testname=='stage15'){testname='Stage 15'}
+if(testname=='stage16'){testname='Stage 16'}
+if(testname=='stage17'){testname='Stage 17'}
+if(testname=='stage18'){testname='Stage 18'}
+if(testname=='stage19'){testname='Stage 19'}
+if(testname=='stage20'){testname='Stage 20'}
+if(testname=='ogcse'){testname='OCR GCSE'}
+if(testname=='egcse'){testname='Eduqas GCSE'}
+if(testname=='as'){testname='AS Level'}
+if(testname=='ovid'){testname='Additional Ovid'}
+if(testname=='livy'){testname='Additional Livy'}
+if(testname=='clc1'){testname='All CLC 1'}
+if(testname=='clc2'){testname='All CLC 2'}
+if(testname=='t1'){testname='Chapter 1'}
+if(testname=='t2'){testname='Chapter 2'}
+if(testname=='t3'){testname='Chapter 3'}
+if(testname=='t4'){testname='Chapter 4'}
+if(testname=='t5'){testname='Chapter 5'}
+if(testname=='t6'){testname='Chapter 6'}
+if(testname=='t'){testname='All Book 1'}
+if(testname=='e'){testname='OCR GCSE Eng-Lat'}
+
+document.getElementById('testname').innerHTML = testname
+
 var filter = getParameterByName('filter')
 document.getElementById('testrange').innerHTML = filter
       }
@@ -1277,7 +1318,7 @@ var datetime = currentdate.getDate() + "/"
                 + mins 
 
 
-var verifystring = document.getElementById('initials').innerHTML + '|' +  document.getElementById('testname').innerHTML + '|' + document.getElementById('testrange').innerHTML + '|' + document.getElementById('thescore').innerHTML + '|' + document.getElementById('totalqs').innerHTML + '|' + datetime
+var verifystring = document.getElementById('initials').innerHTML + '|' +  document.getElementById('testname').getAttribute('test').toUpperCase() + '|' + document.getElementById('testrange').innerHTML + '|' + document.getElementById('thescore').innerHTML + '|' + document.getElementById('totalqs').innerHTML + '|' + datetime
 
 verifystring = hexEncode(verifystring)
 var verifydec = luhnCheckDigit(verifystring)
