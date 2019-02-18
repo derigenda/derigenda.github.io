@@ -1294,6 +1294,10 @@ verifystring = verifystring.replace(/ts/gm,'q')
 verifystring = verifystring.replace(/39/gm,'p')
 verifystring = verifystring.replace(/38/gm,'o')
 verifystring = verifystring.replace(/33/gm,'n')
+verifystring = verifystring.replace(/y2/gm,'m')
+verifystring = verifystring.replace(/y3/gm,'l')
+verifystring = verifystring.replace(/y4/gm,'k')
+verifystring = verifystring.replace(/y5/gm,'j')
 
 var url = window.location.href
 url = url.split('vocabtester.htm')[0]
@@ -1324,7 +1328,7 @@ document.getElementById('theemailingbutton').outerHTML = ''
         var email = document.getElementById('emailbody').innerText + ' ' + document.getElementById('verifylink').getAttribute('href')
 email = encodeURIComponent(email )
 
-email = 'mailto:?&subject=Vocab+test&body=' + email
+email = 'mailto:?&subject=Vocab%20test&body=' + email
 
 var win = window.open(email, '_blank');
 win.focus();
