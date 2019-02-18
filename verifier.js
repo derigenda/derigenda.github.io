@@ -45,19 +45,23 @@ hexstring = hexstring.replace(/z/gm,'000')
 var check = hexstring.replace(/.*(.)$/gm,'$1')
 var hexstring = hexstring.substring(0,hexstring.length-1)
 var truecheck = luhnCheckDigit(hexstring) + ''
+var ver
 
 if (check == truecheck){
 document.getElementById('verified').innerHTML = "YES"
 document.getElementById('verified').style.backgroundColor = 'green'
+ver = true
 } else {
     document.getElementById('verified').innerHTML = "NO"
     document.getElementById('verified').style.backgroundColor = 'pink'
-    
+    ver = false
 
 }
 
 
 var str= hexDecode(hexstring)
+
+if (ver==true){
 var properties = str.split('|')
 
 if(properties[1]=='STAGE1'){properties[1]=('Stage 1')}
@@ -101,7 +105,7 @@ document.getElementById('test').innerHTML = properties[1]
 document.getElementById('range').innerHTML = properties[2]
 document.getElementById('score').innerHTML = properties[3]
 document.getElementById('total').innerHTML = properties[4]
-document.getElementById('time').innerHTML = properties[5]
+document.getElementById('time').innerHTML = properties[5]}
 }
 
 function luhnCheckDigit(number) {
