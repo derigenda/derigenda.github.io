@@ -1247,7 +1247,7 @@ var verifystring = document.getElementById('initials').innerHTML + '|' +  docume
 
 verifystring = hexEncode(verifystring)
 var url = window.location.href
-url = url.split('vocabtester.htm')[0]
+url = url.split('vocabtester2.htm')[0]
 
 document.getElementById('verifylink').setAttribute('href',url +'verifier.htm?str=' + verifystring)
 document.getElementById('verifylink').innerHTML = "Verify"
