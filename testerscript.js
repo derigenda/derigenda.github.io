@@ -1263,12 +1263,18 @@ document.getElementById('finalise').outerHTML = ''
 document.getElementById('cancellation').outerHTML = ''
 document.getElementById('message').outerHTML = ''
 var currentdate = new Date(); 
+var mins
+if ((currentdate.getMinutes() +'').length=1){
+mins = '0' +currentdate.getMinutes()
+} else {
+  mins = currentdate.getMinutes()
+}
+
 var datetime = currentdate.getDate() + "/"
                 + (currentdate.getMonth()+1)  + "/" 
                 + currentdate.getFullYear() + " at "  
                 + currentdate.getHours() + ":"  
-                + currentdate.getMinutes() + ":" 
-                + currentdate.getSeconds();
+                + mins 
 
 
 var verifystring = document.getElementById('initials').innerHTML + '|' +  document.getElementById('testname').innerHTML + '|' + document.getElementById('testrange').innerHTML + '|' + document.getElementById('thescore').innerHTML + '|' + document.getElementById('totalqs').innerHTML + '|' + datetime
