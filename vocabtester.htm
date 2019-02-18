@@ -9,14 +9,35 @@
 
   gtag('config', 'UA-134670977-2');
 </script>
-        <script src="testerscript.js">var dictionary; var vocabtest; var testlength; var fingoes; var activeel</script>
+
+<script src="testerscript.js">var dictionary; var vocabtest; var testlength; var fingoes; var activeel</script>
              
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="popper.js"></script>
   <script src="bootstrap.min.js"></script>
   <link rel="stylesheet" href="bootstrap.min.css">
   <link rel="stylesheet" href="modal.css"> 
-    </head>
+  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#edeff5",
+      "text": "#838391"
+    },
+    "button": {
+      "background": "transparent",
+      "text": "#4b81e8",
+      "border": "#4b81e8"
+    }
+  },
+  "position": "bottom-left"
+})});
+</script>  
+  
+  </head>
     <title> Latin vocab tester for GCSE, A-Level, Cambridge Latin Course, with autocomplete suggestions </title>
     <body onload="chooser()" onresize="resizefunction()">
     <div id = "runningtotal" style="position:fixed; top:10px; right:10px;"><span id = "total"></span><span id='middletext'></span><span id="outof"></span></div>
