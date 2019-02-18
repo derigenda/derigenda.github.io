@@ -286,7 +286,7 @@ if(titlename.substring(0,5)== 'Chapt'){
 
   titlename = "Latin vocab tester: " + titlename
 }
-document.getElementsByTagName('title')[0].innerHTML= titlename
+document.getElementsByTagName('title')[0].innerHTML= titlename.replace(/ +/gm,' ')
 
 var testname 
 if (document.getElementById('menuname').innerText == 'OCR GCSE'){
