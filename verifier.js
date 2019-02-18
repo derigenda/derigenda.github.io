@@ -23,6 +23,7 @@ function hexDecode(value){
 
 function verify (){
 var hexstring = getParameterByName('str')
+hexstring = hexstring.replace(/v/gm,'31')
 hexstring = hexstring.replace(/w/gm,'36')
 hexstring = hexstring.replace(/x/gm,'32')
 hexstring = hexstring.replace(/y/gm,'00')
