@@ -1350,7 +1350,9 @@ url = url.split('vocabtester.htm')[0]
 document.getElementById('verifylink').setAttribute('href',url +'verifier.htm?str=' + verifystring)
 document.getElementById('verifylink').innerHTML = "Verify"
 document.getElementById('emailbuttons').innerHTML = '<button id="gmail" onclick="gmail()">GMail</button><button id="otheremail" onclick="otheremail()">Other Email</button><button onclick="cancelemail()">Cancel</button>'
-if(detectmob() == true){document.getElementById('gmail').outerHTML=''}
+if(detectmob() == true){document.getElementById('gmail').outerHTML=''
+document.getElementById("otheremail").innerHTML = "Email"
+}
 
 } else {
 document.getElementById('message').innerHTML = 'Please enter your initials'
@@ -1369,7 +1371,6 @@ var win = window.open(email, '_blank');
 win.focus();
 document.getElementById('EoverLay').outerHTML = ''
 document.getElementById('theemailingbutton').outerHTML = ''
-document.getElementById("otheremail").innerText = "Email"
       }
 
       function otheremail(){
