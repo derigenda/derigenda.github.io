@@ -279,6 +279,8 @@ if(titlename.substring(0,5)== 'Chapt'){
 } else {
   if(titlename.substring(0,5)== 'Stage'){
     titlename = 'CLC ' + titlename
+    titlena = titlename.replace(/All CLC/gm,'Cambridge Latin Course ')
+    titlena = titlename.replace(/All Book 1/gm,'Latin to GCSE: Book 1')
   }
 
 
