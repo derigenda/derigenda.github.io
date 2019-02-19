@@ -88,6 +88,7 @@ if(properties[1]=='STAGE19'){properties[1]=('Stage 19')}
 if(properties[1]=='STAGE20'){properties[1]=('Stage 20')}
 if(properties[1]=='OGCSE'){properties[1]=('OCR GCSE')}
 if(properties[1]=='EGCSE'){properties[1]=('Eduqas GCSE')}
+if(properties[1]=='GGCSE'){properties[1]=('Greek GCSE')}
 if(properties[1]=='AS'){properties[1]=('AS Level')}
 if(properties[1]=='OVID'){properties[1]=('Additional Ovid')}
 if(properties[1]=='LIVY'){properties[1]=('Additional Livy')}

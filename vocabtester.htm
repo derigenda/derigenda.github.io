@@ -1,5 +1,7 @@
+
 <html>
     <head>
+        <meta charset="ISO-8859-1">
         <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134670977-2"></script>
 <script>
@@ -10,7 +12,7 @@
   gtag('config', 'UA-134670977-2');
 </script>
 
-<script src="testerscript.js">var dictionary; var vocabtest; var testlength; var fingoes; var activeel</script>
+<script charset="utf-8" src="testerscript.js">var dictionary; var vocabtest; var testlength; var fingoes; var activeel</script>
              
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="popper.js"></script>
@@ -36,7 +38,7 @@ window.cookieconsent.initialise({
   "position": "bottom-left"
 })});
 </script>  
-  
+
   </head>
     <title> Latin vocab tester for GCSE, A-Level, Cambridge Latin Course, with autocomplete suggestions </title>
     <body onload="chooser()" onresize="resizefunction()">
@@ -138,7 +140,13 @@ window.cookieconsent.initialise({
       <li><a  onmouseover="menuhide()" onclick = "listselect(this)" tabindex="-1" href="#">Additional Ovid</a></li>
       <li><a  onmouseover="menuhide()" onclick = "listselect(this)" tabindex="-1" href="#">Additional Livy</a></li>
       <li><a  onmouseover="menuhide()" onclick = "listselect(this)" tabindex="-1" href="#">OCR GCSE Eng-Lat</a></li>
-      
+      <li class="dropdown-submenu" onmouseover="menuhide4()">
+        <a class="test" tabindex="-1" href="#">Greek lists &#9655;<span class="caret"></span></a>
+        <ul class="dropdown-menu" id="G1" style="position: absolute; left:50%; top:180px; width:12em; background-color: buttonface;">
+            <li><a onclick = "listselect(this)" tabindex="-1" href="#">GCSE Greek</a></li>
+        </ul>
+      </li>
+
     </ul>
   </div>
     <div id="selectionform">
