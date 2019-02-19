@@ -565,8 +565,56 @@ compilerange()
 }
 
 function returnlist(q){
-var url
- url = 'https://derigenda.co.uk/voc-' + getParameterByName('test') + '.htm'
+  var testname
+  if (q == 'OCR GCSE'){
+    testname = 'ogcse'
+   }else if (q == 'Eduqas GCSE'){
+     testname = 'egcse'
+   }else if (q == 'GCSE Greek'){
+      testname = 'ggcse'
+   }else if (q == 'AS Greek'){
+     testname = 'asgrk'
+   }else if (q == 'AS Level'){
+      testname = 'as'
+   }else if (q == 'Additional Ovid'){
+     testname = 'ovid'
+   }else if (q == 'Additional Livy'){
+     testname = 'livy'
+   }
+   else if (q == 'Chapter 1'){
+     testname = 't1'
+   }
+   else if (q == 'Chapter 2'){
+     testname = 't2'
+   }
+   else if (q == 'Chapter 3'){
+      testname = 't3'
+   }
+   else if (q == 'Chapter 4'){
+     testname = 't4'
+   }
+   else if (q == 'Chapter 5'){
+     testname = 't5'
+   }
+   else if (q == 'Chapter 6'){
+      testname = 't6'
+   }
+   else if (q == 'All Book 1'){
+     testname = 't'
+   }
+   else if (q == 'All CLC 1'){
+     testname = 'clc1'
+   }else if (q == 'All CLC 2'){
+     testname = 'clc2'
+   }else if (q == 'OCR GCSE Eng-Lat'){
+       testname = 'e'
+   }
+    else {
+     testname = 'stage' + document.getElementById('menuname').innerText.split(' ')[1]
+     }
+
+  var url
+ url = 'https://derigenda.co.uk/voc-' + testname + '.htm'
 
   var xhr = new XMLHttpRequest();
   // third param = false  = synchronous request
