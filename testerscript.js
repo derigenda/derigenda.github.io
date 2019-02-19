@@ -281,6 +281,58 @@ function listselect(list){
 var q = list.innerText
 if(typeof(q) == 'undefined'){q=list}  
 var list = returnlist(q)
+
+if (q == 'OCR GCSE'){
+  q = 'ogcse'
+ }else if (q == 'Eduqas GCSE'){
+   q = 'egcse'
+ }else if (q == 'GCSE Greek'){
+   q = 'ggcse'
+ }else if (q == 'AS Greek'){
+   q = 'asgrk'
+ }else if (q == 'AS Level'){
+   q = 'as'
+ }else if (q == 'Additional Ovid'){
+   q = 'ovid'
+ }else if (q == 'Additional Livy'){
+   q = 'livy'
+ }
+ else if (q == 'Chapter 1'){
+   q = 't1'
+ }
+ else if (q == 'Chapter 2'){
+ 
+   q = 't2'
+ }
+ else if (q == 'Chapter 3'){
+ 
+   q = 't3'
+ }
+ else if (q == 'Chapter 4'){
+   q = 't4'
+ }
+ else if (q == 'Chapter 5'){
+   q = 't5'
+ }
+ else if (q == 'Chapter 6'){
+ 
+   q = 't6'
+ }
+ else if (q == 'All Book 1'){
+   q = 't'
+ }
+ else if (q == 'All CLC 1'){
+   q = 'clc1'
+     
+ }else if (q == 'All CLC 2'){
+   q = 'clc2'
+ }else if (q == 'OCR GCSE Eng-Lat'){
+     q = 'e'
+ }
+  else {
+   q = 'stage' + document.getElementById('menuname').innerText.split(' ')[1]
+   }
+
 document.getElementById('latinword').setAttribute('list',q)
 
 var tableheight = document.getElementById('modal-content').scrollHeight - 370
