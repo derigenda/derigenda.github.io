@@ -690,11 +690,11 @@ if(q=="AS Greek"){
   jQuery.get("greekas.htm", undefined, function(data) {
     
 }, "html").done(function() {
-   
+  return data
 }).fail(function(jqXHR, textStatus) {
     
 }).always(function() {
-    return data
+ 
 });
 
 }
