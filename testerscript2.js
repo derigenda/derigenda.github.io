@@ -688,13 +688,13 @@ if(q=="GCSE Greek"){
 }
 if(q=="AS Greek"){
   jQuery.get("greekas.htm", undefined, function(data) {
-    return data
+    
 }, "html").done(function() {
-    alert("second success");
+   
 }).fail(function(jqXHR, textStatus) {
-    alert(textStatus);
+    
 }).always(function() {
-    alert("finished");
+    return data
 });
 
 }
