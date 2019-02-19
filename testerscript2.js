@@ -688,7 +688,7 @@ if(q=="GCSE Greek"){
 }
 if(q=="AS Greek"){
 
-  var xhr = createCORSRequest('GET', '/greekas.htm');
+  var xhr = createCORSRequest('GET', 'https://derigenda.co.uk/greekas.htm');
 if (!xhr) {
   alert('CORS not supported');
   return;
