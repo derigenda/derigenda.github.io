@@ -1563,7 +1563,7 @@ return str
       
           // Check if the XMLHttpRequest object has a "withCredentials" property.
           // "withCredentials" only exists on XMLHTTPRequest2 objects.
-          xhr.open(method, url, true);
+          xhr.open(method, url, false);
       
         } else if (typeof XDomainRequest != "undefined") {
       
