@@ -331,7 +331,7 @@ if (document.getElementById('menuname').innerText == 'OCR GCSE'){
   document.getElementById('tips').innerHTML = 'The third column gives the CLC stage.<br>Try these filters:<br><i>1-10<br>a, d, e<br>clc:01</i>'
   testname = 'egcse'
 }else if (document.getElementById('menuname').innerText == 'GCSE Greek'){
-  document.getElementById('tips').innerHTML = 'Try filtering by number.'
+  document.getElementById('tips').innerHTML = 'Filter by number or letter only.'
   testname = 'ggcse'
 }else if (document.getElementById('menuname').innerText == 'AS Level'){
   document.getElementById('tips').innerHTML = 'Try these filters:<br><i>1-10<br>a-c, f, h<br>class:military</i>'
