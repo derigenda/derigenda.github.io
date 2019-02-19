@@ -1,0 +1,176 @@
+
+<html>
+    <head>
+        <meta charset="ISO-8859-1">
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-134670977-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-134670977-2');
+</script>
+
+<script charset="utf-8" src="testerscript2.js">var dictionary; var vocabtest; var testlength; var fingoes; var activeel</script>
+             
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="popper.js"></script>
+  <script src="bootstrap.min.js"></script>
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <link rel="stylesheet" href="modal.css"> 
+  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#edeff5",
+      "text": "#838391"
+    },
+    "button": {
+      "background": "transparent",
+      "text": "#4b81e8",
+      "border": "#4b81e8"
+    }
+  },
+  "position": "bottom-left"
+})});
+</script>  
+
+  </head>
+    <title> Latin vocab tester for GCSE, A-Level, Cambridge Latin Course, with autocomplete suggestions </title>
+    <body onload="chooser()" onresize="resizefunction()">
+    <div id = "runningtotal" style="position:fixed; top:10px; right:10px;"><span id = "total"></span><span id='middletext'></span><span id="outof"></span></div>
+        <table border="5"  style="width: 100%; height: 100%;">
+            <tr style="height: 30%;">
+                <td  id="latinword" style="font-size:90px; text-align:center"></td>
+            </tr>
+            <tr style="height: 15%;">
+                <td style:"text-align:center"><textarea oninput="predict()" id="input" style=" padding: 15px; font-size:80px; width:100%; height:100%; text-align:center"></textarea></td>
+            </tr>
+            <tr style="height: 45%;">
+                <td>
+                    <table border = "5" style="width: 100%; height: 100%;">
+                        <tr style="height: 50%;">
+                            <td id = 'l1' onclick = 'clicksubmit(this)' style="cursor:pointer; width: 33%; font-size:45px; text-align:center">
+                            <td id = 'c1' onclick = 'clicksubmit(this)' style="cursor:pointer; width: 33%; font-size:45px; text-align:center">
+                            <td id = 'r1' onclick = 'clicksubmit(this)' style="cursor:pointer; width: 33%; font-size:45px; text-align:center">
+                        </tr>
+                        <tr style="height: 50%;">
+                            <td id = 'l2' onclick = 'clicksubmit(this)' style="cursor:pointer; width: 33%; font-size:45px; text-align:center">
+                            <td id = 'c2' onclick = 'clicksubmit(this)' style="cursor:pointer; width: 33%; font-size:45px; text-align:center">
+                            <td id = 'r2' onclick = 'clicksubmit(this)' style="cursor:pointer; width: 33%; font-size:45px; text-align:center">
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr style="height: 10%;">
+                <td style="text-align: center" >
+                    
+
+
+                    <!-- Trigger/Open The Modal -->
+                    <button id="myBtn" onclick="button()" style="visibility: hidden">Start</button>
+
+                    <!-- The Modal  -->
+                    <div id="myModal" class="modal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content" id="modal-content" style="text-align: left;">
+                    <span hidden class="close" onclick="closer()">&times;</span>
+
+<div id="container" class="container">
+  <h2 id="h2">Select vocabulary</h2>
+  <p id="pleasechoose">Please first choose which vocab list you would like.</p>                                    
+  <div id="dropdown" class="dropdown" id="ddm">
+    <button id="menuname" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Select vocab
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu" style="background-color: buttonface;">
+      <li class="dropdown-submenu" onmouseover="menuhide1()">
+        <a class="test" tabindex="-1" href="#">Cambridge Latin Course 1 &#9655;<span class="caret"></span></a>
+        <ul class="dropdown-menu" id="CLC1" style="position: absolute; left:50%; top:20px; width:12em; background-color: buttonface;">
+            <li><a onclick = "listselect(this)" tabindex="-1" href="#">All CLC 1</a></li>
+          <li><a onclick = "listselect(this)" tabindex="-1" href="#">Stage 1</a></li>
+          <li><a onclick = "listselect(this)" tabindex="-1" href="#">Stage 2</a></li>
+          <li><a onclick = "listselect(this)" tabindex="-1" href="#">Stage 3</a></li>
+          <li><a onclick = "listselect(this)" tabindex="-1" href="#">Stage 4</a></li>
+          <li><a onclick = "listselect(this)" tabindex="-1" href="#">Stage 5</a></li>
+          <li><a onclick = "listselect(this)" tabindex="-1" href="#">Stage 6</a></li>
+          <li><a onclick = "listselect(this)" tabindex="-1" href="#">Stage 7</a></li>
+          <li><a onclick = "listselect(this)" tabindex="-1" href="#">Stage 8</a></li>
+          <li><a onclick = "listselect(this)" tabindex="-1" href="#">Stage 9</a></li>
+          <li><a onclick = "listselect(this)" tabindex="-1" href="#">Stage 10</a></li>
+          <li><a onclick = "listselect(this)" tabindex="-1" href="#">Stage 11</a></li>
+          <li><a onclick = "listselect(this)" tabindex="-1" href="#">Stage 12</a></li>
+        </ul>
+      </li>
+
+
+      <li class="dropdown-submenu" onmouseover="menuhide2()">
+        <a class="test" tabindex="-1" href="#">Cambridge Latin Course 2 &#9655;<span class="caret"></span></a>
+        <ul class="dropdown-menu" id="CLC2" style="position: absolute; left:50%; top:20px; width:12em; background-color: buttonface;">
+            <li><a onclick = "listselect(this)" tabindex="-1" href="#">All CLC 2</a></li>
+          <li><a onclick = "listselect(this)" tabindex="-1" href="#">Stage 13</a></li>
+          <li><a onclick = "listselect(this)" tabindex="-1" href="#">Stage 14</a></li>
+          <li><a onclick = "listselect(this)" tabindex="-1" href="#">Stage 15</a></li>
+          <li><a onclick = "listselect(this)" tabindex="-1" href="#">Stage 16</a></li>
+          <li><a onclick = "listselect(this)" tabindex="-1" href="#">Stage 17</a></li>
+          <li><a onclick = "listselect(this)" tabindex="-1" href="#">Stage 18</a></li>
+          <li><a onclick = "listselect(this)" tabindex="-1" href="#">Stage 19</a></li>
+          <li><a onclick = "listselect(this)" tabindex="-1" href="#">Stage 20</a></li>
+        </ul>
+      </li>
+      <li class="dropdown-submenu" onmouseover="menuhide3()">
+        <a class="test" tabindex="-1" href="#">Latin to GCSE &#9655;<span class="caret"></span></a>
+        <ul class="dropdown-menu" id="T1" style="position: absolute; left:50%; top:20px; width:12em; background-color: buttonface;">
+            <li><a onclick = "listselect(this)" tabindex="-1" href="#">All Book 1</a></li>
+            <li><a onclick = "listselect(this)" tabindex="-1" href="#">Chapter 1</a></li>
+            <li><a onclick = "listselect(this)" tabindex="-1" href="#">Chapter 2</a></li>
+            <li><a onclick = "listselect(this)" tabindex="-1" href="#">Chapter 3</a></li>
+            <li><a onclick = "listselect(this)" tabindex="-1" href="#">Chapter 4</a></li>
+            <li><a onclick = "listselect(this)" tabindex="-1" href="#">Chapter 5</a></li>
+            <li><a onclick = "listselect(this)" tabindex="-1" href="#">Chapter 6</a></li>
+        </ul>
+      </li>
+      <li><a  onmouseover="menuhide()" onclick = "listselect(this)" tabindex="-1" href="#">OCR GCSE</a></li>
+      <li><a  onmouseover="menuhide()" onclick = "listselect(this)" tabindex="-1" href="#">Eduqas GCSE</a></li>
+      <li><a  onmouseover="menuhide()" onclick = "listselect(this)" tabindex="-1" href="#">OCR GCSE Eng-Lat</a></li>
+      <li><a  onmouseover="menuhide()" onclick = "listselect(this)" tabindex="-1" href="#">AS Level</a></li>
+      <li><a  onmouseover="menuhide()" onclick = "listselect(this)" tabindex="-1" href="#">Additional Ovid</a></li>
+      <li><a  onmouseover="menuhide()" onclick = "listselect(this)" tabindex="-1" href="#">Additional Livy</a></li>
+      <li class="dropdown-submenu" onmouseover="menuhide4()">
+        <a class="test" tabindex="-1" href="#">Greek lists &#9655;<span class="caret"></span></a>
+        <ul class="dropdown-menu" id="G1" style="position: absolute; left:50%; top:85%; width:12em; background-color: buttonface;">
+            <li><a onclick = "listselect(this)" tabindex="-1" href="#">GCSE Greek</a></li>
+            <li><a onclick = "listselect(this)" tabindex="-1" href="#">AS Greek</a></li>
+        </ul>
+      </li>
+
+    </ul>
+  </div>
+    <div id="selectionform">
+    <div>
+</div>
+<script>
+$(document).ready(function(){
+  $('.dropdown-submenu a.test').on("click", function(e){
+    $(this).next('ul').toggle();
+    e.stopPropagation();
+    e.preventDefault();
+  });
+});
+</script>
+
+                    </div>
+
+                    </div>
+
+
+
+                </td>    
+            <tr>
+        </table>
+    </body>
+</html>                        
