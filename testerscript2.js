@@ -610,7 +610,7 @@ function returnlist(q){
        testname = 'e'
    }
     else {
-     testname = 'stage' + document.getElementById('menuname').innerText.split(' ')[1]
+     testname = 'stage' + q.split(' ')[1]
      }
 
   var url
