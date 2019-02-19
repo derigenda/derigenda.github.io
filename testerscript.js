@@ -270,6 +270,7 @@ function menuhide4(){
 }
 
 function listselect(list){
+ 
   try {
     document.getElementById('CLC1').style.display = 'none'
   }
@@ -281,7 +282,7 @@ function listselect(list){
 var q = list.innerText
 if(typeof(q) == 'undefined'){q=list}  
 var list = returnlist(q)
-
+document.getElementById('menuname').innerHTML = q
 
 document.getElementById('latinword').setAttribute('list',q)
 
