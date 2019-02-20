@@ -115,7 +115,7 @@ resizefunction()
 
 function resizefunction()
  {
-  var tableheight = window.innerHeight *.8 - 350
+  var tableheight = window.innerHeight *.8 - 370
   if(detectmob() == true){
     tableheight = window.innerHeight - 640
   }
@@ -266,6 +266,12 @@ function menuhide3(){
     catch(err){  }
 }
 
+function submitOnEnter(event){
+  if(event.which === 13){
+    event.preventDefault();
+    go()
+  }
+}
 function menuhide4(){
 
   try {
@@ -308,7 +314,7 @@ var tableheight = document.getElementById('modal-content').scrollHeight - 370
 
 if(detectmob()==true){
   tableheight = tableheight - 210
-document.getElementById("selectionform").innerHTML = '<h2 id="enterfilter">Choose words</h2><p><textarea id="criteria" style = "overflow:hidden; height:60px; width:60%; font-size:40px;" oninput="filter()"></textarea><p><div id = "tablediv" style="overflow-y: scroll; height:' + tableheight+ 'px;">'+ list +'</div><p><div syle="bottom:5px"><td><button id="go" onclick="go()" style="width:50%;font-size:40px">Go</button></td><td><button id="selectall" onclick="selectall()" style="width:50%;font-size:40px">Select all</button><br></td><td><button id="selectnone" onclick="selectnone()" style="width:50%;font-size:40px">Clear selection</button></td><td><button id="recenterr" onclick="recenterr()" style="width:50%;font-size:40px">Past errors</button></td><td><button id="printable" onclick="printable()" style="width:50%;font-size:40px">Print test</button></td><br><div hidden id="urlline" style="font-size:30px"></div><div style = "position:absolute; top:0px;right:15px"><h3 style="width: *;text-align: right;">Number selected: <span id = "numberselected";>0</span></h3></div><div id="tips" style = "position:absolute; top:115px; right:50px; background-color: Moccasin; border: 2px solid orange; border-radius: 5px; width:250px;height:130px; padding:10px;"></div> </div>'
+document.getElementById("selectionform").innerHTML = '<h2 id="enterfilter">Choose words</h2><p><textarea id="criteria" name="criteria" style = "overflow:hidden; height:60px; width:60%; font-size:40px;" oninput="filter()"></textarea><p><div id = "tablediv" style="overflow-y: scroll; height:' + tableheight+ 'px;">'+ list +'</div><p><div syle="bottom:5px"><td><button id="go" onclick="go()" style="width:50%;font-size:40px">Go</button></td><td><button id="selectall" onclick="selectall()" style="width:50%;font-size:40px">Select all</button><br></td><td><button id="selectnone" onclick="selectnone()" style="width:50%;font-size:40px">Clear selection</button></td><td><button id="recenterr" onclick="recenterr()" style="width:50%;font-size:40px">Past errors</button></td><td><button id="printable" onclick="printable()" style="width:50%;font-size:40px">Print test</button><button id="showurl" onclick="showurl(this)" style="width:50%;font-size:40px">Email</button></td><br><div hidden id="urlline" style="font-size:30px"></div><div style = "position:absolute; top:0px;right:15px"><h3 style="width: *;text-align: right;">Number selected: <span id = "numberselected";>0</span></h3></div><div id="tips" style = "position:absolute; top:115px; right:50px; background-color: Moccasin; border: 2px solid orange; border-radius: 5px; width:250px;height:130px; padding:10px;"></div> </div>'
 var rows = document.getElementsByTagName('tr')
 document.getElementById('list').setAttribute("style",'line-height:45px; font-size:30px;')
 document.getElementById('list').setAttribute('border','2')
@@ -316,9 +322,9 @@ document.getElementById('runningtotal').setAttribute('style','position:fixed; to
 }
 else{
   
-document.getElementById("selectionform").innerHTML = '<h2 id="enterfilter">Choose words</h2><p><textarea id="criteria" style = "overflow:hidden; height:30px; width:60%;" oninput="filter()"></textarea><p><div id = "tablediv" style="overflow-y: scroll; height:' + tableheight+ 'px;">'+ list +'</div><p><div syle="bottom:5px"><td><button id="go" onclick="go()">Go</button></td><td><button id="selectall" onclick="selectall()">Select all</button></td><td><button id="selectnone" onclick="selectnone()">Clear selection</button></td><td><button id="recenterr" onclick="recenterr()">Past errors</button></td><td><button id="printable" onclick="printable()">Print test</button></td><div hidden id="urlline"></div><div style = "position:absolute; top:50px;right:50px"><h3 style="width: *;text-align: right;">Number selected: <span id = "numberselected";>0</span></h3></div><div id="tips" style = "position:absolute; top:105px; right:50px; background-color: Moccasin; border: 2px solid orange; border-radius: 5px; width:250px;height:140px; padding:5px;"></div> </div>'
+document.getElementById("selectionform").innerHTML = '<h2 id="enterfilter">Choose words</h2><p><textarea name="criteria" id="criteria" style = "overflow:hidden; height:30px; width:60%;" oninput="filter()"></textarea><p><div id = "tablediv" style="overflow-y: scroll; height:' + tableheight+ 'px;">'+ list +'</div><p><div syle="bottom:5px"><td><button id="go" onclick="go()">Go</button></td><td><button id="selectall" onclick="selectall()">Select all</button></td><td><button id="selectnone" onclick="selectnone()">Clear selection</button></td><td><button id="recenterr" onclick="recenterr()">Past errors</button></td><td><button id="printable" onclick="printable()">Print test</button><button id="showurl" onclick="showurl(this)">Email</button></td><div hidden id="urlline"></div><div style = "position:absolute; top:50px;right:50px"><h3 style="width: *;text-align: right;">Number selected: <span id = "numberselected";>0</span></h3></div><div id="tips" style = "position:absolute; top:105px; right:50px; background-color: Moccasin; border: 2px solid orange; border-radius: 5px; width:250px;height:140px; padding:5px;"></div> </div>'
 }
-
+document.getElementById("criteria").addEventListener("keypress", submitOnEnter);
 var lw = document.getElementById('list').scrollWidth +90
 var cw =document.getElementById('modal-content').scrollWidth -140
 if(detectmob() == false){
@@ -436,8 +442,11 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 
 gtag('config', 'UA-134670977-2');
-
+resizefunction()
 }
+
+
+
 function filter(){
   var isgreek
 isgreek = false
@@ -1189,7 +1198,7 @@ function finalscore(){
     emnode.innerText = 'Email result'
     emnode.id = "theemailingbutton"
     emnode.setAttribute('onclick','emailResult()')
-    emnode.setAttribute('style', 'position: absolute; right: 5%; bottom: 42%;')
+    emnode.setAttribute('style', 'position: absolute; right: 5%; bottom: 35%;')
     document.getElementById('test').appendChild(emnode)
 
 
@@ -1438,7 +1447,7 @@ document.getElementById('verifylink').setAttribute('href',url +'verifier.htm?str
 document.getElementById('verifylink').innerHTML = document.getElementById('verifylink').getAttribute('href')
 
 
-document.getElementById('emailbuttons').innerHTML = '<button id="gmail" onclick="gmail()">GMail</button><button id="otheremail" onclick="otheremail()">Other Email</button><button onclick="cancelemail()">Cancel</button>'
+document.getElementById('emailbuttons').innerHTML = '<button id="gmail" onclick="gmail()">Gmail</button><button id="otheremail" onclick="otheremail()">Other Email</button><button onclick="cancelemail()">Cancel</button>'
 if(detectmob() == true){document.getElementById('gmail').outerHTML=''
 document.getElementById("otheremail").innerHTML = "Email"
 }
@@ -1513,4 +1522,51 @@ function rememberedchange(){
 
   localStorage.setItem("reqresponses",document.getElementById('remembered').value)
 document.getElementById('rememberedno').innerHTML = document.getElementById('remembered').value
+}
+function showurl(thebutton){
+
+  var email_overlay = 'position:absolute;' +
+        'top:50%;' +
+        'left:65%;' +
+        'background-color: #f4d742;' +
+        'border: 2px solid red;' +
+        'border-radius: 5px;' +
+        'z-index:1002;' +
+        'overflow:auto;' +
+        'width:30%;' +
+        'text-align:center;' +
+        'height:260px;' +
+        'margin-left:-30%;' +
+        'margin-top:-200px';
+
+    $('body').append('<div id="Eprompt" style="' + email_overlay + '"><span style="font-size:30px"; id="time">Email a link to this test</span><p><h4><ol id="emailbody" style="text-align:left"></ol></h4></div>');
+document.getElementById('emailbody').innerHTML = document.getElementById('emailbody').innerHTML + '<table style="width:90%"><tr><td><button style="width:100%" id="gmailtest" onclick="gmailtest()">Gmail</button></tr></td><tr><td><button style="width:100%" id="emailtest" onclick="emailtest()">Other Email</button></tr></td><td><textarea style="width:100%" onclick="this.focus();this.select()" readonly="readonly" id="theurl"></textarea></td></tr><tr><td><button style="width:100%" id="cancelbutton" onclick="cancelthis()">Cancel</button></tr></td></table><tr>'
+document.getElementById('theurl').value = window.location.href
+document.getElementById('ininput').style.width = '75%'
+
+}
+function cancelthis(){
+  document.getElementById("Eprompt").outerHTML = ""
+}
+
+function emailtest(){
+  document.getElementById("Eprompt").outerHTML = ""
+  var email = window.location.href
+email = encodeURIComponent(email)
+
+email = 'mailto:?&subject=Vocab%20tester&body=' + email
+
+var win = window.open(email, '_blank');
+win.focus();
+}
+
+function gmailtest(){
+  document.getElementById("Eprompt").outerHTML = ""
+  var email = window.location.href
+  email = encodeURIComponent(email)
+  email = 'https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&su=Vocab+tester&body=' + email
+
+var win = window.open(email, '_blank');
+win.focus();
+
 }

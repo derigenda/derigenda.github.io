@@ -36,3 +36,27 @@
     text-decoration: none;
     cursor: pointer;
 }
+
+button {
+	-moz-box-shadow:inset 0px 34px 0px -15px #fff6af;
+	-webkit-box-shadow:inset 0px 34px 0px -15px #fff6af;
+	box-shadow:inset 0px 34px 0px -15px #fff6af;
+	background-color:#ffec64;
+	border:1px solid #ffaa22;
+	display:inline-block;
+	cursor:pointer;
+	color:#333333;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:9px 23px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #ffee66;
+}
+button:hover {
+	background-color:#f7ca83;
+}
+button:active {
+	position:relative;
+	top:1px;
+}
