@@ -116,7 +116,7 @@ resizefunction()
 function resizefunction()
  {
   var tableheight = window.innerHeight *.8 - 350
-  if(detectmob == true){
+  if(detectmob() == true){
     tableheight = window.innerHeight - 640
   }
   if(document.getElementById("tablediv")){
