@@ -740,6 +740,11 @@ dictionary = englisharray
 }
 
 function go(){
+  window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-134670977-2');
   closer()
 if(detectmob() == false){
 $('body').append('<div id="tryarrows" style="position:absolute; right:8%; top:5%; width: 15%; background:orange"><span style="font-size:15px">Type in answers. Use the arrow keys to select words from the options below.</span></div>');}
