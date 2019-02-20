@@ -28,6 +28,23 @@ function luhnCheckDigit(number) {
 
 function chooser(){
 button()
+resizefunction()
+
+var reqresponses
+try{
+   reqresponses = localStorage.getItem("reqresponses")
+}
+catch(err){
+  reqresponses = parseInt(document.getElementById('remembered').value)
+  localStorage.setItem("reqresponses",reqresponses)
+}
+if (reqresponses==''||reqresponses==null){
+  reqresponses =parseInt(document.getElementById('remembered').value)
+  localStorage.setItem("reqresponses",reqresponses)
+}
+
+document.getElementById('remembered').value = parseInt(reqresponses)
+document.getElementById('rememberedno').innerHTML = parseInt(reqresponses)
 
 c = getParameterByName('test')
 f = getParameterByName('filter')
@@ -98,9 +115,9 @@ resizefunction()
 
 function resizefunction()
  {
-  var tableheight = window.innerHeight *.8 - 300
+  var tableheight = window.innerHeight *.8 - 350
   if(detectmob == true){
-    tableheight = tableheight - 270
+    tableheight = tableheight - 280
   }
   if(document.getElementById("tablediv")){
     document.getElementById('tablediv').style.height = tableheight
@@ -1070,7 +1087,7 @@ function submitanswer(answer){
 vocabtest[fingoes] = vocabtest[fingoes].split('||')[1] + '|' + vocabtest[fingoes].split('||')[2] + '|' + correct + '|' + answer
 if(correct==false){
   var latword = document.getElementById('latinword').innerText
-  localStorage.setItem(hexEncode(document.getElementById('latinword').innerText),3)
+  localStorage.setItem(hexEncode(document.getElementById('latinword').innerText),localStorage.getItem("reqresponses"))
   Show_Countdown(2, latword, correctanswer)
 }
 if(correct==true){
@@ -1083,6 +1100,10 @@ if(correct==true){
   }
 
 if(cookievalue != ''){
+if(cookievalue>localStorage.getItem("reqresponses")){
+  cookievalue=localStorage.getItem("reqresponses")
+}
+
 cookievalue = cookievalue - 1
 if(cookievalue>0){localStorage.setItem(hexEncode(document.getElementById('latinword').innerText),cookievalue)} else{
   localStorage.setItem(hexEncode(document.getElementById('latinword').innerText),'')
@@ -1488,3 +1509,8 @@ document.getElementById('theemailingbutton').outerHTML = ''
 return str
       }
 
+function rememberedchange(){
+
+  localStorage.setItem("reqresponses",document.getElementById('remembered').value)
+document.getElementById('rememberedno').innerHTML = document.getElementById('remembered').value
+}
