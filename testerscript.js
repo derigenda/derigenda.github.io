@@ -281,6 +281,7 @@ function listselect(list){
 
 var q = list.innerText
 if(typeof(q) == 'undefined'){q=list}  
+
 var list = returnlist(q)
 document.getElementById('menuname').innerHTML = q
 
@@ -411,6 +412,13 @@ try {
 }
 catch(err) {
 }
+
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-134670977-2');
 
 }
 function filter(){
