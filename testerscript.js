@@ -1527,23 +1527,27 @@ function showurl(thebutton){
 
   var email_overlay = 'position:absolute;' +
         'top:50%;' +
-        'left:65%;' +
+        'left:50%;' +
         'background-color: #f4d742;' +
         'border: 2px solid red;' +
         'border-radius: 5px;' +
         'z-index:1002;' +
         'overflow:auto;' +
-        'width:30%;' +
+        'width:60%;' +
         'text-align:center;' +
-        'height:260px;' +
+        'height:280px;' +
         'margin-left:-30%;' +
         'margin-top:-200px';
 
     $('body').append('<div id="Eprompt" style="' + email_overlay + '"><span style="font-size:30px"; id="time">Email a link to this test</span><p><h4><ol id="emailbody" style="text-align:left"></ol></h4></div>');
 document.getElementById('emailbody').innerHTML = document.getElementById('emailbody').innerHTML + '<table style="width:90%"><tr><td><button style="width:100%" id="gmailtest" onclick="gmailtest()">Gmail</button></tr></td><tr><td><button style="width:100%" id="emailtest" onclick="emailtest()">Other Email</button></tr></td><td><textarea style="width:100%" onclick="this.focus();this.select()" readonly="readonly" id="theurl"></textarea></td></tr><tr><td><button style="width:100%" id="cancelbutton" onclick="cancelthis()">Cancel</button></tr></td></table><tr>'
 document.getElementById('theurl').value = window.location.href
-document.getElementById('ininput').style.width = '75%'
-
+var w
+w = document.getElementById("Eprompt").getBoundingClientRect().width
+if (w>500){
+  document.getElementById("Eprompt").style.width="500px"
+document.getElementById("Eprompt").style.left = (document.getElementById("myModal").getBoundingClientRect().width/2)-0 + "px"
+}
 }
 function cancelthis(){
   document.getElementById("Eprompt").outerHTML = ""
