@@ -115,7 +115,7 @@ resizefunction()
 
 function resizefunction()
  {
-  var tableheight = window.innerHeight *.8 - 370
+  var tableheight = window.innerHeight *.8 - 400
   if(detectmob() == true){
     tableheight = window.innerHeight - 640
   }
@@ -1543,7 +1543,7 @@ function showurl(thebutton){
         'margin-top:-200px';
 
     $('body').append('<div id="Eprompt" style="' + email_overlay + '"><span style="font-size:30px"; id="time">Email a link to this test</span><p><h4><ol id="emailbody" style="text-align:left"></ol></h4></div>');
-document.getElementById('emailbody').innerHTML = document.getElementById('emailbody').innerHTML + '<table style="width:90%"><tr><td><button style="width:100%" id="gmailtest" onclick="gmailtest()">Gmail</button></tr></td><tr><td><button style="width:100%" id="emailtest" onclick="emailtest()">Other Email</button></tr></td><td><textarea style="width:100%" onclick="this.focus();this.select()" readonly="readonly" id="theurl"></textarea></td></tr><tr><td><button style="width:100%" id="cancelbutton" onclick="cancelthis()">Cancel</button></tr></td></table><tr>'
+document.getElementById('emailbody').innerHTML = document.getElementById('emailbody').innerHTML + '<table style="width:90%"><tr><td><button style="width:100%" id="gmailtest" onclick="gmailtest()">Gmail</button></tr></td><tr><td><button style="width:100%" id="emailtest" onclick="emailtest()">Other Email</button></tr></td><tr><td>Copy link:<textarea style="width:100%" onclick="copytext(this)" readonly="readonly" id="theurl"></textarea></td></tr><tr><td><button style="width:100%" id="cancelbutton" onclick="cancelthis()">Cancel</button></tr></td></table><tr>'
 document.getElementById('theurl').value = window.location.href
 var w
 w = document.getElementById("Eprompt").getBoundingClientRect().width
@@ -1576,4 +1576,10 @@ function gmailtest(){
 var win = window.open(email, '_blank');
 win.focus();
 
+}
+
+function copytext(e){
+  e.focus();
+  e.select();
+  navigator.clipboard.writeText(e.innerHTML)
 }
