@@ -298,7 +298,7 @@ function menuhide4(){
 }
 
 function listselect(list){
- 
+menuhide() 
   try {
     document.getElementById('CLC1').style.display = 'none'
   }
