@@ -1543,7 +1543,7 @@ function showurl(thebutton){
         'margin-top:-200px';
 
     $('body').append('<div id="Eprompt" style="' + email_overlay + '"><span style="font-size:30px"; id="time">Email a link to this test</span><p><h4><ol id="emailbody" style="text-align:left"></ol></h4></div>');
-document.getElementById('emailbody').innerHTML = document.getElementById('emailbody').innerHTML + '<table style="width:90%"><tr><td><button style="width:100%" id="gmailtest" onclick="gmailtest()">Gmail</button></tr></td><tr><td><button style="width:100%" id="emailtest" onclick="emailtest()">Other Email</button></tr></td><tr><td>Copy link:<textarea style="width:100%" onclick="copytext(this)" readonly="readonly" id="theurl"></textarea></td></tr><tr><td><button style="width:100%" id="cancelbutton" onclick="cancelthis()">Cancel</button></tr></td></table><tr>'
+document.getElementById('emailbody').innerHTML = document.getElementById('emailbody').innerHTML + '<table style="width:90%"><tr><td><button style="width:100%" id="gmailtest" onclick="gmailtest()">Gmail</button></tr></td><tr><td><button style="width:100%" id="emailtest" onclick="emailtest()">Other Email</button></tr></td><tr><td><span style="font-weight: bold;">Copy link:</span><textarea style="width:100%" onclick="copytext(this)" readonly="readonly" id="theurl"></textarea></td></tr><tr><td><button style="width:100%" id="cancelbutton" onclick="cancelthis()">Cancel</button></tr></td></table><tr>'
 document.getElementById('theurl').value = window.location.href
 var w
 w = document.getElementById("Eprompt").getBoundingClientRect().width
@@ -1581,7 +1581,7 @@ win.focus();
 function copytext(e){
   e.focus();
   e.select();
-  try{    navigator.clipboard.writeText(e.value)}
+  try{    navigator.clipboard.writeText(e.value).then(function (clipboardData) {});}
   catch(err){
 
   }
