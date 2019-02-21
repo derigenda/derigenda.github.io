@@ -103,6 +103,7 @@ if(properties[1]=='T5'){properties[1]=('Chapter 5')}
 if(properties[1]=='T6'){properties[1]=('Chapter 6')}
 if(properties[1]=='T'){properties[1]=('All Book 1')}
 if(properties[1]=='E'){properties[1]=('OCR GCSE Eng-Lat')}
+if(properties[1]=='EG'){properties[1]=('GCSE Eng-Greek')}
 
 document.getElementById('initials').innerHTML = properties[0]
 document.getElementById('test').innerHTML = properties[1]

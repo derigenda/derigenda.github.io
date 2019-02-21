@@ -73,6 +73,7 @@ else if(c=='stage20'){listselect('Stage 20')}
 else if(c=='ogcse'){listselect('OCR GCSE')}
 else if(c=='egcse'){listselect('Eduqas GCSE')}
 else if(c=='ggcse'){listselect('GCSE Greek')}
+else if(c=='eg'){listselect('GCSE Eng-Greek')}
 else if(c=='asgrk'){listselect('AS Greek')}
 else if(c=='as'){listselect('AS Level')}
 else if(c=='ovid'){listselect('Additional Ovid')}
@@ -358,9 +359,12 @@ if (document.getElementById('menuname').innerText == 'OCR GCSE'){
 }else if (document.getElementById('menuname').innerText == 'Eduqas GCSE'){
   document.getElementById('tips').innerHTML = 'The third column gives the CLC stage.<br>Try these filters:<br><i>1-10<br>a, d, e<br>clc:01</i>'
   testname = 'egcse'
-}else if (document.getElementById('menuname').innerText == 'GCSE Greek'){
+}else if (document.getElementById('menuname').innerText == 'GCSE Eng-Greek'){
   document.getElementById('tips').innerHTML = 'Filter by number or letter only.'
-  testname = 'ggcse'
+  testname = 'eg'}
+else if (document.getElementById('menuname').innerText == 'GCSE Greek'){
+    document.getElementById('tips').innerHTML = 'Filter by number or letter only.'
+    testname = 'ggcse'
 }else if (document.getElementById('menuname').innerText == 'AS Greek'){
   document.getElementById('tips').innerHTML = 'Filter by number or letter only.'
   testname = 'asgrk'
@@ -607,8 +611,10 @@ function returnlist(q){
     testname = 'ogcse'
    }else if (q == 'Eduqas GCSE'){
      testname = 'egcse'
-   }else if (q == 'GCSE Greek'){
-      testname = 'ggcse'
+    }else if (q == 'GCSE Greek'){
+       testname = 'ggcse'
+      }else if (q == 'GCSE Eng-Greek'){
+         testname = 'eg'
    }else if (q == 'AS Greek'){
      testname = 'asgrk'
    }else if (q == 'AS Level'){
@@ -675,6 +681,8 @@ function  compiledictionary(){
         var lists=returnlist('AS Greek')}
   else  if(list=='OCR GCSE Eng-Lat'){
     var lists=returnlist('OCR GCSE Eng-Lat')}
+    else  if(list=='GCSE Eng-Greek'){
+      var lists=returnlist('GCSE Eng-Greek')}
   else  if(list=='AS Level'){
     var lists=returnlist('AS Level')}
     else  if(list=='Additional Ovid'){
@@ -766,6 +774,9 @@ dictionary = englisharray
 }
 
 function go(){
+
+  if (document.getElementById('numberselected').innerText!='0'){
+
   window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
@@ -802,7 +813,9 @@ fingoes = 0
 document.getElementById('total').innerText = '1'
 document.getElementById('input').value = ''
 document.getElementById('input').focus()
-startgo()
+startgo()} else{
+  alert("Please first select some words.");
+}
 }
 
 function detectmob() { 
@@ -823,6 +836,11 @@ function detectmob() {
 
 
 function predict(){
+  var isgrk = getParameterByName('test')
+if (isgrk=='eg'){
+  document.getElementById('input').value = greekconvert(document.getElementById('input').value)
+}
+
   
   var word=input.value
   var addition = ''
@@ -831,16 +849,24 @@ function predict(){
     var additionbefore = addition.length
     var dictionarymatches = ''
     for(i=0;i<dictionary.length;i++){
-      if(dictionary[i].substr(0,(word+addition).length).toLowerCase()==(word+addition).toLowerCase()){
+      var dictword
+      dictword = dictionary[i].substr(0,(word+addition).length).toLowerCase()
+      
+      if (isgrk == 'eg'){
+        document.getElementById('input').value = deaccent(document.getElementById('input').value)
+        dictword = deaccent(dictword)
+      }
+      if(dictword==(word+addition).toLowerCase()){
         dictionarymatches=dictionarymatches+dictionary[i]+'|'
       }}
       dictionarymatches=dictionarymatches.replace(/\|$/g,'')
+
       var dictionarymatchlist = dictionarymatches.split('|')
       if(dictionarymatchlist.length==0){extend=false}
       var uniquenextletter = true
-      var firstnextletter = dictionarymatchlist[0].substr((word+addition).length,1)
+      var firstnextletter = deaccent(dictionarymatchlist[0].substr((word+addition).length,1))
       for(j=1;j<dictionarymatchlist.length;j++){
-        if(dictionarymatchlist[j].substr((word+addition).length,1)!=firstnextletter){
+        if(deaccent(dictionarymatchlist[j].substr((word+addition).length,1))!=firstnextletter){
           uniquenextletter=false
         }
       }
@@ -852,10 +878,14 @@ function predict(){
       if(additionbefore==addition.length){
         extend=false
       }
-      
   }
+
   
   if (detectmob() == false){
+if(dictionarymatchlist.length == 1){
+  addition = addition.replace(/\u03c3$/gm,'\u03c2')
+}
+
   document.getElementById('input').value = word + addition}
   //var range = document.getElementById('input').createTextRange()
   //range.collapse(true)
@@ -1024,7 +1054,6 @@ function Show_Countdown(counter, latin, meaning) {
         'height:400px;' +
         'margin-left:-200px;' +
         'margin-top:-200px';
-
     $('body').append('<div id="overLay" style="' + countDown_overlay + '"><span style="font-size:70px"; id="time">3</span><p><h1>' + latin + '</h1><p><h1>' + meaning + '</h1></div>');
 
     var timer = setInterval(function () {
@@ -1087,11 +1116,13 @@ function startgo(){
 function submitanswer(answer){
   var possibleanswers = vocabtest[fingoes].split('||')[2].split(',')
   var correctanswer = vocabtest[fingoes].split('||')[2]
-  answer = answer.match(/[ ]|[a-z]|[A-Z]/g).join('').toLowerCase().replace(/ {2,}/g,' ').trim()
+  answer = deaccent(answer)
+  answer = answer.match(/[ ]|[a-z]|[A-Z]|[α-ω]|[Α-Ω]]/g).join('').toLowerCase().replace(/ {2,}/g,' ').trim()
   var correct = false
   for(i=0;i<possibleanswers.length;i++){
-    possibleanswers[i] = possibleanswers[i].replace(/ ?\(.*?\)/g,'').match(/[ ]|[a-z]|[A-Z]/g).join('').toLowerCase().replace(/ {2,}/g,' ').trim()
-    if(answer == possibleanswers[i]){ correct = true}
+    possibleanswers[i] =deaccent(possibleanswers[i])
+    possibleanswers[i] = possibleanswers[i].replace(/ ?\(.*?\)/g,'').match(/[ ]|[a-z]|[A-Z]|[α-ω]|[Α-Ω]]/g).join('').toLowerCase().replace(/ {2,}/g,' ').trim()
+    if(deaccent(answer) == possibleanswers[i]){ correct = true}
   }
 vocabtest[fingoes] = vocabtest[fingoes].split('||')[1] + '|' + vocabtest[fingoes].split('||')[2] + '|' + correct + '|' + answer
 if(correct==false){
@@ -1157,13 +1188,16 @@ function finalscore(){
         'margin-top:-200px';
 
     $('body').append('<div id="overLay" style="' + finalscore_overlay + '"><span style="font-size:30px"; id="time">Results</span><p><h4><ol id="test" style="text-align:left"></ol></h4></div>');
+    var d
     for(i=0;i<vocabtest.length;i++){
       var node = document.createElement("LI");                 // Create a <li> node
       var latinelement = document.createElement("B");                 // Create a <li> node
       var latinnode = document.createTextNode(vocabtest[i].split('|')[0] + ' ');         // Create a text node
       latinelement.appendChild(latinnode)
       var answerelement = document.createElement("U");                 // Create a <li> node
-      var answernode = document.createTextNode(vocabtest[i].split('|')[3] + ' ');         // Create a text node
+      d = vocabtest[i].split('|')[3] + ' '
+      d=d.replace(/\u03c3 /gm,'\u03c2 ')
+      var answernode = document.createTextNode(d);         // Create a text node
       answerelement.appendChild(answernode)
       var tickelement=document.createElement('font')
       if(vocabtest[i].split('|')[2]=='true'){
@@ -1369,6 +1403,7 @@ if(testname=='stage20'){testname='Stage 20'}
 if(testname=='ogcse'){testname='OCR GCSE'}
 if(testname=='egcse'){testname='Eduqas GCSE'}
 if(testname=='ggcse'){testname='GCSE Greek'}
+if(testname=='eg'){testname='GCSE Eng-Greek'}
 if(testname=='asgrk'){testname='AS Greek'}
 if(testname=='as'){testname='AS Level'}
 if(testname=='ovid'){testname='Additional Ovid'}
@@ -1590,4 +1625,79 @@ function copytext(e){
   catch(err2){
 
   }
+}
+
+function deaccent(strng){
+var characterarray
+characterarray = [
+  ['\u03B1','\u03B2','\u03B3','\u03B4','\u03B5','\u03B6','\u03B7','\u03B8','\u03B9','\u03BA','\u03BB','\u03BC','\u03BD','\u03BE','\u03BF','\u03C0','\u03C1','\u03C3','\u03C4','\u03C5','\u03C6','\u03C7','\u03C8','\u03C9'],
+  ['\u0391','\u0392','\u0393','\u0394','\u0395','\u0396','\u0397','\u0398','\u0399','\u039A','\u039B','\u039C','\u039D','\u039E','\u039F','\u03A0','\u03A1','\u03A3','\u03A4','\u03A5','\u03A6','\u03A7','\u03A8','\u03A9'],
+  ['\u0386','\u03D0','','','\u0388','','\u0389','\u03D1','\u038A','\u03D7','','','','','\u038C','\u03D6','\u03F1','\u03C2','','\u03AB','\u03D5','','','\u038F'],
+  ['\u03AC','','','','\u03AD','','\u03AE','\u03F4','\u0390','\u03F0','','','','','\u03CC','','\u1FE4','\u03F2','','\u038E','','','','\u03CE'],
+  ['\u1F00','','','','\u03F5','','\u1F20','','\u03AA','','','','','','\u1F40','','\u1FE5','','','\u03B0','','','','\u1F60'],
+  ['\u1F01','','','','\u1F10','','\u1F21','','\u03AF','','','','','','\u1F41','','\u1FEC','','','\u03CB','','','','\u1F61'],
+  ['\u1F02','','','','\u1F11','','\u1F22','','\u03CA','','','','','','\u1F42','','','','','\u03CD','','','','\u1F62'],
+  ['\u1F03','','','','\u1F12','','\u1F23','','\u1F30','','','','','','\u1F43','','','','','\u03D2','','','','\u1F63'],
+  ['\u1F04','','','','\u1F13','','\u1F24','','\u1F31','','','','','','\u1F44','','','','','\u03D3','','','','\u1F64'],
+  ['\u1F05','','','','\u1F14','','\u1F25','','\u1F32','','','','','','\u1F45','','','','','\u03D4','','','','\u1F65'],
+  ['\u1F06','','','','\u1F15','','\u1F26','','\u1F33','','','','','','\u1F48','','','','','\u1F50','','','','\u1F66'],
+  ['\u1F07','','','','\u1F18','','\u1F27','','\u1F34','','','','','','\u1F49','','','','','\u1F51','','','','\u1F67'],
+  ['\u1F08','','','','\u1F19','','\u1F28','','\u1F35','','','','','','\u1F4A','','','','','\u1F52','','','','\u1F68'],
+  ['\u1F09','','','','\u1F1A','','\u1F29','','\u1F36','','','','','','\u1F4B','','','','','\u1F53','','','','\u1F69'],
+  ['\u1F0A','','','','\u1F1B','','\u1F2A','','\u1F37','','','','','','\u1F4C','','','','','\u1F54','','','','\u1F6A'],
+  ['\u1F0B','','','','\u1F1C','','\u1F2B','','\u1F38','','','','','','\u1F4D','','','','','\u1F55','','','','\u1F6B'],
+  ['\u1F0C','','','','\u1F1D','','\u1F2C','','\u1F39','','','','','','\u1F78','','','','','\u1F56','','','','\u1F6C'],
+  ['\u1F0D','','','','\u1F72','','\u1F2D','','\u1F3A','','','','','','\u1F79','','','','','\u1F57','','','','\u1F6D'],
+  ['\u1F0E','','','','\u1F73','','\u1F2E','','\u1F3B','','','','','','\u1FF8','','','','','\u1F59','','','','\u1F6E'],
+  ['\u1F0F','','','','\u1FC8','','\u1F2F','','\u1F3C','','','','','','\u1FF9','','','','','\u1F5B','','','','\u1F6F'],
+  ['\u1F70','','','','\u1FC9','','\u1F74','','\u1F3D','','','','','','','','','','','\u1F5D','','','','\u1F7C'],
+  ['\u1F71','','','','','','\u1F75','','\u1F3E','','','','','','','','','','','\u1F5F','','','','\u1F7D'],
+  ['\u1F80','','','','','','\u1F90','','\u1F3F','','','','','','','','','','','\u1F7A','','','','\u1FA0'],
+  ['\u1F81','','','','','','\u1F91','','\u1F76','','','','','','','','','','','\u1F7B','','','','\u1FA1'],
+  ['\u1F82','','','','','','\u1F92','','\u1F77','','','','','','','','','','','\u1FE0','','','','\u1FA2'],
+  ['\u1F83','','','','','','\u1F93','','\u1FD0','','','','','','','','','','','\u1FE1','','','','\u1FA3'],
+  ['\u1F84','','','','','','\u1F94','','\u1FD1','','','','','','','','','','','\u1FE2','','','','\u1FA4'],
+  ['\u1F85','','','','','','\u1F95','','\u1FD2','','','','','','','','','','','\u1FE3','','','','\u1FA5'],
+  ['\u1F86','','','','','','\u1F96','','\u1FD3','','','','','','','','','','','\u1FE6','','','','\u1FA6'],
+  ['\u1F87','','','','','','\u1F97','','\u1FD6','','','','','','','','','','','\u1FE7','','','','\u1FA7'],
+  ['\u1F88','','','','','','\u1F98','','\u1FD7','','','','','','','','','','','\u1FE8','','','','\u1FA8'],
+  ['\u1F89','','','','','','\u1F99','','\u1FD8','','','','','','','','','','','\u1FE9','','','','\u1FA9'],
+  ['\u1F8A','','','','','','\u1F9A','','\u1FD9','','','','','','','','','','','\u1FEA','','','','\u1FAA'],
+  ['\u1F8B','','','','','','\u1F9B','','\u1FDA','','','','','','','','','','','\u1FEB','','','','\u1FAB'],
+  ['\u1F8C','','','','','','\u1F9C','','\u1FDB','','','','','','','','','','','','','','','\u1FAC'],
+  ['\u1F8D','','','','','','\u1F9D','','','','','','','','','','','','','','','','','\u1FAD'],
+  ['\u1F8E','','','','','','\u1F9E','','','','','','','','','','','','','','','','','\u1FAE'],
+  ['\u1F8F','','','','','','\u1F9F','','','','','','','','','','','','','','','','','\u1FAF'],
+  ['\u1FB0','','','','','','\u1FC2','','','','','','','','','','','','','','','','','\u1FF2'],
+  ['\u1FB1','','','','','','\u1FC3','','','','','','','','','','','','','','','','','\u1FF3'],
+  ['\u1FB2','','','','','','\u1FC4','','','','','','','','','','','','','','','','','\u1FF4'],
+  ['\u1FB3','','','','','','\u1FC6','','','','','','','','','','','','','','','','','\u1FF6'],
+  ['\u1FB4','','','','','','\u1FC7','','','','','','','','','','','','','','','','','\u1FF7'],
+  ['\u1FB6','','','','','','\u1FCA','','','','','','','','','','','','','','','','','\u1FFA'],
+  ['\u1FB7','','','','','','\u1FCB','','','','','','','','','','','','','','','','','\u1FFB'],
+  ['\u1FB8','','','','','','\u1FCC','','','','','','','','','','','','','','','','','\u1FFC'],
+  ['\u1FB9','','','','','','','','','','','','','','','','','','','','','','',''],
+  ['\u1FBA','','','','','','','','','','','','','','','','','','','','','','',''],
+  ['\u1FBB','','','','','','','','','','','','','','','','','','','','','','',''],
+  ['\u1FBC','','','','','','','','','','','','','','','','','','','','','','','']
+]
+var norows = characterarray.length
+var nocols = characterarray[0].length
+for (var row = 1; row < norows; row++){
+
+
+  for (var col = 0; col <nocols; col++){
+      if(characterarray[row][col] == ''){
+
+      } else {
+        och = characterarray[row][col]
+        rch = characterarray[0][col]
+        var ochr = new RegExp(och,"gm")
+        strng = strng.replace(ochr,rch)
+      }
+
+  }
+}
+
+return strng
 }
