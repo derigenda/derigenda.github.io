@@ -360,7 +360,7 @@ if (document.getElementById('menuname').innerText == 'OCR GCSE'){
   document.getElementById('tips').innerHTML = 'The third column gives the CLC stage.<br>Try these filters:<br><i>1-10<br>a, d, e<br>clc:01</i>'
   testname = 'egcse'
 }else if (document.getElementById('menuname').innerText == 'GCSE Eng-Greek'){
-  document.getElementById('tips').innerHTML = 'Filter by number or letter only.'
+  document.getElementById('tips').innerHTML = 'Try these filters:<br><i>1-10<br>a-c, f, h'
   testname = 'eg'}
 else if (document.getElementById('menuname').innerText == 'GCSE Greek'){
     document.getElementById('tips').innerHTML = 'Filter by number or letter only.'
