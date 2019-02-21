@@ -1629,9 +1629,10 @@ var linktext = document.getElementById('theurl').value
   document.getElementById('theurl').value = "Link copied"
 document.getElementById('theurl').style.color = "red"
 
-var timer = setInterval(function () {
+var timer2 = setInterval(function () {
   document.getElementById('theurl').value = linktext
   document.getElementById('theurl').style.color = "black"
+  clearInterval(timer2);
 }, 500);
 
 }
