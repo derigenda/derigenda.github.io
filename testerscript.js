@@ -1115,6 +1115,7 @@ function startgo(){
 
 function submitanswer(answer){
   var possibleanswers = vocabtest[fingoes].split('||')[2].split(',')
+  var ppossibleanswers = vocabtest[fingoes].split('||')[2].split(',')
   var correctanswer = vocabtest[fingoes].split('||')[2]
   answer = deaccent(answer)
   answer = answer.match(/[ ]|[a-z]|[A-Z]|[α-ω]|[Α-Ω]]/g).join('').toLowerCase().replace(/ {2,}/g,' ').trim()
@@ -1122,7 +1123,10 @@ function submitanswer(answer){
   for(i=0;i<possibleanswers.length;i++){
     possibleanswers[i] =deaccent(possibleanswers[i])
     possibleanswers[i] = possibleanswers[i].replace(/ ?\(.*?\)/g,'').match(/[ ]|[a-z]|[A-Z]|[α-ω]|[Α-Ω]]/g).join('').toLowerCase().replace(/ {2,}/g,' ').trim()
-    if(deaccent(answer) == possibleanswers[i]){ correct = true}
+    if(deaccent(answer) == possibleanswers[i]){ 
+      correct = true
+    answer = ppossibleanswers[i]
+    }
   }
 vocabtest[fingoes] = vocabtest[fingoes].split('||')[1] + '|' + vocabtest[fingoes].split('||')[2] + '|' + correct + '|' + answer
 if(correct==false){
@@ -1482,6 +1486,7 @@ var url = window.location.href
 url = url.split('vocabtester.htm')[0]
 
 document.getElementById('verifylink').setAttribute('href',url +'verifier.htm?str=' + verifystring)
+document.getElementById('verifylink').setAttribute('target','_blank')
 document.getElementById('verifylink').innerHTML = document.getElementById('verifylink').getAttribute('href')
 
 
