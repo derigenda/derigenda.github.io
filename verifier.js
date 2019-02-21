@@ -114,7 +114,7 @@ document.getElementById('score').innerHTML = properties[3]
 document.getElementById('total').innerHTML = properties[4]
 document.getElementById('time').innerHTML = properties[5]}
 document.getElementById('testurl').innerHTML = '<a id="link"></a>'
-document.getElementById('link').setAttribute('href') = 'https://derigenda.co.uk/vocabtester.htm?test=' + stage +' &filter=' + range
+document.getElementById('link').setAttribute('href', 'https://derigenda.co.uk/vocabtester.htm?test=' + stage +' &filter=' + range)
 document.getElementById('link').innerText = document.getElementById('link').getAttribute('href')
 }
 
