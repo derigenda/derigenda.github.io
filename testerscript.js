@@ -1267,6 +1267,7 @@ catch(err) {
 
 }
 function printable(){
+  if (document.getElementById('criteria').value!=''){
   //create random sorted array of selected words
   var test = ''
   for(i=1;i<document.getElementById('selectionform').getElementsByTagName('tr').length;i++){
@@ -1296,7 +1297,9 @@ function printable(){
         //mywindow.close();
 
         return true;
-
+    } else {
+      alert("Please first select some words.");
+    }
 }
 
 function ChangeUrl(page, url) {
