@@ -1625,6 +1625,15 @@ function copytext(e){
   catch(err2){
 
   }
+var linktext = document.getElementById('theurl').value
+  document.getElementById('theurl').value = "Link copied"
+document.getElementById('theurl').style.color = "red"
+
+var timer = setInterval(function () {
+  document.getElementById('theurl').value = linktext
+  document.getElementById('theurl').style.color = "black"
+}, 500);
+
 }
 
 function deaccent(strng){
