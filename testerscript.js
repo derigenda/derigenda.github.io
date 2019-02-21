@@ -1581,12 +1581,12 @@ win.focus();
 function copytext(e){
   e.focus();
   e.select();
-  try{}
+  try{    navigator.clipboard.writeText(e.value)}
   catch(err){
-    navigator.clipboard.writeText(e.value)
+
   }
-  try{}
+  try{    document.execCommand('copy')}
   catch(err2){
-    document.execCommand('copy')
+
   }
 }
