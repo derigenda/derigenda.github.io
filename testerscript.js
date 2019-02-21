@@ -1581,5 +1581,5 @@ win.focus();
 function copytext(e){
   e.focus();
   e.select();
-  navigator.clipboard.writeText(e.innerHTML)
+  navigator.clipboard.writeText(e.value)
 }
