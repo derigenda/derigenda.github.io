@@ -207,6 +207,10 @@ function menuhide(){
         document.getElementById('T1').style.display = 'none'
       }
         catch(err){  } 
+        try{
+          document.getElementById('G1').style.display = 'none'
+        }
+        catch(err){  } 
 }
 function menuhide1(){
 
