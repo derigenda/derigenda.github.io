@@ -1117,6 +1117,7 @@ function submitanswer(answer){
   var possibleanswers = vocabtest[fingoes].split('||')[2].split(',')
   var ppossibleanswers = vocabtest[fingoes].split('||')[2].split(',')
   var correctanswer = vocabtest[fingoes].split('||')[2]
+  var origanswer = answer
   answer = deaccent(answer)
   answer = answer.match(/[ ]|[a-z]|[A-Z]|[α-ω]|[Α-Ω]]/g).join('').toLowerCase().replace(/ {2,}/g,' ').trim()
   var correct = false
@@ -1127,6 +1128,9 @@ function submitanswer(answer){
       correct = true
     answer = ppossibleanswers[i]
     }
+  }
+  if(correct==false){
+    answer = origanswer
   }
 vocabtest[fingoes] = vocabtest[fingoes].split('||')[1] + '|' + vocabtest[fingoes].split('||')[2] + '|' + correct + '|' + answer
 if(correct==false){
