@@ -65,6 +65,8 @@ var str= hexDecode(hexstring)
 
 if (ver==true){
 var properties = str.split('|')
+var stage = properties[1].toLowerCase()
+var range = properties[2]
 
 if(properties[1]=='STAGE1'){properties[1]=('Stage 1')}
 if(properties[1]=='STAGE2'){properties[1]=('Stage 2')}
@@ -111,6 +113,9 @@ document.getElementById('range').innerHTML = properties[2]
 document.getElementById('score').innerHTML = properties[3]
 document.getElementById('total').innerHTML = properties[4]
 document.getElementById('time').innerHTML = properties[5]}
+document.getElementById('testurl').innerHTML = '<a id="link"></a>'
+document.getElementById('link').setAttribute('href') = 'https://derigenda.co.uk/vocabtester.htm?test=' + stage +' &filter=' + range
+document.getElementById('link').innerText = document.getElementById('link').getAttribute('href')
 }
 
 function luhnCheckDigit(number) {
