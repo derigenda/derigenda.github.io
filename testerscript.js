@@ -1524,7 +1524,8 @@ return str
 function rememberedchange(){
 
   localStorage.setItem("reqresponses",document.getElementById('remembered').value)
-document.getElementById('rememberedno').innerHTML = document.getElementById('remembered').value
+  document.getElementById('rememberedno').innerHTML = document.getElementById('remembered').value
+
 }
 function showurl(thebutton){
 
