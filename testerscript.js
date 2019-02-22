@@ -1608,7 +1608,7 @@ create.addEventListener('click', function () {
 alert('Please first select some words.')
   } else{
 var testname = getParameterByName('test')
-if (testname == 'eg'||testname=='asgrk'||testname=='ggce'){
+if (testname == 'eg'||testname=='asgrk'||testname=='ggcse'){
   alert('Greek characters may not be displayed properly.')
 }
 
