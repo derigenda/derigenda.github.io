@@ -451,6 +451,9 @@ gtag('js', new Date());
 
 gtag('config', 'UA-134670977-2');
 resizefunction()
+
+
+
 }
 
 
@@ -1590,12 +1593,31 @@ function showurl(thebutton){
         'overflow:auto;' +
         'width:60%;' +
         'text-align:center;' +
-        'height:280px;' +
+        'height:310px;' +
         'margin-left:-30%;' +
         'margin-top:-200px';
 
-    $('body').append('<div id="Eprompt" style="' + email_overlay + '"><span style="font-size:30px"; id="time">Email a link to this test</span><p><h4><ol id="emailbody" style="text-align:left"></ol></h4></div>');
-document.getElementById('emailbody').innerHTML = document.getElementById('emailbody').innerHTML + '<table style="width:90%"><tr><td><button style="width:100%" id="gmailtest" onclick="gmailtest()">Gmail</button></tr></td><tr><td><button style="width:100%" id="emailtest" onclick="emailtest()">Other Email</button></tr></td><tr><td><span style="font-weight: bold;">Copy link:</span><textarea style="width:100%" onclick="copytext(this)" readonly="readonly" id="theurl"></textarea></td></tr><tr><td><button style="width:100%" id="cancelbutton" onclick="cancelthis()">Close</button></tr></td></table><tr>'
+    $('body').append('<div id="Eprompt" style="' + email_overlay + '"><span style="font-size:30px"; id="time">Email this test</span><p><h4><ol id="emailbody" style="text-align:left"></ol></h4></div>');
+document.getElementById('emailbody').innerHTML = document.getElementById('emailbody').innerHTML + '<table style="width:90%"><tr><td><button style="width:100%" id="gmailtest" onclick="gmailtest()">Gmail</button></tr></td><tr><td><button style="width:100%" id="emailtest" onclick="emailtest()">Other Email</button></tr></td><tr><td><span style="font-weight: bold;">Copy link:</span><textarea style="width:100%" onclick="copytext(this)" readonly="readonly" id="theurl"></textarea></td></tr><tr><td><button style="width:100%" id="downloadlist" onclick="downloadlist()">Download list</button></td></tr><tr><td><button style="width:100%" id="cancelbutton" onclick="cancelthis()">Close</button></tr></td></table>'
+
+var create = document.getElementById('downloadlist'),
+textbox = document.getElementById('criteria');
+
+create.addEventListener('click', function () {
+var link = document.createElement('a');
+link.setAttribute('download', document.getElementById('menuname').innerText + '.csv');
+link.href = makeTextFile(makecsv());
+document.body.appendChild(link);
+
+// wait for the link to be added to the document
+window.requestAnimationFrame(function () {
+  var event = new MouseEvent('click');
+  link.dispatchEvent(event);
+  document.body.removeChild(link);
+});
+
+}, false);
+
 
 if (detectmob() == true){
   document.getElementById('gmailtest').outerHTML = ''
@@ -1634,6 +1656,22 @@ var win = window.open(email, '_blank');
 win.focus();
 
 }
+
+var textFile = null,
+  makeTextFile = function (text) {
+    var data = new Blob([text],{encoding:"UTF-8",type:"text/plain;charset=UTF-8"});
+
+    // If we are replacing a previously generated file we need to
+    // manually revoke the object URL to avoid memory leaks.
+    if (textFile !== null) {
+      window.URL.revokeObjectURL(textFile);
+    }
+
+    textFile = window.URL.createObjectURL(data);
+
+    // returns a URL you can use as a href
+    return textFile;
+  };
 
 function copytext(e){
   e.focus();
@@ -1731,4 +1769,59 @@ for (var row = 1; row < norows; row++){
 }
 
 return strng
+}
+
+function makecsv(){
+  var rowscount = document.getElementById('list').getElementsByTagName('tr').length
+  var colcount = document.getElementById('list').getElementsByTagName('tr')[1].getElementsByTagName('td').length
+    var csv = ''
+    var cell = ''
+    var rowtext = ''
+    //top left cell
+    if(document.getElementById('list').getElementsByTagName('tr')[0].getElementsByTagName('td')[0].getAttribute('class')=='Accentless-cell'){
+
+    }else{
+      cell = document.getElementById('list').getElementsByTagName('tr')[0].getElementsByTagName('td')[0].innerText +','
+      cell = cell.replace(/\"/gm,'""')
+    rowtext = rowtext+ cell
+    }
+//other top row cells
+for(col = 1;col<colcount;col++){
+  if(document.getElementById('list').getElementsByTagName('tr')[0].getElementsByTagName('th')[col-1].getAttribute('class')=='Accentless-cell'){
+
+  }else{
+    cell = document.getElementById('list').getElementsByTagName('tr')[0].getElementsByTagName('th')[col-1].innerText +','
+    cell = cell.replace(/\"/gm,'""')
+  rowtext=rowtext+cell
+  }
+}
+rowtext = rowtext.replace(/(.*),$/gm,'$1')
+rowtext = rowtext+ '\n'
+csv=csv+rowtext
+  for(var row = 1; row<rowscount; row++){
+    var rowtext =''
+    if(document.getElementById('list').getElementsByTagName('tr')[row].style.backgroundColor=='yellow'){
+    for (var col = 0; col<colcount; col++){
+      if(document.getElementById('list').getElementsByTagName('tr')[row].getElementsByTagName('td')[col].getAttribute('class')=='Accentless-cell'){
+
+      }else{
+        var cell = document.getElementById('list').getElementsByTagName('tr')[row].getElementsByTagName('td')[col].innerText
+        cell = cell.replace(/\"/gm,'""')
+        if (cell!=''){
+          cell = cell.replace(/^\+/," +")
+          cell='"' + cell +'"'
+            }
+        cell = cell  +','
+      rowtext = rowtext+ cell
+      }
+    }
+    rowtext = rowtext.replace(/(.*),$/gm,'$1')
+    rowtext= rowtext +'\n'
+    } 
+    
+    csv = csv + rowtext
+  }
+csv = csv.replace(/(.*)\n$/g,'$1')
+return csv
+
 }
