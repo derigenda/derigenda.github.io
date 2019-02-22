@@ -1604,6 +1604,14 @@ var create = document.getElementById('downloadlist'),
 textbox = document.getElementById('criteria');
 
 create.addEventListener('click', function () {
+  if(getParameterByName('filter') == ''){
+alert('Please first select some words.')
+  } else{
+var testname = getParameterByName('test')
+if (testname == 'eg'||testname=='asgrk'||testname=='ggce'){
+  alert('Greek characters may not be displayed properly.')
+}
+
 var link = document.createElement('a');
 link.setAttribute('download', document.getElementById('menuname').innerText + '.csv');
 link.href = makeTextFile(makecsv());
@@ -1616,7 +1624,7 @@ window.requestAnimationFrame(function () {
   document.body.removeChild(link);
 });
 
-}, false);
+}}, false);
 
 
 if (detectmob() == true){
