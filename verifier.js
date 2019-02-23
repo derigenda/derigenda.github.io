@@ -23,7 +23,7 @@ function hexDecode(value){
 
 function verify (){
 var hexstring = getParameterByName('str')
-hexstring = hexstring.replace(/g/gm,'hn')
+hexstring = hexstring.replace(/g/gm,'spy')
 hexstring = hexstring.replace(/h/gm,'vy')
 hexstring = hexstring.replace(/i/gm,'yvlzu')
 hexstring = hexstring.replace(/j/gm,'y5')
