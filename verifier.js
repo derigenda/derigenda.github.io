@@ -110,7 +110,7 @@ document.getElementById('test').innerHTML = properties[1]
 document.getElementById('range').innerHTML = properties[2]
 document.getElementById('score').innerHTML = properties[3]
 document.getElementById('total').innerHTML = properties[4]
-document.getElementById('time').innerHTML = properties[5]}
+document.getElementById('time').innerHTML = properties[5]
 document.getElementById('testurl').innerHTML = '<a id="link"></a>'
 document.getElementById('link').setAttribute('href', 'https://derigenda.co.uk/vocabtester.htm?test=' + stage + '&filter=' + range)
 document.getElementById('link').innerText = document.getElementById('link').getAttribute('href')
@@ -118,7 +118,7 @@ document.getElementById('link').innerText = document.getElementById('link').getA
 if(properties.length>6){
   document.getElementById('outrow').outerHTML = document.getElementById('outrow').outerHTML + '<tr><td>IP ends:</td><td>' + properties[7] + '</td></tr>'
   document.getElementById('outrow').outerHTML = document.getElementById('outrow').outerHTML + '<tr><td>Time taken:</td><td>' + secstostr(properties[6]) + '</td></tr>'
-}
+}}
 
 }
 
