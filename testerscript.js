@@ -1475,6 +1475,9 @@ document.getElementById('testrange').innerHTML = filter
 if (document.getElementById('ininput').value.length>0){
   document.getElementById('emailbuttons').outerHTML = document.getElementById('emailbuttons').outerHTML + '<br><textarea style="width:100%" onclick="copytext(this)" readonly="readonly" id="theurl2"></textarea>'
  
+var rectw = document.getElementById('EoverLay').getBoundingClientRect().width
+rectw = rectw - 100
+document.getElementById('theurl2').style.width = rectw + 'px'
   var url
  url = 'https://api.ipify.org/?format=txt&callback=getIP'
 
