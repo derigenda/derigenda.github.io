@@ -1473,7 +1473,7 @@ document.getElementById('testrange').innerHTML = filter
       function sendemail(){
         
 if (document.getElementById('ininput').value.length>0){
-  document.getElementById('emailbuttons').outerHTML = document.getElementById('emailbuttons').outerHTML + '<br>Copy link:<br><textarea style="width:100%" onclick="copytext(this)" readonly="readonly" id="theurl2"></textarea>'
+  document.getElementById('emailbuttons').outerHTML = document.getElementById('emailbuttons').outerHTML + 'Copy link:<br><textarea style="width:100%" onclick="copytext(this)" readonly="readonly" id="theurl2"></textarea>'
  
 var rectw = document.getElementById('EoverLay').getBoundingClientRect().width
 rectw = rectw - 100
