@@ -1474,7 +1474,7 @@ document.getElementById('testrange').innerHTML = filter
         
 if (document.getElementById('ininput').value.length>0){
   document.getElementById('emailbuttons').outerHTML = document.getElementById('emailbuttons').outerHTML + '<br><textarea style="width:100%" onclick="copytext(this)" readonly="readonly" id="theurl2"></textarea>'
-  document.getElementById('theurl2').value = document.getElementById('verifylink').innerText
+ 
   var url
  url = 'https://api.ipify.org/?format=txt&callback=getIP'
 
@@ -1534,7 +1534,7 @@ url = url.split('vocabtester.htm')[0]
 document.getElementById('verifylink').setAttribute('href',url +'verifier.htm?str=' + verifystring)
 document.getElementById('verifylink').setAttribute('target','_blank')
 document.getElementById('verifylink').innerHTML = document.getElementById('verifylink').getAttribute('href')
-
+document.getElementById('theurl2').value = document.getElementById('verifylink').getAttribute('href')
 
 document.getElementById('emailbuttons').innerHTML = '<button id="gmail" onclick="gmail()">Gmail</button><button id="otheremail" onclick="otheremail()">Other Email</button><button onclick="cancelemail()">Cancel</button>'
 if(detectmob() == true){document.getElementById('gmail').outerHTML=''
