@@ -1,7 +1,7 @@
 // to add vocab: create menu in htm; give it a fresh id; update menuhide routines; update function chooser(); create sheet in Mr Data Converter taking care to give cells correct class names Meaning-cell etc, using the opening of other tables and preservingonclick="changecolour(this)"> for each tr; update 2 url related bits (search for ogcse)
 var timer3
 var seconds
-var numcorrect
+var ncc
 function luhnCheckDigit(number) {
   var validChars = "0123456789ABCDEFGHIJKLMNOPQRSTUVYWXZ_";
   number = number.toUpperCase().trim();
@@ -1202,7 +1202,7 @@ startgo()
 function finalscore(){
 clearInterval(timer3)
   document.getElementById('total').innerText = fingoes
-  numcorrect = 0
+  ncc = '0a'
   var numtotal = 0
  var finalscore_overlay = 'position:absolute;' +
         'top:50%;' +
@@ -1232,7 +1232,7 @@ clearInterval(timer3)
       answerelement.appendChild(answernode)
       var tickelement=document.createElement('font')
       if(vocabtest[i].split('|')[2]=='true'){
-        numcorrect = numcorrect + 1
+        ncc = (parseInt(ncc.replace(/[^0-9]/gm,'')) + 1) + 'a'
         numtotal = numtotal + 1
         tickelement.style.color = 'green'
         var ticknode = document.createTextNode('')
@@ -1270,7 +1270,7 @@ clearInterval(timer3)
 //'<button onclick="sendemail()">Email result</button>'
     var scorenode = document.createElement('div')
     scorenode.id = 'score'
-    scorenode.innerHTML = '<table style = "border-collapse: collapse; border-style: hidden; font-size:45px; padding: 15px;"><tr><td id="numcorrect" style = "color: red; border: 5px solid red; font-size:45px; text-align: center;">' + numcorrect + '</td></tr><tr><td id="numtotal" style = "color: red; border: 5px solid red;">' + numtotal + '</td></tr></table>'
+    scorenode.innerHTML = '<table style = "border-collapse: collapse; border-style: hidden; font-size:45px; padding: 15px;"><tr><td id="ncc" style = "color: red; border: 5px solid red; font-size:45px; text-align: center;">' + parseInt(ncc.replace(/[^0-9]/gm,'')) + '</td></tr><tr><td id="numtotal" style = "color: red; border: 5px solid red;">' + numtotal + '</td></tr></table>'
     scorenode.setAttribute('style', 'position: absolute; right: 10; top: 10;')
     document.getElementById('test').appendChild(scorenode)
 }
@@ -1403,7 +1403,7 @@ document.getElementById('embody').innerHTML = document.getElementById('embody').
 
 document.getElementById('ininput').style.width = '75%'
 
-document.getElementById('thescore').innerHTML = numcorrect
+document.getElementById('thescore').innerHTML = parseInt(ncc.replace(/[^0-9]/gm,''))
 
 document.getElementById('totalqs').innerHTML = document.getElementById('numtotal').innerHTML
 
@@ -1502,7 +1502,7 @@ var datetime = currentdate.getDate() + "/"
                 + mins 
 
 
-var verifystring = document.getElementById('initials').innerHTML + '|' +  document.getElementById('testname').getAttribute('test').toUpperCase() + '|' + document.getElementById('testrange').innerHTML + '|' + numcorrect + '|' + document.getElementById('totalqs').innerHTML + '|' + datetime + '|' + seconds + '|' + ip
+var verifystring = document.getElementById('initials').innerHTML + '|' +  document.getElementById('testname').getAttribute('test').toUpperCase() + '|' + document.getElementById('testrange').innerHTML + '|' + parseInt(ncc.replace(/[^0-9]/gm,'')) + '|' + document.getElementById('totalqs').innerHTML + '|' + datetime + '|' + seconds + '|' + ip
 
 verifystring = hexEncode(verifystring)
 var verifydec = luhnCheckDigit(verifystring)
