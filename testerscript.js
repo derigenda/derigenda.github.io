@@ -1471,9 +1471,10 @@ document.getElementById('testrange').innerHTML = filter
       }
 
       function sendemail(){
-        document.getElementById('emailbuttons').outerHTML = document.getElementById('emailbuttons').outerHTML + 'br<textarea style="width:100%" onclick="copytext(this)" readonly="readonly" id="theurl2"></textarea>'
+        
 if (document.getElementById('ininput').value.length>0){
-
+  document.getElementById('emailbuttons').outerHTML = document.getElementById('emailbuttons').outerHTML + '<br><textarea style="width:100%" onclick="copytext(this)" readonly="readonly" id="theurl2"></textarea>'
+  document.getElementById('theurl2').value = document.getElementById('verifylink').innerText
   var url
  url = 'https://api.ipify.org/?format=txt&callback=getIP'
 
