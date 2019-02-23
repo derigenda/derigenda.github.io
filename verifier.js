@@ -157,14 +157,14 @@ function luhnCheckDigit(number) {
   
   var mn = m
   var hn = h
-  if(m>0){
+  if(m>0||h>0){
   if((s + '').length<2){
     s = '0' +s
   }
   }
   
   if (h>0){
-  if(m.length<2){
+  if((m + '').length<2){
     m = '0' + m
   }
   }
