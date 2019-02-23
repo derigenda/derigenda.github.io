@@ -1,5 +1,7 @@
 // to add vocab: create menu in htm; give it a fresh id; update menuhide routines; update function chooser(); create sheet in Mr Data Converter taking care to give cells correct class names Meaning-cell etc, using the opening of other tables and preservingonclick="changecolour(this)"> for each tr; update 2 url related bits (search for ogcse)
-
+var timer3
+var seconds
+var numcorrect
 function luhnCheckDigit(number) {
   var validChars = "0123456789ABCDEFGHIJKLMNOPQRSTUVYWXZ_";
   number = number.toUpperCase().trim();
@@ -781,6 +783,16 @@ dictionary = englisharray
 }
 
 function go(){
+seconds = 0
+document.getElementById('timer').innerText = secstostr(seconds)
+timer3 = setInterval(function () {
+    seconds = seconds +1;
+document.getElementById('timer').innerText = secstostr(seconds)
+if(document.getElementById('total').innerText == document.getElementById('outof').innerText){
+
+}
+}, 1000);
+
 
   if (document.getElementById('numberselected').innerText!='0'){
 
@@ -1188,8 +1200,9 @@ startgo()
 }
 
 function finalscore(){
+clearInterval(timer3)
   document.getElementById('total').innerText = fingoes
-  var numcorrect = 0
+  numcorrect = 0
   var numtotal = 0
  var finalscore_overlay = 'position:absolute;' +
         'top:50%;' +
@@ -1386,13 +1399,20 @@ function ChangeUrl(page, url) {
         'margin-top:-200px';
 
     $('body').append('<div id="EoverLay" style="' + email_overlay + '"><span style="font-size:30px"; id="time">Email results</span><p><h4><ol id="embody" style="text-align:left"></ol></h4></div>');
-document.getElementById('embody').innerHTML = document.getElementById('embody').innerHTML + '<br><textarea onInput="updateEmail()" placeholder="Enter your initials or a name." id="ininput"></textarea><br><span id="emailbody"><span id="initials">...</span> was tested on <span id="testname">...</span><span id="wasrange">, words </span><span id="testrange"></span>.<br>The score was <span id="thescore"></span>/<span id="totalqs"></span>.<br></span><button id="finalise" onclick="sendemail()">Finalise email</button><button id="cancellation" onclick="cancelemail()">Cancel</button><span id="message" style="color:red"></span><a id="verifylink"></a><div id="emailbuttons"></div>'
+document.getElementById('embody').innerHTML = document.getElementById('embody').innerHTML + '<br><textarea onInput="updateEmail()" placeholder="Enter your initials or a name." id="ininput"></textarea><br><span id="emailbody"><span id="initials">...</span> was tested on <span id="testname">...</span><span id="wasrange">, words </span><span id="testrange"></span>.<br>The score was <span id="thescore"></span>/<span id="totalqs"></span>.<br><span>Time: </span><span id="timetaken"></span><br><button id="finalise" onclick="sendemail()">Finalise email</button><button id="cancellation" onclick="cancelemail()">Cancel</button><span id="message" style="color:red"></span><a id="verifylink"></a><div id="emailbuttons"></div>'
 
 document.getElementById('ininput').style.width = '75%'
 
-document.getElementById('thescore').innerHTML = document.getElementById('numcorrect').innerHTML
+document.getElementById('thescore').innerHTML = numcorrect
 
 document.getElementById('totalqs').innerHTML = document.getElementById('numtotal').innerHTML
+
+var timetaken = secstostr(seconds) + ''
+if(timetaken.length<3){
+  timetaken = timetaken + " secs"
+}
+
+document.getElementById('timetaken').innerHTML = timetaken
 
 document.getElementById('testname').innerHTML =getParameterByName('test').toUpperCase()
 document.getElementById('testname').setAttribute('test',getParameterByName('test'))
@@ -1452,6 +1472,16 @@ document.getElementById('testrange').innerHTML = filter
 
       function sendemail(){
 if (document.getElementById('ininput').value.length>0){
+
+  var url
+ url = 'https://api.ipify.org/?format=txt&callback=getIP'
+
+  var xhr = new XMLHttpRequest();
+  // third param = false  = synchronous request
+  xhr.open('GET', url, false);
+  xhr.send();
+  var ip = xhr.responseText;
+  ip = ip.replace(/.*[^a-zA-Z0-9]([a-zA-Z0-9]*[^a-zA-Z0-9][a-zA-Z0-9]*)/,'$1')
 document.getElementById('ininput').outerHTML = ''
 document.getElementById('finalise').outerHTML = ''
 document.getElementById('cancellation').outerHTML = ''
@@ -1470,7 +1500,7 @@ var datetime = currentdate.getDate() + "/"
                 + mins 
 
 
-var verifystring = document.getElementById('initials').innerHTML + '|' +  document.getElementById('testname').getAttribute('test').toUpperCase() + '|' + document.getElementById('testrange').innerHTML + '|' + document.getElementById('thescore').innerHTML + '|' + document.getElementById('totalqs').innerHTML + '|' + datetime
+var verifystring = document.getElementById('initials').innerHTML + '|' +  document.getElementById('testname').getAttribute('test').toUpperCase() + '|' + document.getElementById('testrange').innerHTML + '|' + numcorrect + '|' + document.getElementById('totalqs').innerHTML + '|' + datetime + '|' + seconds + '|' + ip
 
 verifystring = hexEncode(verifystring)
 var verifydec = luhnCheckDigit(verifystring)
@@ -1832,4 +1862,35 @@ csv=csv+rowtext
 csv = csv.replace(/(.*)\n$/g,'$1')
 return csv
 
+}
+
+function secstostr (secs){
+  var s = secs % 60
+secs = secs - s
+  secs = secs/60
+m = secs % 60
+secs = secs - m
+h = secs / 60
+
+var mn = m
+var hn = h
+if(m>0){
+if((s + '').length<2){
+  s = '0' +s
+}
+}
+
+if (h>0){
+if(m.length<2){
+  m = '0' + m
+}
+}
+var timestr = s
+if(hn>0||mn>0){
+timestr = m + ":" + timestr
+}
+if(hn>0){
+timestr = h + ":" + timestr
+}
+return timestr
 }

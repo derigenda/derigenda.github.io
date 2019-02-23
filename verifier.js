@@ -50,12 +50,10 @@ var truecheck = luhnCheckDigit(hexstring) + ''
 var ver
 
 if (check == truecheck){
-document.getElementById('verified').innerHTML = "YES"
-document.getElementById('verified').style.backgroundColor = 'green'
+
 ver = true
 } else {
-    document.getElementById('verified').innerHTML = "NO"
-    document.getElementById('verified').style.backgroundColor = 'pink'
+
     ver = false
 
 }
@@ -116,6 +114,12 @@ document.getElementById('time').innerHTML = properties[5]}
 document.getElementById('testurl').innerHTML = '<a id="link"></a>'
 document.getElementById('link').setAttribute('href', 'https://derigenda.co.uk/vocabtester.htm?test=' + stage + '&filter=' + range)
 document.getElementById('link').innerText = document.getElementById('link').getAttribute('href')
+
+if(properties.length>6){
+  document.getElementById('outrow').outerHTML = document.getElementById('outrow').outerHTML + '<tr><td>IP ends:</td><td>' + properties[7] + '</td></tr>'
+  document.getElementById('outrow').outerHTML = document.getElementById('outrow').outerHTML + '<tr><td>Time taken:</td><td>' + secstostr(properties[6]) + '</td></tr>'
+}
+
 }
 
 function luhnCheckDigit(number) {
@@ -143,3 +147,33 @@ function luhnCheckDigit(number) {
     return digit;
   }
   
+  function secstostr (secs){
+    var s = secs % 60
+  secs = secs - s
+    secs = secs/60
+  m = secs % 60
+  secs = secs - m
+  h = secs / 60
+  
+  var mn = m
+  var hn = h
+  if(m>0){
+  if(s + ''.length<2){
+    s = '0' +s
+  }
+  }
+  
+  if (h>0){
+  if(m.length<2){
+    m = '0' + m
+  }
+  }
+  var timestr = s
+  if(hn>0||mn>0){
+  timestr = m + ":" + timestr
+  }
+  if(hn>0){
+  timestr = h + ":" + timestr
+  }
+  return timestr
+  }
