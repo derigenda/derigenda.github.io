@@ -1471,6 +1471,7 @@ document.getElementById('testrange').innerHTML = filter
       }
 
       function sendemail(){
+        document.getElementById('emailbuttons').outerHTML = document.getElementById('emailbuttons').outerHTML + 'br<textarea style="width:100%" onclick="copytext(this)" readonly="readonly" id="theurl2"></textarea>'
 if (document.getElementById('ininput').value.length>0){
 
   var url
@@ -1722,13 +1723,13 @@ function copytext(e){
   catch(err2){
 
   }
-var linktext = document.getElementById('theurl').value
-  document.getElementById('theurl').value = "Link copied"
-document.getElementById('theurl').style.color = "red"
+var linktext = e.value
+  e.value = "Link copied"
+e.style.color = "red"
 
 var timer2 = setInterval(function () {
-  document.getElementById('theurl').value = linktext
-  document.getElementById('theurl').style.color = "black"
+  e.value = linktext
+  e.style.color = "black"
   clearInterval(timer2);
 }, 500);
 
