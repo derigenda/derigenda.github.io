@@ -1619,7 +1619,7 @@ function rememberedchange(){
 function showurl(thebutton){
 
   var email_overlay = 'position:absolute;' +
-        'top:50%;' +
+        'top:40%;' +
         'left:50%;' +
         'background-color: #f4d742;' +
         'border: 2px solid red;' +
@@ -1628,13 +1628,13 @@ function showurl(thebutton){
         'overflow:auto;' +
         'width:60%;' +
         'text-align:center;' +
-        'height:310px;' +
+        'height:410px;' +
         'margin-left:-30%;' +
         'margin-top:-200px';
 
-    $('body').append('<div id="Eprompt" style="' + email_overlay + '"><span style="font-size:30px"; id="time">Email this test</span><p><h4><ol id="emailbody" style="text-align:left"></ol></h4></div>');
+    $('body').append('<div id="Eprompt" style="' + email_overlay + '"><span style="font-size:30px"; id="time">Email this test</span><br><img id="qrcode"></img><br><h4><ol id="emailbody" style="text-align:left"></ol></h4></div>');
 document.getElementById('emailbody').innerHTML = document.getElementById('emailbody').innerHTML + '<table style="width:90%"><tr><td><button style="width:100%" id="gmailtest" onclick="gmailtest()">Gmail</button></tr></td><tr><td><button style="width:100%" id="emailtest" onclick="emailtest()">Other Email</button></tr></td><tr><td><span style="font-weight: bold;">Copy link:</span><textarea style="width:100%" onclick="copytext(this)" readonly="readonly" id="theurl"></textarea></td></tr><tr><td><button style="width:100%" id="downloadlist" onclick="downloadlist()">Download list</button></td></tr><tr><td><button style="width:100%" id="cancelbutton" onclick="cancelthis()">Close</button></tr></td></table>'
-
+document.getElementById('qrcode').setAttribute('src', 'http://api.qrserver.com/v1/create-qr-code/?data=' + window.location.href + '&size=100x100')
 var create = document.getElementById('downloadlist'),
 textbox = document.getElementById('criteria');
 
