@@ -1464,7 +1464,7 @@ document.getElementById('testrange').innerHTML = filter
       }
       function updateEmail(){
         var p = document.getElementById('ininput').value
-        p = p.replace(/[^A-Z ]/gm,'')
+        p = p.replace(/[^A-Za-z ]/gm,'')
           if (p.length >= 0){
         var q = document.getElementById('initials').innerText
         document.getElementById('initials').innerHTML = p}
