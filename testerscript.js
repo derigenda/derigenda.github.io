@@ -1463,8 +1463,8 @@ var filter = getParameterByName('filter')
 document.getElementById('testrange').innerHTML = filter
       }
       function updateEmail(){
-        var p = document.getElementById('ininput').value.toUpperCase()
-        p = p.replace(/[^A-Z]/gm,'')
+        var p = document.getElementById('ininput').value
+        p = p.replace(/[^A-Z ]/gm,'')
           if (p.length >= 0){
         var q = document.getElementById('initials').innerText
         document.getElementById('initials').innerHTML = p}
