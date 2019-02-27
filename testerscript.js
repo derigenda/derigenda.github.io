@@ -1865,6 +1865,7 @@ csv=csv+rowtext
         cell = cell.replace(/\"/gm,'""')
         if (cell!=''){
           cell = cell.replace(/^\+/," +")
+          cell = cell.replace(/^\-/," -")
           cell='"' + cell +'"'
             }
         cell = cell  +','
