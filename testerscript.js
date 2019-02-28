@@ -923,13 +923,13 @@ if(dictionarymatchlist.length == 1){
     document.getElementById('c1').innerText = dictionarymatchlist[0]
    }
   if(dictionarymatchlist.length>1){
-    document.getElementById('c2').innerText = dictionarymatchlist[1]
+    document.getElementById('l1').innerText = dictionarymatchlist[1]
    }
   if(dictionarymatchlist.length>2){
-    document.getElementById('l1').innerText = dictionarymatchlist[2]
+    document.getElementById('r1').innerText = dictionarymatchlist[2]
    }
   if(dictionarymatchlist.length>3){
-    document.getElementById('r1').innerText = dictionarymatchlist[3]
+    document.getElementById('c2').innerText = dictionarymatchlist[3]
    }
   if(dictionarymatchlist.length>4){
     document.getElementById('l2').innerText = dictionarymatchlist[4]
@@ -1111,6 +1111,12 @@ function getCookie(cname) {
     return "";
 } 
 function recenterr(){
+  var nosel = parseInt (document.getElementById('numberselected').innerText)
+  var nototal = document.getElementById('selectionform').getElementsByTagName('tr').length
+if (nosel==nototal){
+  selectnone()
+}
+
   for(i=1;i<document.getElementById('selectionform').getElementsByTagName('tr').length;i++){
     var latinword = document.getElementById('selectionform').getElementsByTagName('tr')[i].getElementsByTagName('td')[1].innerText
     
