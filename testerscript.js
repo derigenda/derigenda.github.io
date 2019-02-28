@@ -1112,7 +1112,7 @@ function getCookie(cname) {
 } 
 function recenterr(){
   var nosel = parseInt (document.getElementById('numberselected').innerText)
-  var nototal = document.getElementById('selectionform').getElementsByTagName('tr').length
+  var nototal = document.getElementById('selectionform').getElementsByTagName('tr').length-1
 if (nosel==nototal){
   selectnone()
 }
