@@ -32,7 +32,9 @@ function luhnCheckDigit(number) {
 function chooser(){
 button()
 resizefunction()
-
+if (detectmob()==false){
+  document.getElementById('selectionform').outerHTML = document.getElementById('selectionform').outerHTML+ '<div style = "position:absolute; bottom:5px;right:5px"><a target="_blank" href = "https://docs.google.com/forms/d/e/1FAIpQLSfDt5dRsn800YLOeFCsDUd8AWfOAucXN1ONLESwyaQ2_IMolA/viewform">Contact</a></div>'
+}
 var reqresponses
 try{
    reqresponses = localStorage.getItem("reqresponses")
@@ -301,7 +303,8 @@ function menuhide4(){
 }
 
 function listselect(list){
-menuhide() 
+
+  menuhide() 
   try {
     document.getElementById('CLC1').style.display = 'none'
   }
@@ -309,6 +312,7 @@ menuhide()
     try {
       document.getElementById('CLC2').style.display = 'none'}
       catch(err){  } 
+
 
 var q = list.innerText
 if(typeof(q) == 'undefined'){q=list}  
@@ -323,6 +327,7 @@ var tableheight = document.getElementById('modal-content').scrollHeight - 370
 if(detectmob()==true){
   tableheight = tableheight - 210
 document.getElementById("selectionform").innerHTML = '<h2 id="enterfilter">Choose words</h2><p><textarea id="criteria" placeholder="e.g. 1-10" name="criteria" style = "overflow:hidden; height:60px; width:60%; font-size:40px;" oninput="filter()"></textarea><p><div id = "tablediv" style="overflow-y: scroll; height:' + tableheight+ 'px;">'+ list +'</div><p><div syle="bottom:5px"><td><button id="go" onclick="go()" style="width:50%;font-size:40px">Go</button></td><td><button id="selectall" onclick="selectall()" style="width:50%;font-size:40px">Select all</button><br></td><td><button id="selectnone" onclick="selectnone()" style="width:50%;font-size:40px">Clear selection</button></td><td><button id="recenterr" onclick="recenterr()" style="width:50%;font-size:40px">Past errors</button></td><td><button id="printable" onclick="printable()" style="width:50%;font-size:40px">Print test</button><button id="showurl" onclick="showurl(this)" style="width:50%;font-size:40px">Save & share</button></td><br><div hidden id="urlline" style="font-size:30px"></div><div style = "position:absolute; top:0px;right:15px"><h3 style="width: *;text-align: right;">Number selected: <span id = "numberselected";>0</span></h3></div><div id="tips" style = "position:absolute; top:115px; right:50px; background-color: Moccasin; border: 2px solid orange; border-radius: 5px; width:250px;height:130px; padding:10px;"></div> </div>'
+
 var rows = document.getElementsByTagName('tr')
 document.getElementById('list').setAttribute("style",'line-height:45px; font-size:30px;')
 document.getElementById('list').setAttribute('border','2')
