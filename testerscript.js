@@ -1183,6 +1183,7 @@ function submitanswer(answer){
   if(correct==false){
     answer = origanswer
   }
+  answer = answer.replace(/ ?\(.*?\)/g,'')
 vocabtest[fingoes] = vocabtest[fingoes].split('||')[1] + '|' + vocabtest[fingoes].split('||')[2] + '|' + correct + '|' + answer
 if(correct==false){
   var latword = document.getElementById('latinword').innerText
