@@ -34,6 +34,8 @@ button()
 resizefunction()
 if (detectmob()==false){
   document.getElementById('selectionform').outerHTML = document.getElementById('selectionform').outerHTML+ '<div style = "position:absolute; bottom:5px;right:5px"><a target="_blank" href = "https://docs.google.com/forms/d/e/1FAIpQLSfDt5dRsn800YLOeFCsDUd8AWfOAucXN1ONLESwyaQ2_IMolA/viewform">Contact</a></div>'
+} else{
+  document.getElementById('selectionform').outerHTML = document.getElementById('selectionform').outerHTML+ '<div style = "position:absolute; bottom:5px;right:5px"><a target="_blank" href = "https://docs.google.com/forms/d/e/1FAIpQLSfDt5dRsn800YLOeFCsDUd8AWfOAucXN1ONLESwyaQ2_IMolA/viewform">&#x2709;</a></div>'
 }
 var reqresponses
 try{
