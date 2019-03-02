@@ -1756,7 +1756,7 @@ var textFile = null,
   };
 
 function copytext(e){
-  e.value = linktext
+  e.value = window.location.href
   e.focus();
   e.select();
   try{    navigator.clipboard.writeText(e.value).then(function (clipboardData) {});}
