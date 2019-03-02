@@ -2,6 +2,7 @@
 var timer3
 var stt
 var ncc
+var wordsadded
 function luhnCheckDigit(number) {
   var validChars = "0123456789ABCDEFGHIJKLMNOPQRSTUVYWXZ_";
   number = number.toUpperCase().trim();
@@ -1110,7 +1111,17 @@ function getCookie(cname) {
      }
     return "";
 } 
+
 function recenterr(){
+wordsadded = 0
+pasterrors()
+if(wordsadded==0){
+  selectnone()
+  pasterrors()
+}
+}
+
+function pasterrors(){
   var nosel = parseInt (document.getElementById('numberselected').innerText)
   var nototal = document.getElementById('selectionform').getElementsByTagName('tr').length-1
 if (nosel==nototal){
@@ -1127,6 +1138,10 @@ if (nosel==nototal){
       cookievalue = ''
     }
     if(cookievalue!='' && cookievalue!=null){
+      if(document.getElementById('selectionform').getElementsByTagName('tr')[i].style.backgroundColor!='yellow'){
+        wordsadded = wordsadded +1 
+      }
+
       document.getElementById('selectionform').getElementsByTagName('tr')[i].style.backgroundColor='yellow'
     }
   }
