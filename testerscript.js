@@ -1756,6 +1756,7 @@ var textFile = null,
   };
 
 function copytext(e){
+  e.value = linktext
   e.focus();
   e.select();
   try{    navigator.clipboard.writeText(e.value).then(function (clipboardData) {});}
@@ -1775,6 +1776,12 @@ var timer2 = setInterval(function () {
   e.style.color = "black"
   clearInterval(timer2);
 }, 500);
+
+var timer4 = setInterval(function () {
+  e.value = linktext
+  e.style.color = "black"
+  clearInterval(timer4);
+}, 1500);
 
 }
 
