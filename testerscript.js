@@ -1,4 +1,5 @@
 // to add vocab: create menu in htm; give it a fresh id; update menuhide routines; update function chooser(); create sheet in Mr Data Converter taking care to give cells correct class names Meaning-cell etc, using the opening of other tables and preservingonclick="changecolour(this)"> for each tr; update 2 url related bits (search for ogcse)
+var lastcopied
 var timer3
 var stt
 var ncc
@@ -1758,7 +1759,10 @@ var textFile = null,
   };
 
 function copytext(e){
-  e.value = window.location.href
+  if(e.value!='Link copied'){
+lastcopied=e.value
+  }
+  copytext = e.value
   e.focus();
   e.select();
   try{    navigator.clipboard.writeText(e.value).then(function (clipboardData) {});}
@@ -1774,13 +1778,13 @@ var linktext = e.value
 e.style.color = "red"
 
 var timer2 = setInterval(function () {
-  e.value = linktext
+  e.value = lastcopied
   e.style.color = "black"
   clearInterval(timer2);
 }, 500);
 
 var timer4 = setInterval(function () {
-  e.value = linktext
+  e.value = lastcopied
   e.style.color = "black"
   clearInterval(timer4);
 }, 1500);
