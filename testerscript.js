@@ -1758,38 +1758,30 @@ var textFile = null,
     return textFile;
   };
 
-function copytext(e){
-  if(e.value!='Link copied'){
-lastcopied=e.value
-  }
-  copytext = e.value
-  e.focus();
-  e.select();
-  try{    navigator.clipboard.writeText(e.value).then(function (clipboardData) {});}
-  catch(err){
-
-  }
-  try{    document.execCommand('copy')}
-  catch(err2){
-
-  }
-var linktext = e.value
-  e.value = "Link copied"
-e.style.color = "red"
-
-var timer2 = setInterval(function () {
-  e.value = lastcopied
-  e.style.color = "black"
-  clearInterval(timer2);
-}, 500);
-
-var timer4 = setInterval(function () {
-  e.value = lastcopied
-  e.style.color = "black"
-  clearInterval(timer4);
-}, 1500);
-
+  function copytext(e){
+    if(e.value!="Link copied"){
+    
+    e.focus();
+    e.select();
+    try{    navigator.clipboard.writeText(e.value).then(function (clipboardData) {});}
+    catch(err){
+  
+    }
+    try{    document.execCommand('copy')}
+    catch(err2){
+  
+    }
+  var linktext = e.value
+    e.value = "Link copied"
+  e.style.color = "red"
+  
+  var timer2 = setInterval(function () {
+    e.value = linktext
+    e.style.color = "black"
+    clearInterval(timer2);
+  }, 500);
 }
+  }
 
 function deaccent(strng){
 var characterarray
