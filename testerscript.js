@@ -1510,13 +1510,17 @@ rectw = rectw - 100
 document.getElementById('theurl2').style.width = rectw + 'px'
   var url
  url = 'https://api.ipify.org/?format=txt&callback=getIP'
-
+ var ip
+ try{
   var xhr = new XMLHttpRequest();
   // third param = false  = synchronous request
   xhr.open('GET', url, false);
   xhr.send();
-  var ip = xhr.responseText;
-  ip = ip.replace(/.*[^a-zA-Z0-9]([a-zA-Z0-9]*[^a-zA-Z0-9][a-zA-Z0-9]*)/,'$1')
+  ip = xhr.responseText;
+  ip = ip.replace(/.*[^a-zA-Z0-9]([a-zA-Z0-9]*[^a-zA-Z0-9][a-zA-Z0-9]*)/,'$1')}
+  catch(err){
+ip = '0.0'
+  }
 document.getElementById('ininput').outerHTML = ''
 document.getElementById('finalise').outerHTML = ''
 document.getElementById('cancellation').outerHTML = ''
