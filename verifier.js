@@ -118,6 +118,11 @@ document.getElementById('testurl').innerHTML = '<a id="link"></a>'
 document.getElementById('link').setAttribute('href', 'https://derigenda.co.uk/vocabtester.htm?test=' + stage + '&filter=' + range)
 document.getElementById('link').innerText = document.getElementById('link').getAttribute('href')
 
+document.getElementsByTagName('table')[0].outerHTML = document.getElementsByTagName('table')[0].outerHTML + '<textarea ondblclick="copytext()" onclick="copytext()" id="theurl"></textarea>'
+document.getElementById('theurl').value = truncurl + '?str=' + localStorage.getItem('str')
+
+
+
 if(properties.length>6){
   document.getElementById('outrow').outerHTML = document.getElementById('outrow').outerHTML + '<tr><td>IP ends:</td><td>' + properties[7] + '</td></tr>'
   document.getElementById('outrow').outerHTML = document.getElementById('outrow').outerHTML + '<tr><td>Time taken:</td><td>' + secstostr(properties[6]) + '</td></tr>'
@@ -191,4 +196,29 @@ function luhnCheckDigit(number) {
   timestr = h + ":" + timestr
   }
   return timestr
+  }
+
+  function copytext(e){
+    if(e.value!="Link copied"){
+    
+    e.focus();
+    e.select();
+    try{    navigator.clipboard.writeText(e.value).then(function (clipboardData) {});}
+    catch(err){
+  
+    }
+    try{    document.execCommand('copy')}
+    catch(err2){
+  
+    }
+  var linktext = e.value
+    e.value = "Link copied"
+  e.style.color = "red"
+  
+  var timer2 = setInterval(function () {
+    e.value = linktext
+    e.style.color = "black"
+    clearInterval(timer2);
+  }, 500);
+}
   }
