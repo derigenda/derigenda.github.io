@@ -22,7 +22,10 @@ function hexDecode(value){
 }
 
 function verify (){
-var hexstring = getParameterByName('str')
+var fullurl = window.location.href;
+var truncurl = fullurl.replace(/\?str\=.*/g,'')
+if(fullurl == truncurl){
+var hexstring = localStorage.getItem('str')
 hexstring = hexstring.replace(/g/gm,'spy')
 hexstring = hexstring.replace(/h/gm,'vy')
 hexstring = hexstring.replace(/i/gm,'yvlzu')
@@ -118,8 +121,20 @@ document.getElementById('link').innerText = document.getElementById('link').getA
 if(properties.length>6){
   document.getElementById('outrow').outerHTML = document.getElementById('outrow').outerHTML + '<tr><td>IP ends:</td><td>' + properties[7] + '</td></tr>'
   document.getElementById('outrow').outerHTML = document.getElementById('outrow').outerHTML + '<tr><td>Time taken:</td><td>' + secstostr(properties[6]) + '</td></tr>'
-}}
+}
+document.getElementsByTagName('title')[0].innerText = document.getElementsByTagName('title')[0].innerText + '|'+properties[1] +'|' +properties[2]
 
+}
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-134670977-2');
+}
+else{
+  localStorage.setItem('str',getParameterByName('str'))
+  window.open(truncurl)
+}
 }
 
 function luhnCheckDigit(number) {
