@@ -118,7 +118,7 @@ document.getElementById('testurl').innerHTML = '<a id="link"></a>'
 document.getElementById('link').setAttribute('href', 'https://derigenda.co.uk/vocabtester.htm?test=' + stage + '&filter=' + range)
 document.getElementById('link').innerText = document.getElementById('link').getAttribute('href')
 
-document.getElementsByTagName('table')[0].outerHTML = document.getElementsByTagName('table')[0].outerHTML + 'Link to this page:<br><textarea ondblclick="copytext(this)" onclick="copytext(this)" id="theurl"></textarea>'
+document.getElementsByTagName('table')[0].outerHTML = document.getElementsByTagName('table')[0].outerHTML + '<b>Link to this page:</b><br><textarea ondblclick="copytext(this)" onclick="copytext(this)" id="theurl"></textarea>'
 document.getElementById('theurl').value = truncurl + '?str=' + localStorage.getItem('str')
 var w =  document.getElementsByTagName('table')[0].getBoundingClientRect().width + 'px'
 document.getElementById('theurl').style.width = w
