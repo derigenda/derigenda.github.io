@@ -133,7 +133,7 @@ gtag('config', 'UA-134670977-2');
 }
 else{
   localStorage.setItem('str',getParameterByName('str'))
-  window.open(truncurl)
+  window.location.replace(truncurl)
 }
 }
 
