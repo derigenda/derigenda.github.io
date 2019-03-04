@@ -120,7 +120,7 @@ document.getElementById('link').innerText = document.getElementById('link').getA
 
 document.getElementsByTagName('table')[0].outerHTML = document.getElementsByTagName('table')[0].outerHTML + '<textarea ondblclick="copytext(this)" onclick="copytext(this)" id="theurl"></textarea>'
 document.getElementById('theurl').value = truncurl + '?str=' + localStorage.getItem('str')
-var w =  document.getElementsByTagName('table')[0].getBoundingClientRect.width + 'px'
+var w =  document.getElementsByTagName('table')[0].getBoundingClientRect().width + 'px'
 document.getElementById('theurl').style.width = w
 
 
