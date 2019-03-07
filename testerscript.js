@@ -1685,7 +1685,6 @@ function privacy(){
         'border: 2px solid red;' +
         'border-radius: 5px;' +
         'z-index:1002;' +
-        'overflow:auto;' +
         'width:60%;' +
         'text-align:center;' +
         'height:410px;' +
@@ -1693,7 +1692,7 @@ function privacy(){
         'margin-top:-200px';
 
 
-        $('body').append('<div id="Pprompt" style="' + privacy_overlay + '"><testarea readonly id="statement"></textarea></div>');
+        $('body').append('<div id="Pprompt" style="' + privacy_overlay + '"><div readonly style="overflow-y:scroll;" id="statement"></div></div>');
 
         var url
  url = 'https://derigenda.co.uk/privacy.htm'
@@ -1708,9 +1707,11 @@ function privacy(){
 document.getElementById('statement').innerHTML = result
 document.getElementById('statement').value = document.getElementById('statement').innerHTML
 document.getElementById('statement').style.backgroundColor = 'white'
-    document.getElementById('statement').value = ''
+    //document.getElementById('statement').innerHTML = ''
 
     document.getElementById('statement').outerHTML = '<button id="closepriv" class="close" onclick="closebox(this)">X</button><br>' + document.getElementById('statement').outerHTML
+document.getElementById('statement').style.height = document.getElementById('Pprompt').getBoundingClientRect().height-35 + 'px'
+document.getElementById('statement').style.width = document.getElementById('Pprompt').getBoundingClientRect().width-10 + 'px'
 
 //document.getElementById('closepriv').style.backgroundColor = "8888ff"
 //document.getElementById('closepriv').style.borderColor = "000000"
