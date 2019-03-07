@@ -39,7 +39,7 @@ if (detectmob()==false){
 
 } else{
   document.getElementById('selectionform').outerHTML = document.getElementById('selectionform').outerHTML+ '<div style = "position:absolute; bottom:5px;right:5px"><a target="_blank" href = "https://docs.google.com/forms/d/e/1FAIpQLSfDt5dRsn800YLOeFCsDUd8AWfOAucXN1ONLESwyaQ2_IMolA/viewform">&#x1f4e7;</a></div>'
-  document.getElementById('selectionform').outerHTML = document.getElementById('selectionform').outerHTML+ '<div style = "color:007BFF; cursor:pointer; position:absolute; bottom:5px;left:5px"><a target="_blank" onclick = "privacy()">	&#x1f441;</a></div>'
+  document.getElementById('selectionform').outerHTML = document.getElementById('selectionform').outerHTML+ '<div style = "color:007BFF; cursor:pointer; position:absolute; bottom:5px;left:5px"><a target="_blank" onclick = "privacy()">Privacy</a></div>'
 
 }
 var reqresponses
