@@ -1709,8 +1709,8 @@ document.getElementById('statement').value = document.getElementById('statement'
 document.getElementById('statement').style.backgroundColor = 'white'
     //document.getElementById('statement').innerHTML = ''
 
-    document.getElementById('statement').outerHTML = '<button id="closepriv" class="close" onclick="closebox(this)">X</button><br>' + document.getElementById('statement').outerHTML
-document.getElementById('statement').style.height = document.getElementById('Pprompt').getBoundingClientRect().height-35 + 'px'
+    document.getElementById('statement').outerHTML = '<button id="closepriv" class="close" onclick="closebox(this)">X</button><br><br>' + document.getElementById('statement').outerHTML
+document.getElementById('statement').style.height = document.getElementById('Pprompt').getBoundingClientRect().height-55 + 'px'
 document.getElementById('statement').style.width = document.getElementById('Pprompt').getBoundingClientRect().width-10 + 'px'
 
 //document.getElementById('closepriv').style.backgroundColor = "8888ff"
