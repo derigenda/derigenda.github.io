@@ -43,7 +43,7 @@ document.getElementById('contact').style.fontSize="75%"
 } else{
   document.getElementById('selectionform').outerHTML = document.getElementById('selectionform').outerHTML+ '<div style = "position:absolute; bottom:5px;right:5px"><a id="contact" target="_blank" href = "https://docs.google.com/forms/d/e/1FAIpQLSfDt5dRsn800YLOeFCsDUd8AWfOAucXN1ONLESwyaQ2_IMolA/viewform">&#x1f4e7;</a></div>'
   document.getElementById('selectionform').outerHTML = document.getElementById('selectionform').outerHTML+ '<div style = "color:007BFF; cursor:pointer; position:absolute; bottom:5px;left:5px"><span target="_blank"id="privacy"  onclick = "privacy()">Privacy</a></div>'
-  document.getElementById('privacy').style.fontSize="50%"
+  document.getElementById('privacy').style.fontSize="75%"
   document.getElementById('contact').style.fontSize="50%"
   
 }
