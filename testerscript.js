@@ -34,15 +34,19 @@ function chooser(){
 button()
 resizefunction()
 if (detectmob()==false){
-  document.getElementById('selectionform').outerHTML = document.getElementById('selectionform').outerHTML+ '<div style = "position:absolute; bottom:5px;right:5px"><a target="_blank" href = "https://docs.google.com/forms/d/e/1FAIpQLSfDt5dRsn800YLOeFCsDUd8AWfOAucXN1ONLESwyaQ2_IMolA/viewform">Contact</a></div>'
-  document.getElementById('selectionform').outerHTML = document.getElementById('selectionform').outerHTML+ '<div style = "color:007BFF; cursor:pointer; position:absolute; bottom:5px;left:5px"><a target="_blank" onclick = "privacy()">Privacy</a></div>'
-
+  document.getElementById('selectionform').outerHTML = document.getElementById('selectionform').outerHTML+ '<div style = "position:absolute; bottom:5px;right:5px"><a id="contact" target="_blank" href = "https://docs.google.com/forms/d/e/1FAIpQLSfDt5dRsn800YLOeFCsDUd8AWfOAucXN1ONLESwyaQ2_IMolA/viewform">Contact</a></div>'
+  document.getElementById('selectionform').outerHTML = document.getElementById('selectionform').outerHTML+ '<div style = "color:007BFF; cursor:pointer; position:absolute; bottom:5px;left:5px"><a target="_blank" id="privacy" onclick = "privacy()">Privacy</a></div>'
+document.getElementById('')
 } else{
-  document.getElementById('selectionform').outerHTML = document.getElementById('selectionform').outerHTML+ '<div style = "position:absolute; bottom:5px;right:5px"><a target="_blank" href = "https://docs.google.com/forms/d/e/1FAIpQLSfDt5dRsn800YLOeFCsDUd8AWfOAucXN1ONLESwyaQ2_IMolA/viewform">&#x1f4e7;</a></div>'
-  document.getElementById('selectionform').outerHTML = document.getElementById('selectionform').outerHTML+ '<div style = "color:007BFF; cursor:pointer; position:absolute; bottom:5px;left:5px"><a target="_blank" onclick = "privacy()">Privacy</a></div>'
+  document.getElementById('selectionform').outerHTML = document.getElementById('selectionform').outerHTML+ '<div style = "position:absolute; bottom:5px;right:5px"><a id="contact" target="_blank" href = "https://docs.google.com/forms/d/e/1FAIpQLSfDt5dRsn800YLOeFCsDUd8AWfOAucXN1ONLESwyaQ2_IMolA/viewform">&#x1f4e7;</a></div>'
+  document.getElementById('selectionform').outerHTML = document.getElementById('selectionform').outerHTML+ '<div style = "color:007BFF; cursor:pointer; position:absolute; bottom:5px;left:5px"><a target="_blank"id="privacy"  onclick = "privacy()">Privacy</a></div>'
 
 }
+
+document.getElementById('privacy').style.fontSize="75%"
+document.getElementById('contact').style.fontSize="75%"
 var reqresponses
+
 try{
    reqresponses = localStorage.getItem("reqresponses")
 }
