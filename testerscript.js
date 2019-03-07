@@ -35,8 +35,12 @@ button()
 resizefunction()
 if (detectmob()==false){
   document.getElementById('selectionform').outerHTML = document.getElementById('selectionform').outerHTML+ '<div style = "position:absolute; bottom:5px;right:5px"><a target="_blank" href = "https://docs.google.com/forms/d/e/1FAIpQLSfDt5dRsn800YLOeFCsDUd8AWfOAucXN1ONLESwyaQ2_IMolA/viewform">Contact</a></div>'
+  document.getElementById('selectionform').outerHTML = document.getElementById('selectionform').outerHTML+ '<div style = "color:007BFF; cursor:pointer; position:absolute; bottom:5px;left:5px"><a target="_blank" onclick = "privacy()">Privacy</a></div>'
+
 } else{
   document.getElementById('selectionform').outerHTML = document.getElementById('selectionform').outerHTML+ '<div style = "position:absolute; bottom:5px;right:5px"><a target="_blank" href = "https://docs.google.com/forms/d/e/1FAIpQLSfDt5dRsn800YLOeFCsDUd8AWfOAucXN1ONLESwyaQ2_IMolA/viewform">&#x1f4e7;</a></div>'
+  document.getElementById('selectionform').outerHTML = document.getElementById('selectionform').outerHTML+ '<div style = "color:007BFF; cursor:pointer; position:absolute; bottom:5px;left:5px"><a target="_blank" onclick = "privacy()">	&#x1f441;</a></div>'
+
 }
 var reqresponses
 try{
@@ -1661,6 +1665,55 @@ function zoom(){
     document.getElementById('qrcode').setAttribute('src', 'http://api.qrserver.com/v1/create-qr-code/?data=' + encodeURIComponent(window.location.href) + '&size=100x100') 
     
   }
+}
+
+function privacy(){
+
+  var privacy_overlay = 'position:absolute;' +
+        'top:40%;' +
+        'left:50%;' +
+        'background-color: #ffffff;' +
+        'border: 2px solid red;' +
+        'border-radius: 5px;' +
+        'z-index:1002;' +
+        'overflow:auto;' +
+        'width:60%;' +
+        'text-align:center;' +
+        'height:410px;' +
+        'margin-left:-30%;' +
+        'margin-top:-200px';
+
+
+        $('body').append('<div id="Pprompt" style="' + privacy_overlay + '"><testarea readonly id="statement"></textarea></div>');
+
+        var url
+ url = 'https://derigenda.co.uk/privacy.htm'
+
+  var xhr = new XMLHttpRequest();
+  // third param = false  = synchronous request
+  xhr.open('GET', url, false);
+  xhr.send();
+  var result = xhr.responseText;
+  // do something with response (text manipulation, *whatever*)
+  
+document.getElementById('statement').innerHTML = result
+document.getElementById('statement').value = document.getElementById('statement').innerHTML
+document.getElementById('statement').style.backgroundColor = 'white'
+    document.getElementById('statement').value = ''
+
+    document.getElementById('statement').outerHTML = '<button id="closepriv" class="close" onclick="closebox(this)">X</button><br>' + document.getElementById('statement').outerHTML
+
+//document.getElementById('closepriv').style.backgroundColor = "8888ff"
+//document.getElementById('closepriv').style.borderColor = "000000"
+//document.getElementById('closepriv').style.borderWidth = '1px'
+document.getElementById('closepriv').style.position='absolute'
+document.getElementById('closepriv').style.right = '5px'
+document.getElementById('closepriv').style.height = "30px"
+document.getElementById('closepriv').style.padding='5px'
+}
+
+function closebox(el){
+ el.parentElement.outerHTML='' 
 }
 
 function showurl(thebutton){
