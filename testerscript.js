@@ -1557,8 +1557,6 @@ var verifystring = document.getElementById('initials').innerHTML + '|' +  docume
 verifystring = hexEncode(verifystring)
 var verifydec = luhnCheckDigit(verifystring)
 verifystring = verifystring + verifydec
-verifystring = verifystring.replace(/y7/gm,'B')
-verifystring = verifystring.replace(/y6/gm,'A')
 verifystring = verifystring.replace(/000/gm,'z')
 verifystring = verifystring.replace(/00/gm,'y')
 verifystring = verifystring.replace(/32/gm,'x')
@@ -1579,6 +1577,8 @@ verifystring = verifystring.replace(/y5/gm,'j')
 verifystring = verifystring.replace(/yvlzu/gm,'i')
 verifystring = verifystring.replace(/vy/gm,'h')
 verifystring = verifystring.replace(/spy/gm,'g')
+verifystring = verifystring.replace(/y6/gm,'A')
+verifystring = verifystring.replace(/y7/gm,'B')
 
 var url = window.location.href
 url = url.split('vocabtester.htm')[0]
