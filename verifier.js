@@ -46,6 +46,8 @@ hexstring = hexstring.replace(/w/gm,'36')
 hexstring = hexstring.replace(/x/gm,'32')
 hexstring = hexstring.replace(/y/gm,'00')
 hexstring = hexstring.replace(/z/gm,'000')
+hexstring = hexstring.replace(/A/gm,'y6')
+hexstring = hexstring.replace(/B/gm,'y7')
 
 var check = hexstring.replace(/.*(.)$/gm,'$1')
 var hexstring = hexstring.substring(0,hexstring.length-1)
