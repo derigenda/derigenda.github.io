@@ -1740,12 +1740,12 @@ function showurl(thebutton){
         'overflow:auto;' +
         'width:60%;' +
         'text-align:center;' +
-        'height:410px;' +
+        'height:420px;' +
         'margin-left:-30%;' +
         'margin-top:-200px';
 
-    $('body').append('<div id="Eprompt" style="' + email_overlay + '"><span style="font-size:30px"; id="time">Share this test</span><br><img id="qrcode" width="100" style="cursor:zoom-in" onclick="zoom()"></img><br><h4><ol id="emailbody" style="text-align:left"></ol></h4></div>');
-document.getElementById('emailbody').innerHTML = document.getElementById('emailbody').innerHTML + '<table style="width:90%"><tr><td><button style="width:100%" id="gmailtest" onclick="gmailtest()">Gmail</button></td></tr><tr><td><button style="width:100%" id="emailtest" onclick="emailtest()">Other Email</button></td></tr><tr><td><span style="font-weight: bold;">Copy link:</span><textarea style="width:100%" ondblclick="copytext(this)" onclick="copytext(this)" readonly="readonly" id="theurl"></textarea></td></tr><tr><td><button style="width:100%" id="downloadlist" onclick="downloadlist()">Download list</button></td></tr><tr><td><g:sharetoclassroom id="classroomButton" size="32"></g:sharetoclassroom></td></tr><tr><td><button style="width:100%" id="cancelbutton" onclick="cancelthis()">Close</button></td></tr></table>'
+    $('body').append('<div id="Eprompt" style="' + email_overlay + '"><span style="font-size:30px"; id="time">Share this test</span><br><img id="qrcode" width="100" style="cursor:zoom-in" onclick="zoom()"></img><br><div style="height:32px; font-size:18px;";><button id="classroomButton" class="g-sharetoclassroom" data-size="32" data-title="Vocabulary revision"></button><div id="classroomText"></div></div><h4><ol id="emailbody" style="text-align:left"></ol></h4></div>');
+document.getElementById('emailbody').innerHTML = document.getElementById('emailbody').innerHTML + '<table  style="width:90%"><tr><td><button style="width:100%" id="gmailtest" onclick="gmailtest()">Gmail</button></td></tr><tr><td><button style="width:100%" id="emailtest" onclick="emailtest()">Other Email</button></td></tr><tr><td><span style="font-weight: bold;">Copy link:</span><textarea style="width:100%" ondblclick="copytext(this)" onclick="copytext(this)" readonly="readonly" id="theurl"></textarea></td></tr><tr><td><button style="width:100%" id="downloadlist" onclick="downloadlist()">Download list</button></td></tr><tr><td><button style="width:100%" id="cancelbutton" onclick="cancelthis()">Close</button></td></tr></table>'
 document.getElementById('qrcode').setAttribute('src', 'http://api.qrserver.com/v1/create-qr-code/?data=' + encodeURIComponent(window.location.href) + '&size=100x100')
 var create = document.getElementById('downloadlist'),
 textbox = document.getElementById('criteria');
@@ -1780,10 +1780,10 @@ if (detectmob() == true){
  
 }
 document.getElementById('theurl').value = window.location.href
-document.getElementById('classroomButton').setAttribute('url',window.location.href)
-document.getElementById('classroomButton').setAttribute('title','Vocabulary revision')
-document.getElementById('classroomButton').setAttribute('itemtype','assignment')
-
+document.getElementById('classroomButton').setAttribute('data-url',window.location.href)
+gapi.sharetoclassroom.go("google-classroom-div")
+document.getElementById('classroomText').style.verticalAlign='top'
+document.getElementById('classroomText').style.textAlign='right'
 
 var w
 w = document.getElementById("Eprompt").getBoundingClientRect().width
@@ -1791,6 +1791,8 @@ if (w>500){
   document.getElementById("Eprompt").style.width="500px"
 document.getElementById("Eprompt").style.left = (document.getElementById("myModal").getBoundingClientRect().width/2)-0 + "px"
 }
+
+
 }
 function cancelthis(){
   document.getElementById("Eprompt").outerHTML = ""
