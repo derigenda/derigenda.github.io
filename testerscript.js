@@ -1740,12 +1740,12 @@ function showurl(thebutton){
         'overflow:auto;' +
         'width:60%;' +
         'text-align:center;' +
-        'height:420px;' +
+        'height:455px;' +
         'margin-left:-30%;' +
         'margin-top:-200px';
 
-    $('body').append('<div id="Eprompt" style="' + email_overlay + '"><span style="font-size:30px"; id="time">Share this test</span><br><img id="qrcode" width="100" style="cursor:zoom-in" onclick="zoom()"></img><br><div style="height:32px; font-size:18px;";><button id="classroomButton" class="g-sharetoclassroom" data-size="32" data-title="Vocabulary revision"></button><div id="classroomText"></div></div><h4><ol id="emailbody" style="text-align:left"></ol></h4></div>');
-document.getElementById('emailbody').innerHTML = document.getElementById('emailbody').innerHTML + '<table  style="width:90%"><tr><td><button style="width:100%" id="gmailtest" onclick="gmailtest()">Gmail</button></td></tr><tr><td><button style="width:100%" id="emailtest" onclick="emailtest()">Other Email</button></td></tr><tr><td><span style="font-weight: bold;">Copy link:</span><textarea style="width:100%" ondblclick="copytext(this)" onclick="copytext(this)" readonly="readonly" id="theurl"></textarea></td></tr><tr><td><button style="width:100%" id="downloadlist" onclick="downloadlist()">Download list</button></td></tr><tr><td><button style="width:100%" id="cancelbutton" onclick="cancelthis()">Close</button></td></tr></table>'
+    $('body').append('<div id="Eprompt" style="' + email_overlay + '"><span style="font-size:30px"; id="time">Share this test</span><br><img id="qrcode" width="100" style="cursor:zoom-in" onclick="zoom()"></img><br><div style="height:32px; font-size:18px;";><div id="classroomText"></div></div><h4><ol id="emailbody" style="text-align:left"></ol></h4></div>');
+document.getElementById('emailbody').innerHTML = document.getElementById('emailbody').innerHTML + '<table  style="width:90%"><tr><td><button style="width:100%" id="gmailtest" onclick="gmailtest()">Gmail</button></td></tr><tr><td><button style="width:100%" id="emailtest" onclick="emailtest()">Other Email</button></td></tr><tr><td><span style="font-weight: bold;">Copy link:</span><textarea style="width:100%" ondblclick="copytext(this)" onclick="copytext(this)" readonly="readonly" id="theurl"></textarea></td></tr><tr><td><button style="width:100%" id="downloadlist" onclick="downloadlist()">Download list</button></td></tr><tr><td><button id="classroomButton" style="width:100%" onclick="classroom()">Share on Google Classroom</button></td></tr><tr><td><button style="width:100%" id="cancelbutton" onclick="cancelthis()">Close</button></td></tr></table>'
 document.getElementById('qrcode').setAttribute('src', 'http://api.qrserver.com/v1/create-qr-code/?data=' + encodeURIComponent(window.location.href) + '&size=100x100')
 var create = document.getElementById('downloadlist'),
 textbox = document.getElementById('criteria');
@@ -1780,10 +1780,7 @@ if (detectmob() == true){
  
 }
 document.getElementById('theurl').value = window.location.href
-document.getElementById('classroomButton').setAttribute('data-url',window.location.href)
-gapi.sharetoclassroom.go("google-classroom-div")
-document.getElementById('classroomText').style.verticalAlign='top'
-document.getElementById('classroomText').style.textAlign='right'
+document.getElementById('classroomButton').setAttribute('href',document.getElementById('classroomButton').getAttribute('href').replace(/yyy/g, encodeURIComponent(window.location.href)))
 
 var w
 w = document.getElementById("Eprompt").getBoundingClientRect().width
@@ -1819,6 +1816,18 @@ var win = window.open(email, '_blank');
 win.focus();
 
 }
+
+function classroom(){
+  document.getElementById("Eprompt").outerHTML = ""
+  var email = window.location.href
+  email = encodeURIComponent(email)
+  email = 'https://classroom.google.com/share?url=https%3A%2F%2Fderigenda.co.uk%2Fvocabtester.htm%3Ftest%3Dstage1%26filter%3D1-12%23&title=Vocabulary%20revision&url=' + encodeURIComponent(window.location.href)
+
+var win = window.open(email, '_blank');
+win.focus();
+
+}
+
 
 var textFile = null,
   makeTextFile = function (text) {
