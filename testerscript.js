@@ -688,7 +688,7 @@ function returnlist(q){
      }
 
   var url
- url = '/voc-' + testname + '.htm'
+ url = 'https://derigenda.co.uk/voc-' + testname + '.htm'
 
   var xhr = new XMLHttpRequest();
   // third param = false  = synchronous request
@@ -1745,7 +1745,7 @@ function showurl(thebutton){
         'margin-top:-200px';
 
     $('body').append('<div id="Eprompt" style="' + email_overlay + '"><span style="font-size:30px"; id="time">Share this test</span><br><img id="qrcode" width="100" style="cursor:zoom-in" onclick="zoom()"></img><br><h4><ol id="emailbody" style="text-align:left"></ol></h4></div>');
-document.getElementById('emailbody').innerHTML = document.getElementById('emailbody').innerHTML + '<table style="width:90%"><tr><td><button style="width:100%" id="gmailtest" onclick="gmailtest()">Gmail</button></tr></td><tr><td><button style="width:100%" id="emailtest" onclick="emailtest()">Other Email</button></tr></td><tr><td><span style="font-weight: bold;">Copy link:</span><textarea style="width:100%" ondblclick="copytext(this)" onclick="copytext(this)" readonly="readonly" id="theurl"></textarea></td></tr><tr><td><button style="width:100%" id="downloadlist" onclick="downloadlist()">Download list</button></td></tr><tr><td><button style="width:100%" id="cancelbutton" onclick="cancelthis()">Close</button></tr></td></table>'
+document.getElementById('emailbody').innerHTML = document.getElementById('emailbody').innerHTML + '<table style="width:90%"><tr><td><button style="width:100%" id="gmailtest" onclick="gmailtest()">Gmail</button></td></tr><tr><td><button style="width:100%" id="emailtest" onclick="emailtest()">Other Email</button></td></tr><tr><td><span style="font-weight: bold;">Copy link:</span><textarea style="width:100%" ondblclick="copytext(this)" onclick="copytext(this)" readonly="readonly" id="theurl"></textarea></td></tr><tr><td><button style="width:100%" id="downloadlist" onclick="downloadlist()">Download list</button></td></tr><tr><td><g:sharetoclassroom id="classroomButton" size="32"></g:sharetoclassroom></td></tr><tr><td><button style="width:100%" id="cancelbutton" onclick="cancelthis()">Close</button></td></tr></table>'
 document.getElementById('qrcode').setAttribute('src', 'http://api.qrserver.com/v1/create-qr-code/?data=' + encodeURIComponent(window.location.href) + '&size=100x100')
 var create = document.getElementById('downloadlist'),
 textbox = document.getElementById('criteria');
@@ -1777,8 +1777,14 @@ window.requestAnimationFrame(function () {
 if (detectmob() == true){
   document.getElementById('gmailtest').outerHTML = ''
   document.getElementById('emailtest').innerText = 'Email'
+ 
 }
 document.getElementById('theurl').value = window.location.href
+document.getElementById('classroomButton').setAttribute('url',window.location.href)
+document.getElementById('classroomButton').setAttribute('title','Vocabulary revision')
+document.getElementById('classroomButton').setAttribute('itemtype','assignment')
+
+
 var w
 w = document.getElementById("Eprompt").getBoundingClientRect().width
 if (w>500){
