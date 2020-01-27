@@ -688,7 +688,7 @@ function returnlist(q){
      }
 
   var url
- url = 'https://derigenda.co.uk/voc-' + testname + '.htm'
+ url = '/voc-' + testname + '.htm'
 
   var xhr = new XMLHttpRequest();
   // third param = false  = synchronous request
