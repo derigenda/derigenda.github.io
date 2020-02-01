@@ -1821,7 +1821,7 @@ function classroom(){
   document.getElementById("Eprompt").outerHTML = ""
   var email = window.location.href
   email = encodeURIComponent(email)
-  email = 'https://classroom.google.com/share?url=https%3A%2F%2Fderigenda.co.uk%2Fvocabtester.htm%3Ftest%3Dstage1%26filter%3D1-12%23&title=Vocabulary%20revision&url=' + encodeURIComponent(window.location.href)
+  email = 'https://classroom.google.com/share?title=Vocabulary%20revision&url=' + encodeURIComponent(window.location.href)
 
 var win = window.open(email, '_blank');
 win.focus();
