@@ -25,8 +25,6 @@ function tick(){
         'onerror="testConnectionCallback(false);" ' +
         'onload="testConnectionCallback(true);">';
 
-    testConnectionCallback = function(result){
                 var element = document.getElementById('testImage');
         element.parentNode.removeChild(element);
-    }    
 }
