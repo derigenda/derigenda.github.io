@@ -19,11 +19,11 @@ function tick(){
 
         if(checkConnection()) { 
             var bodytext = document.getElementById('body').innerHTML
-            bodytext = datetime + " CONNECTED<br>" + bodytext
+            bodytext = '<span style="background-color: green">' + datetime + " CONNECTED<br>" + bodytext +'</span>'
             document.getElementById('body').innerHTML = bodytext
         }else{
             var bodytext = document.getElementById('body').innerHTML
-           bodytext = datetime + " DISCONNECTED<br>" + bodytext
+           bodytext = '<span style="background-color: red">' + datetime + " DISCONNECTED<br>" + bodytext +'</span>'
             document.getElementById('body').innerHTML = bodytext
         }
     }
