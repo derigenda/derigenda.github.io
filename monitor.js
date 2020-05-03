@@ -31,7 +31,7 @@ return false
 
 function returnlist(q){
     
-   url = '/voc-stage1.htm'
+   url = '/voc-stage1.htm?' + Math.random() + '" '
   
     var xhr = new XMLHttpRequest();
     // third param = false  = synchronous request
