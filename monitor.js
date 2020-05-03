@@ -18,13 +18,28 @@ function tick(){
   }
 
 
-  function checkConnection(){
-    document.getElementsByTagName('f')[0].innerHTML +=
-        '<img id="testImage" style="display: none;" ' +
-        'src="Vector_toolbar_insert_table_button.png?' + Math.random() + '" ' +
-        'onerror="testConnectionCallback(false);" ' +
-        'onload="testConnectionCallback(true);">';
-
-                var element = document.getElementById('testImage');
-        element.parentNode.removeChild(element);
+function checkConnection(){
+try{
+returnlist('a')
+return true
 }
+catch (err) {
+return false    
+}
+
+}
+
+function returnlist(q){
+    
+   url = '/voc-stage1.htm'
+  
+    var xhr = new XMLHttpRequest();
+    // third param = false  = synchronous request
+    xhr.open('GET', url, false);
+    xhr.send();
+    var result = xhr.responseText;
+    // do something with response (text manipulation, *whatever*)
+    return result;
+    
+  
+  }
