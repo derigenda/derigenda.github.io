@@ -1,17 +1,29 @@
 function tick(){
     var myVar = setInterval(myTimer, 20000)
     function myTimer(){
+        var currentdate = new Date(); 
+        var mins
+        mins = currentdate.getMinutes() +'' 
+        if (mins.length==1){
+        mins = '0' +currentdate.getMinutes()
+        }
+        secs = currentdate.getSeconds() +'' 
+        if (secs.length==1){
+        secs = '0' +currentdate.getSeconds()
+        }
+        var datetime = currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " at "  
+                + currentdate.getHours() + ":"  
+                + mins + ':' + secs
+
         if(checkConnection()) { 
             var bodytext = document.getElementById('body').innerHTML
-            var today = new Date(); 
-            var date = today.getHours() + ':' + today.getMinutes() + ":" + today.getSeconds() + "  " + today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-            bodytext = date + " CONNECTED<br>" + bodytext
+            bodytext = datetime + " CONNECTED<br>" + bodytext
             document.getElementById('body').innerHTML = bodytext
         }else{
             var bodytext = document.getElementById('body').innerHTML
-            var today = new Date(); 
-            var date = today.getHours() + ':' + today.getMinutes() + ":" + today.getSeconds() + "  " + today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-            bodytext = date + " DISCONNECTED<br>" + bodytext
+           bodytext = datetime + " DISCONNECTED<br>" + bodytext
             document.getElementById('body').innerHTML = bodytext
         }
     }
