@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<table xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" id="1" name="Table1" displayName="Table1" ref="A1:C23" totalsRowShown="0"><autoFilter ref="A1:C23"/><tableColumns count="3"><tableColumn id="1" name=" "/><tableColumn id="2" name="Latin"/><tableColumn id="3" name="Meaning"/></tableColumns><tableStyleInfo name="TableStyleMedium15" showFirstColumn="0" showLastColumn="0" showRowStripes="1" showColumnStripes="0"/></table>
