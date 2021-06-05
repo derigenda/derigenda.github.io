@@ -2081,23 +2081,23 @@ for (i=0;i<rowcount;i++){
  sharedStr = sharedStr + '</t></si></sst>'
 
  var zip = new JSZip();
- var url = 'http://derigenda.co.uk/vocabflashcards/docProps/app.xml'
+ var url = 'https://derigenda.co.uk/vocabflashcards/docProps/app.xml'
  zip.file('docProps/app.xml', urlToPromise(url), {binary:true});
- var url = 'http://derigenda.co.uk/vocabflashcards/docProps/core.xml'
+ var url = 'https://derigenda.co.uk/vocabflashcards/docProps/core.xml'
  zip.file('docProps/core.xml', urlToPromise(url), {binary:true});
- var url = 'http://derigenda.co.uk/vocabflashcards/xl/printerSettings/printerSettings1.bin'
+ var url = 'https://derigenda.co.uk/vocabflashcards/xl/printerSettings/printerSettings1.bin'
  if(portraitOption == 'landscape'){
-  url = 'http://derigenda.co.uk/vocabflashcards/xl/printerSettings/printerSettings1-2.bin'  
+  url = 'https://derigenda.co.uk/vocabflashcards/xl/printerSettings/printerSettings1-2.bin'  
 }
 
  zip.file('xl/printerSettings/printerSettings1.bin', urlToPromise(url), {binary:true});
  //var url = 'http://derigenda.co.uk/vocabflashcards/xl/sharedStrings.xml'
  zip.file('xl/sharedStrings.xml', sheetString);
- var url = 'http://derigenda.co.uk/vocabflashcards/xl/styles.xml'
+ var url = 'https://derigenda.co.uk/vocabflashcards/xl/styles.xml'
  zip.file('xl/styles.xml', urlToPromise(url), {binary:true});
- var url = 'http://derigenda.co.uk/vocabflashcards/xl/theme/theme1.xml'
+ var url = 'https://derigenda.co.uk/vocabflashcards/xl/theme/theme1.xml'
  zip.file('xl/theme/theme1.xml', urlToPromise(url), {binary:true});
- var url = 'http://derigenda.co.uk/vocabflashcards/xl/workbook.xml'
+ var url = 'https://derigenda.co.uk/vocabflashcards/xl/workbook.xml'
  zip.file('xl/workbook.xml', urlToPromise(url), {binary:true});
  //var url = 'http://derigenda.co.uk/vocabflashcards/xl/worksheets/sheet1.xml'
  zip.file('xl/worksheets/sheet1.xml', sheetString);
@@ -2117,7 +2117,7 @@ for (i=0;i<rowcount;i++){
 }
 
 function addfile(zip,file){
- var url = 'http://derigenda.co.uk/' + file
+ var url = 'https://derigenda.co.uk/' + file
  zip.file(file, urlToPromise(url), {binary:true});
 }
 
