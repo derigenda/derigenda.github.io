@@ -2109,8 +2109,7 @@ for (i=0;i<rowcount;i++){
  zip.file('xl/_rels/workbook.xml.rels', urlToPromise(url), {binary:true});
  var url = 'https://derigenda.co.uk/vocabflashcards/rel.xml'
  zip.file('_rels/.rels', urlToPromise(url), {binary:true});
- zip.generateAsync({type:"blob"})
-.then(function (blob) {
+ zip.generateAsync({type:"blob"}).then(function (blob) {
  saveAs(blob, "flashcards.xlsx");
 });
 }
