@@ -2101,7 +2101,7 @@ for (i=0;i<rowcount;i++){
  zip.file('xl/workbook.xml', urlToPromise(url), {binary:true});
  //var url = 'http://derigenda.co.uk/vocabflashcards/xl/worksheets/sheet1.xml'
  zip.file('xl/worksheets/sheet1.xml', sheetString);
-  var url = 'http://derigenda.co.uk/vocabflashcards/[Content_Types].xml'
+  var url = 'https://derigenda.co.uk/vocabflashcards/[Content_Types].xml'
  zip.file('[Content_Types].xml', urlToPromise(url), {binary:true});
  var url = 'https://derigenda.co.uk/vocabflashcards/sheetrel.xml'
  zip.file('xl/worksheets/_rels/sheet1.xml.rels', urlToPromise(url), {binary:true});
