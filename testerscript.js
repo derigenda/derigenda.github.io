@@ -688,7 +688,7 @@ function returnlist(q){
      }
 
   var url
- url = 'https://derigenda.co.uk/voc-' + testname + '.htm'
+ url = 'voc-' + testname + '.htm'
 
   var xhr = new XMLHttpRequest();
   // third param = false  = synchronous request
@@ -2071,7 +2071,8 @@ for (i=0;i<rowcount;i++){
 
  if(portraitOption == 'landscape'){
   sheetString = sheetString + '</sheetData><pageMargins left="0.7" right="0.7" top="0.75" bottom="0.75" header="0.3" footer="0.3"/>    <pageSetup paperSize="9" scale="150" fitToWidth="2" fitToHeight="7" pageOrder="overThenDown" orientation="landscape" r:id="rId1"/></worksheet>'  
- } else {
+  sheetString = sheetString.replace(/22\.140625/g,'22')
+} else {
   sheetString = sheetString + '</sheetData><pageMargins left="0.7" right="0.7" top="0.75" bottom="0.75" header="0.3" footer="0.3"/>    <pageSetup paperSize="9" fitToWidth="2" fitToHeight="7" pageOrder="overThenDown" orientation="portrait" r:id="rId1"/></worksheet>'
  
  }
@@ -2135,9 +2136,10 @@ function urlToPromise(url) {
 
 
 function flashMenu(){
-  var flashM = '<table><tr><td border="10">Size:<br><input type="radio" id="portrait" name="orientation" value="portrait" checked><label for="portrait">Portrait (small)</label><br><input type="radio" id="landscape" name="orientation" value="landscape"><label for="landscape">Landscape (big)</label><br><button value="Generate" style="width:100%" onclick="FlashZip()">Generate</button></td></tr></table>'
+  if(document.getElementsByClassName("flashM").length == 0){
+  var flashM = '<table class="flashM"><tr><td border="10">Size:<br><input type="radio" id="portrait" name="orientation" value="portrait" checked><label for="portrait">Portrait (small)</label><br><input type="radio" id="landscape" name="orientation" value="landscape"><label for="landscape">Landscape (big)</label><br><button value="Generate" style="width:100%" onclick="FlashZip()">Generate</button></td></tr></table>'
   //document.getElementById('portrait').checked = true
-  document.getElementById('flashZip').outerHTML = document.getElementById('flashZip').outerHTML + '<br>' + flashM
+  document.getElementById('flashZip').outerHTML = document.getElementById('flashZip').outerHTML + '<br>' + flashM}
 }
 
 function listMenu(){
