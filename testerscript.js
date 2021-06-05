@@ -2253,27 +2253,27 @@ sheet1string = sheet1string + '</sheetData><pageMargins left="0.7" right="0.7" t
 
   //zip.file('xl/worksheets/sheet1.xml', sheetString);
   var url = 'https://derigenda.co.uk/spreadsheet/[Content_Types].xml'
-  //zip.file('[Content_Types].xml', urlToPromise(url), {binary:true});
+  zip.file('[Content_Types].xml', urlToPromise(url), {binary:true});
   var url = 'https://derigenda.co.uk/spreadsheet/arel.xml'
-  //zip.file('_rels/.rels', urlToPromise(url), {binary:true});
+  zip.file('_rels/.rels', urlToPromise(url), {binary:true});
   var url = 'https://derigenda.co.uk/spreadsheet/brel.xml'
-  //zip.file('xl/_rels/workbook.xml.rels', urlToPromise(url), {binary:true});
+  zip.file('xl/_rels/workbook.xml.rels', urlToPromise(url), {binary:true});
   var url = 'https://derigenda.co.uk/spreadsheet/crel.xml'
-  //zip.file('xl/worksheets/_rels/sheet1.xml.rels', urlToPromise(url), {binary:true});
+  zip.file('xl/worksheets/_rels/sheet1.xml.rels', urlToPromise(url), {binary:true});
   var url = 'https://derigenda.co.uk/spreadsheet/docProps/app.xml'
-  //zip.file('docProps/app.xml', urlToPromise(url), {binary:true});
+  zip.file('docProps/app.xml', urlToPromise(url), {binary:true});
   var url = 'https://derigenda.co.uk/spreadsheet/docProps/core.xml'
-  //zip.file('docProps/core.xml', urlToPromise(url), {binary:true});
+  zip.file('docProps/core.xml', urlToPromise(url), {binary:true});
   var url = 'https://derigenda.co.uk/spreadsheet/xl/sharedStrings.xml'
-  //zip.file('xl/sharedStrings.xml', urlToPromise(url), {binary:true});
+  zip.file('xl/sharedStrings.xml', urlToPromise(url), {binary:true});
   var url = 'https://derigenda.co.uk/spreadsheet/xl/styles.xml'
-  //zip.file('xl/styles.xml', urlToPromise(url), {binary:true});
+  zip.file('xl/styles.xml', urlToPromise(url), {binary:true});
   var url = 'https://derigenda.co.uk/spreadsheet/xl/tables/table1.xml'
-  //zip.file('xl/tables/table1.xml', tablestring);
+  zip.file('xl/tables/table1.xml', tablestring);
   var url = 'https://derigenda.co.uk/spreadsheet/xl/theme/theme1.xml'
-  //zip.file('xl/theme/theme1.xml', urlToPromise(url), {binary:true});
+  zip.file('xl/theme/theme1.xml', urlToPromise(url), {binary:true});
   var url = 'https://derigenda.co.uk/spreadsheet/xl/workbook.xml'
-  //zip.file('xl/workbook.xml', urlToPromise(url), {binary:true});
+  zip.file('xl/workbook.xml', urlToPromise(url), {binary:true});
   zip.file('xl/worksheets/sheet1.xml', sheet1string);
 
   zip.generateAsync({type:"blob"})
