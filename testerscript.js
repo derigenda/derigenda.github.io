@@ -2200,13 +2200,24 @@ for(j=0;j<firstrow.children.length;j++){
 headerString = headerString.substr(0,headerString.length-1)
 
 header_s = headerString.split('|')
+colcount = header_s.length
+var isgreek
+isgreek = false
+  if(document.getElementsByClassName('Accentless-cell').length>0){
+isgreek = true
+}
+
+if (isgreek == true){
+  colcount -= 1
+}
+
 
 liststring = ''
 rowstring = ''
   for(i=0;i<document.getElementById('selectionform').getElementsByTagName('tr').length;i++){
     if(document.getElementById('selectionform').getElementsByTagName('tr')[i].style.backgroundColor=='yellow'){  
       rowstring = ''
-      for(k=0;k<header_s.length;k++){
+      for(k=0;k<colcount;k++){
         rowstring = rowstring + document.getElementById('selectionform').getElementsByTagName('tr')[i].children[k].innerText + '|'
         
       }
@@ -2220,7 +2231,6 @@ rowstring = ''
   liststring = liststring.substr(0,liststring.length-1)
   list = liststring.split('%')
 
-  colcount = header_s.length
   lastcol = String.fromCharCode(64 + colcount)
   rowcount = list.length + 1
   tablestring = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><table xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="xr xr3" xmlns:xr="http://schemas.microsoft.com/office/spreadsheetml/2014/revision" xmlns:xr3="http://schemas.microsoft.com/office/spreadsheetml/2016/revision3" id="1" xr:uid="{00000000-000C-0000-FFFF-FFFF00000000}" name="Table1" displayName="Table1" ref="A1:' + lastcol + rowcount + '" totalsRowShown="0"><autoFilter ref="A1:' + lastcol + rowcount + '" xr:uid="{00000000-0009-0000-0100-000001000000}"/><tableColumns count="' + colcount + '">'
