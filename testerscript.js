@@ -2053,7 +2053,7 @@ if(document.getElementsByClassName('Accentless-cell').length>0){
 isgreek = true
 }
 for (i=0;i<rowcount;i++){
- if (isgreek == true){ 
+ if (isgreek == false){ 
   sheetString = sheetString + '<row r="' + (i+1) + '" spans="1:8" ht="34.9" customHeight="1" x14ac:dyDescent="0.2"><c r="A' + (i+1) + '" s="2" t="str"><v>' + latinWords[i * 4 ].toUpperCase() + '</v></c><c r="B' + (i+1) + '" s="3" t="str"><v>'  + latinWords[i * 4 + 1].toUpperCase() +  '</v></c><c r="C' + (i+1) + '" s="3" t="str"><v>'  + latinWords[i * 4 + 2].toUpperCase() +  '</v></c><c r="D' + (i+1) + '" s="4" t="str"><v>'  + latinWords[i * 4 + 3].toUpperCase() + '</v></c><c r="E' + (i+1) + '" s="5" t="str"><v>' +  englishWords[i * 4 + 3] + '</v></c><c r="F' + (i+1) + '" s="5" t="str"><v>' +  englishWords[i * 4 + 2] +  '</v></c><c r="G' + (i+1) + '" s="5" t="str"><v>'  +  englishWords[i * 4 + 1] +  '</v></c><c r="H' + (i+1) + '" s="5" t="str"><v>'  +  englishWords[i * 4 + 0] +  '</v></c></row>'    
  } else {
   sheetString = sheetString + '<row r="' + (i+1) + '" spans="1:8" ht="34.9" customHeight="1" x14ac:dyDescent="0.2"><c r="A' + (i+1) + '" s="2" t="str"><v>' + latinWords[i * 4 ] + '</v></c><c r="B' + (i+1) + '" s="3" t="str"><v>'  + latinWords[i * 4 + 1] +  '</v></c><c r="C' + (i+1) + '" s="3" t="str"><v>'  + latinWords[i * 4 + 2] +  '</v></c><c r="D' + (i+1) + '" s="4" t="str"><v>'  + latinWords[i * 4 + 3] + '</v></c><c r="E' + (i+1) + '" s="5" t="str"><v>' +  englishWords[i * 4 + 3] + '</v></c><c r="F' + (i+1) + '" s="5" t="str"><v>' +  englishWords[i * 4 + 2] +  '</v></c><c r="G' + (i+1) + '" s="5" t="str"><v>'  +  englishWords[i * 4 + 1] +  '</v></c><c r="H' + (i+1) + '" s="5" t="str"><v>'  +  englishWords[i * 4 + 0] +  '</v></c></row>'    
