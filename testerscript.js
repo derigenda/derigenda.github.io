@@ -2143,9 +2143,10 @@ function flashMenu(){
 }
 
 function listMenu(){
-  var flashM = '<table><tr><td border="10">Format:<br><input type="radio" id="xlsx" name="format" value="xlsx" checked><label for="xlsx">Excel</label><br><input type="radio" id="csv" name="format" value="csv"><label for="csv">.csv File</label><br><button value="generate" style="width:100%" onclick="dl()()">Download</button></td></tr></table>'
+  if(document.getElementsByClassName("flashM").length == 0){
+  var flashM = '<table class="listM"><tr><td border="10">Format:<br><input type="radio" id="xlsx" name="format" value="xlsx" checked><label for="xlsx">Excel</label><br><input type="radio" id="csv" name="format" value="csv"><label for="csv">.csv File</label><br><button value="generate" style="width:100%" onclick="dl()()">Download</button></td></tr></table>'
   //document.getElementById('portrait').checked = true
-  document.getElementById('downloadlist').outerHTML = document.getElementById('downloadlist').outerHTML + '<br>' + flashM
+  document.getElementById('downloadlist').outerHTML = document.getElementById('downloadlist').outerHTML + '<br>' + flashM}
 }
 
 function dl(){
