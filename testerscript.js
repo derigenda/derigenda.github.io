@@ -2244,7 +2244,7 @@ for(r=0;r<list.length;r++){
   sheet1string = sheet1string + '<row r="' + (r + 2) + '" spans="1:' + colcount + '" x14ac:dyDescent="0.25">'
   for(c = 0;c<colcount;c++){
     colletter = String.fromCharCode(65 + c)
-    sheet1string = sheet1string + '<c r="' + colletter + (r + 2) + '" t="str"><v>' + list[r].split('|')[c] + '</v></c>'
+    sheet1string = sheet1string + '<c r="' + colletter + (r + 2) + '" t="str"><v>' + list[r].split('|')[c].replace(/\&/g,'&amp;') + '</v></c>'
   }
   sheet1string = sheet1string + '</row>'
 }
