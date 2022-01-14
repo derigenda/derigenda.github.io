@@ -4,6 +4,81 @@ var timer3
 var stt
 var ncc
 var wordsadded
+var myWindow
+
+function showTable(button) {
+  row = button.parentElement.parentElement
+  word = row.children[1].innerText
+  url = getParameterByName('test') + '/' + word + String.fromCharCode(46, 104, 116, 109)
+  var xhr = new XMLHttpRequest();
+  // third param = false  = synchronous request
+  xhr.open('GET', url, false);
+  xhr.send();
+  var result = xhr.responseText;
+  result = result.replace(/class\=\'MsoNormal\'/gm,'')
+  result = result.replace(/class\=MsoNormal/gm,'')
+  result = result.replace(/\<p \>\&nbsp\;\<\//gm,'</')
+  result = result.replace(/(\<td[^\>]+style=[\x27"][^\x27"]+)([\x27"]\>)/gm,'$1;white-space: nowrap;$2')
+  result = '<div id="tableFramer">' + result + '</div>'
+  result = result.replace(/�/gm,'')
+
+  var table_overlay = 'position:absolute;' +
+  'top:40%;' +
+  'left:50%;' +
+  'background-color: #ffffff;' +
+  'border: 2px solid red;' +
+  'border-radius: 5px;' +
+  'z-index:1002;' +
+  'width:60%;' +
+  'text-align:center;' +
+  'height:420px;' +
+  'margin-left:-30%;' +
+  'margin-top:-200px';
+
+
+$('body').append('<div id="Tprompt" style="' + table_overlay + '"><div readonly style="overflow-y:scroll;" id="Tstatement"></div></div>');
+  
+document.getElementById('Tstatement').innerHTML = result
+document.getElementById('Tstatement').value = document.getElementById('Tstatement').innerHTML
+document.getElementById('Tstatement').style.backgroundColor = 'white'
+    //document.getElementById('statement').innerHTML = ''
+
+    document.getElementById('Tstatement').outerHTML = '<button id="openpriv" onclick="openbox()"><svg height="15" width="15" viewBox="0 0 1024 768"><path d="M640 768H128V258L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg></button><button id="closepriv" onclick="closebox(this)">X</button><h3><br>' + word + '</h3>' + document.getElementById('Tstatement').outerHTML
+document.getElementById('Tstatement').style.height = document.getElementById('Tprompt').getBoundingClientRect().height-80 + 'px'
+document.getElementById('Tstatement').style.width = document.getElementById('Tprompt').getBoundingClientRect().width-10 + 'px'
+document.getElementById('closepriv').style.position='absolute'
+document.getElementById('closepriv').style.right = '5px'
+document.getElementById('closepriv').style.height = "26px"
+document.getElementById('closepriv').style.padding='5px'
+document.getElementById('openpriv').style.position='absolute'
+document.getElementById('openpriv').style.right = '25px'
+document.getElementById('openpriv').style.height = "26px"
+document.getElementById('openpriv').style.padding='5px'
+
+twdth = document.getElementById('tableFramer').scrollWidth
+fwdth = parseInt(document.getElementById('Tstatement').style.width.replace(/px/gm,''))
+if(twdth>fwdth){
+  rescale = fwdth/twdth
+  rescale=rescale*.95
+  document.getElementById('tableFramer').style.transform = 'scale(' + rescale + ',' + rescale +  ')'
+  document.getElementById('tableFramer').style.height = document.getElementById('tableFramer').children[0].scrollHeight * rescale
+  document.getElementById('tableFramer').style.width = document.getElementById('tableFramer').children[0].scrollWidth * rescale
+}
+
+}
+
+function openbox(){
+
+  if (myWindow && !myWindow.closed)
+  {
+    myWindow.close()
+  }
+
+  myWindow = window.open("", "Table");
+  myWindow.document.write('<title>Table</title><link rel="icon" href="/favicon.ico">' + document.getElementById('tableFramer').innerHTML);
+  myWindow.titlename = "Word"
+}
+
 function luhnCheckDigit(number) {
   var validChars = "0123456789ABCDEFGHIJKLMNOPQRSTUVYWXZ_";
   number = number.toUpperCase().trim();
@@ -92,6 +167,7 @@ else if(c=='stage18'){listselect('Stage 18')}
 else if(c=='stage19'){listselect('Stage 19')}
 else if(c=='stage20'){listselect('Stage 20')}
 else if(c=='ogcse'){listselect('OCR GCSE')}
+else if(c=='ogcse2'){listselect('OCR GCSE2')}
 else if(c=='egcse'){listselect('Eduqas GCSE')}
 else if(c=='ggcse'){listselect('GCSE Greek')}
 else if(c=='eg'){listselect('GCSE Eng-Greek')}
@@ -384,6 +460,9 @@ var testname
 if (document.getElementById('menuname').innerText == 'OCR GCSE'){
   document.getElementById('tips').innerHTML = 'Try these filters:<br><i>1-10<br>a-c,f,h<br>part:adverb</i>'
   testname = 'ogcse'
+}else if (document.getElementById('menuname').innerText == 'OCR GCSE2'){
+  document.getElementById('tips').innerHTML = 'The third column gives the CLC stage.<br>Try these filters:<br><i>1-10<br>a, d, e<br>clc:01</i>'
+  testname = 'ogcse2'
 }else if (document.getElementById('menuname').innerText == 'Eduqas GCSE'){
   document.getElementById('tips').innerHTML = 'The third column gives the CLC stage.<br>Try these filters:<br><i>1-10<br>a, d, e<br>clc:01</i>'
   testname = 'egcse'
@@ -613,6 +692,9 @@ catch(err) {
 }
 }
 function changecolour(vocabrow){
+  if(vocabrow.tagName == 'TD'){
+    vocabrow = vocabrow.parentElement
+  }
   if(vocabrow.style.backgroundColor!='yellow'){
     vocabrow.setAttribute('style',"background-color: yellow;")
   }else 
@@ -654,9 +736,11 @@ function returnlist(q){
   var testname
   if (q == 'OCR GCSE'){
     testname = 'ogcse'
-   }else if (q == 'Eduqas GCSE'){
-     testname = 'egcse'
-    }else if (q == 'GCSE Greek'){
+   }else if (q == 'OCR GCSE2'){
+     testname = 'ogcse2'
+    }else if (q == 'Eduqas GCSE'){
+      testname = 'egcse'
+     }else if (q == 'GCSE Greek'){
        testname = 'ggcse'
       }else if (q == 'GCSE Eng-Greek'){
          testname = 'eg'
@@ -718,6 +802,8 @@ function  compiledictionary(){
   var list = document.getElementById('latinword').getAttribute('list')
   if(list=='OCR GCSE'){
     var lists=returnlist('OCR GCSE')}
+    else  if(list=='OCR GCSE2'){
+      var lists=returnlist('OCR GCSE2')}
   else  if(list=='Eduqas GCSE'){
     var lists=returnlist('Eduqas GCSE')}
     else  if(list=='GCSE Greek'){
@@ -1408,7 +1494,7 @@ function printable(){
       test = '<div>Name:<div><table style="border-bottom: solid 1px; width:100%"><tr><td style = "width:100%"></td></tr></table></div><ol>'+testarray.join('')+'</ol>'
       test = '<table cellpadding="30px" style="width:100%"><tr><td style = "width:33%">' + test + '</td><td style = "width:33%">' + test + '</td><td style = "width:33%">' +test+'</td></table>'
 //create a print window
-        var mywindow = window.open('', 'Test', 'height=400,width=600');
+        mywindow = window.open('', 'Test', 'height=400,width=600');
         mywindow.document.write('<html><style src="print.css">@media print{@page {size: landscape}}</style><head><title>Test</title>');
         mywindow.document.write('</head><body class="Landscape">');
         mywindow.document.write(test);
@@ -1496,6 +1582,7 @@ if(testname=='stage18'){testname='Stage 18'}
 if(testname=='stage19'){testname='Stage 19'}
 if(testname=='stage20'){testname='Stage 20'}
 if(testname=='ogcse'){testname='OCR GCSE'}
+if(testname=='ogcse2'){testname='OCR GCSE2'}
 if(testname=='egcse'){testname='Eduqas GCSE'}
 if(testname=='ggcse'){testname='GCSE Greek'}
 if(testname=='eg'){testname='GCSE Eng-Greek'}
@@ -1942,7 +2029,7 @@ function makecsv(){
     var cell = ''
     var rowtext = ''
     //top left cell
-    if(document.getElementById('list').getElementsByTagName('tr')[0].getElementsByTagName('td')[0].getAttribute('class')=='Accentless-cell'){
+    if(document.getElementById('list').getElementsByTagName('tr')[0].getElementsByTagName('td')[0].getAttribute('class')=='Accentless-cell'||document.getElementById('list').getElementsByTagName('tr')[0].getElementsByTagName('td')[0].getAttribute('class')=='button-cell'){
 
     }else{
       cell = document.getElementById('list').getElementsByTagName('tr')[0].getElementsByTagName('td')[0].innerText +','
@@ -1951,7 +2038,7 @@ function makecsv(){
     }
 //other top row cells
 for(col = 1;col<colcount;col++){
-  if(document.getElementById('list').getElementsByTagName('tr')[0].getElementsByTagName('th')[col-1].getAttribute('class')=='Accentless-cell'){
+  if(document.getElementById('list').getElementsByTagName('tr')[0].getElementsByTagName('th')[col-1].getAttribute('class')=='Accentless-cell'||document.getElementById('list').getElementsByTagName('tr')[0].getElementsByTagName('th')[col-1].getAttribute('class')=='button-cell'){
 
   }else{
     cell = document.getElementById('list').getElementsByTagName('tr')[0].getElementsByTagName('th')[col-1].innerText +','
@@ -1966,7 +2053,7 @@ csv=csv+rowtext
     var rowtext =''
     if(document.getElementById('list').getElementsByTagName('tr')[row].style.backgroundColor=='yellow'){
     for (var col = 0; col<colcount; col++){
-      if(document.getElementById('list').getElementsByTagName('tr')[row].getElementsByTagName('td')[col].getAttribute('class')=='Accentless-cell'){
+      if(document.getElementById('list').getElementsByTagName('tr')[row].getElementsByTagName('td')[col].getAttribute('class')=='Accentless-cell'||document.getElementById('list').getElementsByTagName('tr')[row].getElementsByTagName('td')[col].getAttribute('class')=='button-cell'){
 
       }else{
         var cell = document.getElementById('list').getElementsByTagName('tr')[row].getElementsByTagName('td')[col].innerText
@@ -2213,6 +2300,8 @@ for(j=0;j<firstrow.children.length;j++){
 }  
 headerString = headerString.substr(0,headerString.length-1)
 
+headerString = headerString.replace(/\|Table\|/gm,'|')
+
 header_s = headerString.split('|')
 colcount = header_s.length
 var isgreek
@@ -2221,9 +2310,18 @@ isgreek = false
 isgreek = true
 }
 
+
+var isButton
+isButton = false
+  if(document.getElementsByClassName('button-cell').length>0){
+isButton = true
+}
+
+
 if (isgreek == true){
   colcount -= 1
 }
+
 
 
 liststring = ''
@@ -2232,18 +2330,28 @@ rowstring = ''
     if(document.getElementById('selectionform').getElementsByTagName('tr')[i].style.backgroundColor=='yellow'){  
       rowstring = ''
       for(k=0;k<colcount;k++){
-        rowstring = rowstring + document.getElementById('selectionform').getElementsByTagName('tr')[i].children[k].innerText + '|'
-        
+        class_name = document.getElementById('selectionform').getElementsByTagName('tr')[i].children[k].className
+        if (document.getElementById('selectionform').getElementsByTagName('tr')[i].children[k].className != 'button-cell'){
+        rowstring = rowstring + document.getElementById('selectionform').getElementsByTagName('tr')[i].children[k].innerText + '|'}
+        else{
+          colcount += 1
+        }
+
       }
       rowstring = rowstring.substr(0,rowstring.length-1)
       if(rowstring != ''){
         liststring = liststring + rowstring + '%'
       }
+    
     }
 
   }
   liststring = liststring.substr(0,liststring.length-1)
   list = liststring.split('%')
+
+  if (isButton == true){
+    colcount -= 1
+  }
 
   lastcol = String.fromCharCode(64 + colcount)
   rowcount = list.length + 1
