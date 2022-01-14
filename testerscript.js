@@ -7,6 +7,10 @@ var wordsadded
 var myWindow
 
 function showTable(button) {
+  if (document.getElementsByClassName('Tprompt').length > 0){
+    document.getElementsByClassName('Tprompt')[0].outerHTML=''
+  }
+
   row = button.parentElement.parentElement
   word = row.children[1].innerText
   word = word.replace(/ \(.*/gm,'')
@@ -38,7 +42,7 @@ function showTable(button) {
   'margin-top:-200px';
 
 
-$('body').append('<div id="Tprompt" style="' + table_overlay + '"><div readonly style="overflow-y:scroll;" id="Tstatement"></div></div>');
+$('body').append('<div id="Tprompt" class="Tprompt" style="' + table_overlay + '"><div readonly style="overflow-y:scroll;" id="Tstatement"></div></div>');
   
 document.getElementById('Tstatement').innerHTML = result
 document.getElementById('Tstatement').value = document.getElementById('Tstatement').innerHTML
