@@ -2304,9 +2304,9 @@ firstrow = document.getElementById('selectionform').getElementsByTagName('tr')[0
 for(j=0;j<firstrow.children.length;j++){
   headerString = headerString + firstrow.children[j].innerText + '|'
 }  
+headerString = headerString.replace(/\|Table\|/gm,'|')
 headerString = headerString.substr(0,headerString.length-1)
 
-headerString = headerString.replace(/\|Table\|/gm,'|')
 
 header_s = headerString.split('|')
 colcount = header_s.length
@@ -2355,9 +2355,8 @@ rowstring = ''
   liststring = liststring.substr(0,liststring.length-1)
   list = liststring.split('%')
 
-  if (isButton == true){
-    colcount -= 1
-  }
+
+  colcount = list[0].split(/\|/).length
 
   lastcol = String.fromCharCode(64 + colcount)
   rowcount = list.length + 1
