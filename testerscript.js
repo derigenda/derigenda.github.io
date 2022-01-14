@@ -9,6 +9,7 @@ var myWindow
 function showTable(button) {
   row = button.parentElement.parentElement
   word = row.children[1].innerText
+  word = word.replace(/ \(.*/gm,'')
   word = word.replace(/[^a-zA-Z]/gm,'')
   url = getParameterByName('test') + '/' + word + String.fromCharCode(46, 104, 116, 109)
   var xhr = new XMLHttpRequest();
