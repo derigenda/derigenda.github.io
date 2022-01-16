@@ -2128,6 +2128,14 @@ function FlashZip(){
              var lc = taggy
            }
        }
+   if (lc === undefined){
+    for (taggy = 0;taggy<document.getElementById('selectionform').getElementsByTagName('tr')[1].childElementCount; taggy++ ){
+      //for each column
+            if(document.getElementById('selectionform').getElementsByTagName('tr')[1].children[taggy].className == 'val0-cell' ){
+              var lc = taggy
+            }
+        }
+   }    
 
   for(i=0;i<document.getElementById('selectionform').getElementsByTagName('tr').length;i++){
      if(document.getElementById('selectionform').getElementsByTagName('tr')[i].style.backgroundColor=='yellow'){  
