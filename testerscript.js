@@ -176,6 +176,7 @@ else if(c=='ogcse'){listselect('OCR GCSE')}
 else if(c=='ogcse2'){listselect('OCR GCSE2')}
 else if(c=='egcse'){listselect('Eduqas GCSE')}
 else if(c=='ggcse'){listselect('GCSE Greek')}
+else if(c=='gverse'){listselect('Greek verse')}
 else if(c=='eg'){listselect('GCSE Eng-Greek')}
 else if(c=='asgrk'){listselect('AS Greek')}
 else if(c=='as'){listselect('AS Level')}
@@ -474,10 +475,13 @@ if (document.getElementById('menuname').innerText == 'OCR GCSE'){
   testname = 'egcse'
 }else if (document.getElementById('menuname').innerText == 'GCSE Eng-Greek'){
   document.getElementById('tips').innerHTML = 'Try these filters:<br><i>1-10<br>a-c, f, h'
-  testname = 'eg'}
-else if (document.getElementById('menuname').innerText == 'GCSE Greek'){
-    document.getElementById('tips').innerHTML = 'Filter by number or letter only.'
-    testname = 'ggcse'
+  testname = 'eg'
+}else if (document.getElementById('menuname').innerText == 'GCSE Greek'){
+  document.getElementById('tips').innerHTML = 'Filter by number or letter only.'
+  testname = 'ggcse'
+}else if (document.getElementById('menuname').innerText == 'Greek verse'){
+  document.getElementById('tips').innerHTML = 'Filter by number or letter only.'
+  testname = 'gverse'
 }else if (document.getElementById('menuname').innerText == 'AS Greek'){
   document.getElementById('tips').innerHTML = 'Filter by number or letter only.'
   testname = 'asgrk'
@@ -747,8 +751,10 @@ function returnlist(q){
     }else if (q == 'Eduqas GCSE'){
       testname = 'egcse'
      }else if (q == 'GCSE Greek'){
-       testname = 'ggcse'
-      }else if (q == 'GCSE Eng-Greek'){
+      testname = 'ggcse'
+     }else if (q == 'Greek verse'){
+      testname = 'gverse'
+     }else if (q == 'GCSE Eng-Greek'){
          testname = 'eg'
    }else if (q == 'AS Greek'){
      testname = 'asgrk'
