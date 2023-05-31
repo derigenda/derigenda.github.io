@@ -180,6 +180,7 @@ else if(c=='gverse'){listselect('Greek verse')}
 else if(c=='eg'){listselect('GCSE Eng-Greek')}
 else if(c=='asgrk'){listselect('AS Greek')}
 else if(c=='as'){listselect('AS Level')}
+else if(c=='alevel'){listselect('Expanded A-Level')}
 else if(c=='ovid'){listselect('Additional Ovid')}
 else if(c=='livy'){listselect('Additional Livy')}
 else if(c=='clc1'){listselect('All CLC 1')}
@@ -488,6 +489,9 @@ if (document.getElementById('menuname').innerText == 'OCR GCSE'){
 }else if (document.getElementById('menuname').innerText == 'AS Level'){
   document.getElementById('tips').innerHTML = 'Try these filters:<br><i>1-10<br>a-c, f, h<br>class:military</i>'
   testname = 'as'
+}else if (document.getElementById('menuname').innerText == 'Expanded A-Level'){
+  document.getElementById('tips').innerHTML = 'Containing AS, past unglossed A-Level and old AQA vocab'
+  testname = 'alevel'
 }else if (document.getElementById('menuname').innerText == 'Additional Ovid'){
   document.getElementById('tips').innerHTML = '<span style="font-size:14px; text-align:justify;">These are common words from Ovid that are not in the AS list. They are numbered from 9 (most common) to 0 (least common). Try these filters:<br><i>common:9<br>a-c</i></span>'
   testname = 'ovid'
@@ -760,6 +764,8 @@ function returnlist(q){
      testname = 'asgrk'
    }else if (q == 'AS Level'){
       testname = 'as'
+   }else if (q == 'Expanded A-Level'){
+      testname = 'alevel'
    }else if (q == 'Additional Ovid'){
      testname = 'ovid'
    }else if (q == 'Additional Livy'){
@@ -1597,9 +1603,11 @@ if(testname=='ogcse'){testname='OCR GCSE'}
 if(testname=='ogcse2'){testname='OCR GCSE2'}
 if(testname=='egcse'){testname='Eduqas GCSE'}
 if(testname=='ggcse'){testname='GCSE Greek'}
+if(testname=='gverse'){testname='Greek verse'}
 if(testname=='eg'){testname='GCSE Eng-Greek'}
 if(testname=='asgrk'){testname='AS Greek'}
 if(testname=='as'){testname='AS Level'}
+if(testname=='alevel'){testname='Expanded A-Level'}
 if(testname=='ovid'){testname='Additional Ovid'}
 if(testname=='livy'){testname='Additional Livy'}
 if(testname=='clc1'){testname='All CLC 1'}
