@@ -832,14 +832,20 @@ function  compiledictionary(){
     var lists=returnlist('Eduqas GCSE')}
     else  if(list=='GCSE Greek'){
       var lists=returnlist('GCSE Greek')}
+      else  if(list=='Intermediate Greek'){
+        var lists=returnlist('Intermediate Greek')}
       else  if(list=='AS Greek'){
         var lists=returnlist('AS Greek')}
+        else  if(list=='Greek verse'){
+          var lists=returnlist('Greek verse')}
   else  if(list=='OCR GCSE Eng-Lat'){
     var lists=returnlist('OCR GCSE Eng-Lat')}
     else  if(list=='GCSE Eng-Greek'){
       var lists=returnlist('GCSE Eng-Greek')}
   else  if(list=='AS Level'){
     var lists=returnlist('AS Level')}
+    else  if(list=='Expanded A-Level'){
+      var lists=returnlist('Expanded A-Level')}
     else  if(list=='Additional Ovid'){
     var lists=returnlist('Additional Ovid')}
   else  if(list=='Additional Livy'){
