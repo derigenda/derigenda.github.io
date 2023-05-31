@@ -176,6 +176,7 @@ else if(c=='ogcse'){listselect('OCR GCSE')}
 else if(c=='ogcse2'){listselect('OCR GCSE2')}
 else if(c=='egcse'){listselect('Eduqas GCSE')}
 else if(c=='ggcse'){listselect('GCSE Greek')}
+else if(c=='intgre'){listselect('Intermediate Greek')}
 else if(c=='gverse'){listselect('Greek verse')}
 else if(c=='eg'){listselect('GCSE Eng-Greek')}
 else if(c=='asgrk'){listselect('AS Greek')}
@@ -480,6 +481,9 @@ if (document.getElementById('menuname').innerText == 'OCR GCSE'){
 }else if (document.getElementById('menuname').innerText == 'GCSE Greek'){
   document.getElementById('tips').innerHTML = 'Filter by number or letter only.'
   testname = 'ggcse'
+}else if (document.getElementById('menuname').innerText == 'Intermediate Greek'){
+  document.getElementById('tips').innerHTML = 'For the Intermediate Greek certificate.'
+  testname = 'intgre'
 }else if (document.getElementById('menuname').innerText == 'Greek verse'){
   document.getElementById('tips').innerHTML = 'Filter by number or letter only.'
   testname = 'gverse'
@@ -756,6 +760,8 @@ function returnlist(q){
       testname = 'egcse'
      }else if (q == 'GCSE Greek'){
       testname = 'ggcse'
+     }else if (q == 'Intermediate Greek'){
+      testname = 'intgre'
      }else if (q == 'Greek verse'){
       testname = 'gverse'
      }else if (q == 'GCSE Eng-Greek'){
@@ -1603,6 +1609,7 @@ if(testname=='ogcse'){testname='OCR GCSE'}
 if(testname=='ogcse2'){testname='OCR GCSE2'}
 if(testname=='egcse'){testname='Eduqas GCSE'}
 if(testname=='ggcse'){testname='GCSE Greek'}
+if(testname=='intgre'){testname='Intermediate Greek'}
 if(testname=='gverse'){testname='Greek verse'}
 if(testname=='eg'){testname='GCSE Eng-Greek'}
 if(testname=='asgrk'){testname='AS Greek'}
