@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Test Page</title>
+    <script>
+        window.onload = function() {
+            // Function to call the actual API
+            function fetchWordData(word) {
+                const url = `https://y83fv41ys4.execute-api.eu-west-2.amazonaws.com/default/words/${word}`;
+                return fetch(url).then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();  // or .text() if the response is plain text
+                });
+            }
+
+            // Function to extract query parameters from URL
+            function getQueryParam(param) {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(param);
+            }
+
+            // Extract the 'word' parameter from the URL
+            const word = getQueryParam('word');
+            if (word) {
+                fetchWordData(word)
+                    .then(response => {
+                        document.getElementById('apiResponse').textContent = JSON.stringify(response);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        document.getElementById('apiResponse').textContent = 'Error fetching data.';
+                    });
+            } else {
+                document.getElementById('apiResponse').textContent = 'No word parameter provided.';
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>API Test Page</h1>
+    <p id="apiResponse">Loading...</p>
+</body>
+</html>
